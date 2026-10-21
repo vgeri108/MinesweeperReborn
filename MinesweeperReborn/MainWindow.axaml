@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Background="White">
+        <Menu Grid.Row="0" Background="{DynamicResource ThemeBackgroundBrush}">
             <MenuItem Header="Játék">
                 <MenuItem Header="Új játék" x:Name="NewGame"/>
                 <Separator/>
