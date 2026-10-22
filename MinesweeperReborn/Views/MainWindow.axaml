@@ -2,13 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="using:MinesweeperReborn.Localization"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MinesweeperReborn.MainWindow"
-        Title="MinesweeperReborn">
+        Title="{x:Static loc:Strings.AppTitle}">
     <Grid>
         
         <Grid.Background>
-            <ImageBrush Source="images/hatter.png" Stretch="UniformToFill"/>
+            <ImageBrush Source="/images/hatter.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -17,29 +18,31 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" Background="{DynamicResource ThemeBackgroundBrush}">
-            <MenuItem Header="Játék">
-                <MenuItem Header="Új játék" x:Name="NewGame"/>
-                <Separator/>
-                <MenuItem Header="Statisztika" x:Name="Stats"/>
-                <MenuItem Header="Beállítások" x:Name="Settings"/>
-                <MenuItem Header="Megjelenés módosítása" x:Name="AppearanceMenu"/>
-                <Separator/>
-                <MenuItem Header="Kilépés" x:Name="Exit"/>
-            </MenuItem>
-            <MenuItem Header="Beállítások">
-                <MenuItem Header="Játék beállításai"/>
-                <MenuItem Header="Alkalmazás beállításai" x:Name="AppSettings"/>
-                <Separator/>
-                <MenuItem Header="Frissítések keresése" x:Name="CheckForUpdates"/>
-            </MenuItem>
-            <MenuItem Header="Súgó">
-                <MenuItem Header="Súgó megjelenítése" x:Name="Help"/>
-                <Separator/>
-                <MenuItem Header="Az aknakereső névjegye" x:Name="About"/>
-                <Separator/>
-                <MenuItem Header="További játékok az interneten" x:Name="MoreGames"/>
-            </MenuItem>
-        </Menu>
+    <MenuItem Header="{x:Static loc:Strings.GameMenu}">
+        <MenuItem Header="{x:Static loc:Strings.NewGame}" x:Name="NewGame"/>
+        <Separator/>
+        <MenuItem Header="{x:Static loc:Strings.Statistics}" x:Name="Stats"/>
+        <MenuItem Header="{x:Static loc:Strings.Settings}" x:Name="Settings"/>
+        <MenuItem Header="{x:Static loc:Strings.ChangeAppearance}" x:Name="AppearanceMenu"/>
+        <Separator/>
+        <MenuItem Header="{x:Static loc:Strings.Exit}" x:Name="Exit"/>
+    </MenuItem>
+
+    <MenuItem Header="{x:Static loc:Strings.Settings}">
+        <MenuItem Header="{x:Static loc:Strings.GameSettings}"/>
+        <MenuItem Header="{x:Static loc:Strings.ApplicationSettings}"/>
+        <Separator/>
+        <MenuItem Header="{x:Static loc:Strings.CheckForUpdates}" x:Name="CheckForUpdates"/>
+    </MenuItem>
+
+    <MenuItem Header="{x:Static loc:Strings.HelpMenu}">
+        <MenuItem Header="{x:Static loc:Strings.ShowHelp}" x:Name="Help"/>
+        <Separator/>
+        <MenuItem Header="{x:Static loc:Strings.About}" x:Name="About"/>
+        <Separator/>
+        <MenuItem Header="{x:Static loc:Strings.MoreGames}" x:Name="MoreGames"/>
+    </MenuItem>
+</Menu>
 
         <Viewbox Grid.Row="1"
                  Stretch="Uniform"
