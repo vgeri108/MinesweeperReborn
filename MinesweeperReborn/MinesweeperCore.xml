@@ -1,0 +1,470 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MinesweeperCore</name>
+    </assembly>
+    <members>
+        <member name="T:MinesweeperCore.CellStatus">
+            <summary>
+            adatok amikkel tárolva van, hogy melyik mezőt látja és hogyan a játékos
+            </summary>
+        </member>
+        <member name="T:MinesweeperCore.Cell">
+            <summary>
+            ezekből az elemekből van a tábla felépítve ami a kezdéskor le van fedve
+            </summary>
+        </member>
+        <member name="T:MinesweeperCore.Board">
+            <summary>
+            Játéktábla
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Board.MineCount">
+            <summary>
+            Aknák száma a táblán
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Board.Seed">
+            <summary>
+            A randomgenerátor seedje
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Board.Status">
+            <summary>
+            A cellák megjelenítési állapota, hogy lehet-e látni, hogy mi van alatta és ha nem akkor milyen fedés van ott. Felső réteg.
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Board.Undercover">
+            <summary>
+            A letakart cellák amiket a játékos fog látni ha felfed egy cellát. Ezek vannak a fedések alatt. Alsó réteg.
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Board.FlagCount">
+            <summary>
+            Zászlók száma a pályán
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Board.RemainingFlags">
+            <summary>
+            Aknák száma - lerakott zászlók
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Board.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Tábla létrehozás, külsőleg elérhető
+            </summary>
+            <param name="height">Magasság</param>
+            <param name="width">Szélesség</param>
+            <param name="mines">Aknák száma</param>
+        </member>
+        <member name="M:MinesweeperCore.Board.#ctor(System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},MinesweeperCore.CellStatus[0:,0:],MinesweeperCore.Cell[0:,0:])">
+            <summary>
+            Tábla betöltése JSON-ból
+            </summary>
+            <param name="height">Magasság</param>
+            <param name="width">Szélesség</param>
+            <param name="mines">Aknák száma</param>
+            <param name="seed">A randomgenerátor seedje</param>
+            <param name="status">A látható réteg a mentésből</param>
+            <param name="undercover">A letakart réteg a mentésből</param>
+        </member>
+        <member name="M:MinesweeperCore.Board.InitializeBoard">
+            <summary>
+            A tábla feltöltése letakart üres cellákkal
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Board.PlaceMines(System.Drawing.Point,System.Nullable{System.Int32})">
+            <summary>
+            aknák és a számok generáltatása
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Board.GetValidSeed(System.Nullable{System.Int32})">
+            <summary>
+            Ha nincs seed megadva akkor random legyen.
+            </summary>
+            <param name="seed">előre megadott seed vagy null</param>
+            <returns>érvényes seed ami nem null</returns>
+        </member>
+        <member name="T:MinesweeperCore.Dig">
+            <summary>
+            Mezők felfedését, kiásását kezelő osztály
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Dig.#ctor(MinesweeperCore.CellStatus[0:,0:],MinesweeperCore.Cell[0:,0:],MinesweeperCore.GameOver)">
+            <summary>
+            Cella kiásó rendszer
+            </summary>
+            <param name="board">Játéktábla cellák státusza (cover, uncovered, stb...)</param>
+            <param name="undercover">Játéktábla számok és aknák</param>
+            <param name="gameOver">Játék végét ellenőrző osztály</param>
+        </member>
+        <member name="M:MinesweeperCore.Dig.DigCell(System.Int32,System.Int32)">
+            <summary>
+            Adott mező kiásása és a környező terület automatikus felfedése, ha van
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Dig.DigRecursive(System.Int32,System.Int32)">
+            <summary>
+            Rekurzív mezők felfedése ahol a nyerés ellenőrzése nem fut le feleslegesen sokszor
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Dig.EasyMine(System.Int32,System.Int32)">
+            <summary>
+            Az EasyMine felel azért ha a játékos (UI-tól fog függeni) duplán klikkel egy cellára,
+            akkor ha megvan körülötte a megfelelő számú zászló a környező területeket kiássa
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Dig.CalculateNeighbourFlags(System.Int32,System.Int32)">
+            <summary>
+            Környező zászlók megszámolása
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+            <returns>Hány zászló van a megadott mező körül.</returns>
+        </member>
+        <member name="M:MinesweeperCore.Dig.DigNeighbours(System.Int32,System.Int32)">
+            <summary>
+            Környező nem zászlózott területek kiásása
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Dig.IsValid(System.Int32,System.Int32)">
+            <summary>
+            Koordináta ellenőrzése, hogy létezik-e a táblán
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+            <returns>Létezik-e az adott cella</returns>
+        </member>
+        <member name="T:MinesweeperCore.Game">
+            <summary>
+            Csak ez az osztály látszik kívülről. Ez a Játék magja.
+            </summary>
+        </member>
+        <member name="T:MinesweeperCore.Game.GameStatus">
+            <summary>
+            A játék vége lehetőségei, ide tartozik még az is, hogy nincs vége
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Game.#ctor(System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Játék indítása, tábla generálása. Az aknák az első ásáskor lesznek generálva.
+            </summary>
+            <param name="height">Magasság</param>
+            <param name="width">Szélesség</param>
+            <param name="mines">Aknák száma</param>
+            <param name="seed">Előre megadott seed vagy null</param>
+        </member>
+        <member name="P:MinesweeperCore.Game.Result">
+            <summary>
+            A játék állapota, ez lehet megnyert, elvesztett vagy semelyik sem
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.IsGameOver">
+            <summary>
+            Játék vége lekérdezés
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Game.Dig(System.Int32,System.Int32)">
+            <summary>
+            Mező kiásása, ha első ásás aknák generálása biztonságosan
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Game.Cycle(System.Int32,System.Int32)">
+            <summary>
+            Mező jelölés váltogatása: fedett, zászlós, kérdőjeles
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Game.EasyMine(System.Int32,System.Int32)">
+            <summary>
+            Ha az adott mező számával megegyező zászló van a cella körül, akkor a szomszédjait kiássa ami nem zászló
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Game.GetCell(System.Int32,System.Int32)">
+            <summary>
+            Egy mező állapotának lekérdezése, hogy mi van a takarás alatt
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+            <returns>Letakart rész tartalma</returns>
+        </member>
+        <member name="M:MinesweeperCore.Game.Save(System.String)">
+            <summary>
+            A játékállapot mentése fileba
+            </summary>
+            <param name="path">A betöltendő file helye</param>
+        </member>
+        <member name="M:MinesweeperCore.Game.Load(System.String)">
+            <summary>
+            A játékállapot betöltése fileból
+            </summary>
+            <param name="path">A betöltendő file helye</param>
+            <returns>Az elmentett játék visszatöltött adatai</returns>
+        </member>
+        <member name="M:MinesweeperCore.Game.#ctor(MinesweeperCore.SaveGameData)">
+            <summary>
+            Játék visszaállítása a mentésből
+            </summary>
+            <param name="data">A mentett adatok</param>
+        </member>
+        <member name="T:MinesweeperCore.GameOver">
+            <summary>
+            A játék végetérését figyeli, a nyerést és vesztést
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.GameOver.#ctor(MinesweeperCore.CellStatus[0:,0:],MinesweeperCore.Cell[0:,0:])">
+            <summary>
+            Játék végeinek ellenőrzése
+            </summary>
+            <param name="board">Mezők láthatósága</param>
+            <param name="undercover">Játéktábla elemei</param>
+        </member>
+        <member name="M:MinesweeperCore.GameOver.CheckGameOver">
+            <summary>
+            Ellenőrzi hogy van-e nyerés vagy vesztés elérve
+            </summary>
+            <returns>nyerés/vesztés/semmi</returns>
+        </member>
+        <member name="M:MinesweeperCore.GameOver.IsGameOver">
+            <summary>
+            Megnézi vége van-e a játéknak
+            </summary>
+            <returns>Vége van-e? Igen / Nem</returns>
+        </member>
+        <member name="T:MinesweeperCore.GridHelper">
+            <summary>
+            Ez az osztály segít, hogy rövidebb, szebb és könnyebb kóddal lehessen dolgozni a szomszédos cellákkal
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.GridHelper.IsValid(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Létezik-e az adott sor/oszlop a táblán belül
+            </summary>
+            <param name="height">tábla magasság</param>
+            <param name="width">tábla szélesség</param>
+            <param name="row">sor</param>
+            <param name="column">oszlop</param>
+            <returns>True ha a cella létezik és nem esik kívül a tartományon</returns>
+        </member>
+        <member name="T:MinesweeperCore.JsonArray">
+            <summary>
+            Tömbök JSON kompatibilitása
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.JsonArray.From(MinesweeperCore.CellStatus[0:,0:])">
+            <summary>
+            Látható réteg átlakítása JSON-hoz
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.JsonArray.From(MinesweeperCore.Cell[0:,0:])">
+            <summary>
+            Letakart réteg átalakítása JSON-hoz
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.JsonArray.ToStatus(System.Int32[][])">
+            <summary>
+            Látható réteg JSON adat átalakítása és betöltése
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.JsonArray.ToCells(System.Int32[][])">
+            <summary>
+            Letakart réteg JSON adat átalakítása és betöltése
+            </summary>
+        </member>
+        <member name="T:MinesweeperCore.MineGenerator">
+            <summary>
+            Aknák generálása
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.MineGenerator.#ctor(MinesweeperCore.Cell[0:,0:],System.Int32,System.Drawing.Point,System.Int32)">
+            <summary>
+            Aknák ék körülötte lévő számok biztonságos generálása
+            </summary>
+            <param name="board">Játéktábla</param>
+            <param name="count">Aknák száma</param>
+            <param name="firstClick">Első kattintás helye</param>
+            <param name="seed">Randomgenerátor kiindulási értéke</param>
+        </member>
+        <member name="M:MinesweeperCore.MineGenerator.PlaceMines(System.Int32,System.Drawing.Point,System.Int32)">
+            <summary>
+            Aknák lerakása
+            </summary>
+            <param name="count">Aknák száma</param>
+            <param name="firstClick">Első kattintás pozíciója</param>
+            <param name="seed">Randomgenerátor kiindulási értéke</param>
+        </member>
+        <member name="M:MinesweeperCore.MineGenerator.IncreaseNeighbours(System.Int32,System.Int32)">
+            <summary>
+            Akna melletti mezők számának növelése
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.MineGenerator.SafeIncrease(System.Int32,System.Int32)">
+            <summary>
+            Biztonságos növelés, hogy táblán kívüli index ne legyen növelve
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.MineGenerator.BlacklistCells(System.Drawing.Point)">
+            <summary>
+            Cellák megjelölése ahol nem lehet akna, hogy az első kattintás biztonságos legyen.
+            </summary>
+            <param name="firstClick">Kezdeti kattintás pozíciója</param>
+        </member>
+        <member name="M:MinesweeperCore.MineGenerator.GetFreeCells">
+            <summary>
+            Szabad cellek kiszámítása és a Blacklisted cellák kivételével
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.MineGenerator.IsValid(System.Int32,System.Int32)">
+            <summary>
+            Koordináta ellenőrzése, hogy létezik-e a táblán
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+            <returns>Létezik-e az adott cella</returns>
+        </member>
+        <member name="T:MinesweeperCore.Difficulty">
+            <summary>
+            Előre megadott nehézségi szintek
+            </summary>
+        </member>
+        <member name="T:MinesweeperCore.DifficultySettings">
+            <summary>
+            tulajdonságok amikből áll egy nehézségi szint
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.DifficultySettings.Height">
+            <summary>
+            Tábla magassága
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.DifficultySettings.Width">
+            <summary>
+            Tábla szélessége
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.DifficultySettings.Mines">
+            <summary>
+            Aknák száma
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.DifficultySettings.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Nehézségi adatok létrehozása
+            </summary>
+            <param name="height">Magasság</param>
+            <param name="width">Szélesség</param>
+            <param name="mines">Aknák száma</param>
+        </member>
+        <member name="T:MinesweeperCore.PredefinedDifficulty">
+            <summary>
+            Előre megadott nehézségi szintek
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.PredefinedDifficulty.Get(MinesweeperCore.Difficulty)">
+            <summary>
+            Adott nehézség adatainak lekérése
+            </summary>
+            <param name="difficulty">A nehézségi szint</param>
+            <returns>A szinthez tartozó táblaadatok</returns>
+        </member>
+        <member name="T:MinesweeperCore.SaveGameData">
+            <summary>
+            Játék mentendő adatai JSON-ba
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.SaveGameData.Height">
+            <summary>
+            Tábla magassága
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.SaveGameData.Width">
+            <summary>
+            Tábla szélessége
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.SaveGameData.Mines">
+            <summary>
+            Aknák száma
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.SaveGameData.Seed">
+            <summary>
+            A randomgenerátor seedje
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.SaveGameData.MinesGenerated">
+            <summary>
+            Aknák lettek-e generálva
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.SaveGameData.Status">
+            <summary>
+            A látható réteg: fedett, zászlós, kérdőjelezett, felfedett mezők
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.SaveGameData.Undercover">
+            <summary>
+            A letakart réteg: aknák és számok
+            </summary>
+        </member>
+        <member name="T:MinesweeperCore.SaveManager">
+            <summary>
+            Játék mentése és betöltése JSON-nal
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.SaveManager.#ctor(System.String)">
+            <summary>
+            Mentéskezelő
+            </summary>
+            <param name="path">A mentés fájl helye</param>
+        </member>
+        <member name="M:MinesweeperCore.SaveManager.Save(MinesweeperCore.SaveGameData)">
+            <summary>
+            Játékállapot kiírása
+            </summary>
+            <param name="data">Mentendő adatok</param>
+        </member>
+        <member name="M:MinesweeperCore.SaveManager.Load">
+            <summary>
+            Játékállapot beolvasása
+            </summary>
+            <returns>Mentett adatok</returns>
+        </member>
+        <member name="T:MinesweeperCore.StatusCycle">
+            <summary>
+            A fedéseken történő akciók kezelése. Zászlózás és kérdőjelek forgatása.
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.StatusCycle.#ctor(MinesweeperCore.CellStatus[0:,0:],MinesweeperCore.GameOver)">
+            <summary>
+            A fedések állapota és a tábla fedett részének átadása a státusz forgató rendszernek
+            </summary>
+            <param name="board">Játéktábla fedés része</param>
+            <param name="gameOver">Játék vége kezelő</param>
+        </member>
+        <member name="M:MinesweeperCore.StatusCycle.Cycle(System.Int32,System.Int32)">
+            <summary>
+            Adott mező jelölésének váltogatása sorban
+            </summary>
+            <param name="row">Sor</param>
+            <param name="column">Oszlop</param>
+        </member>
+    </members>
+</doc>
