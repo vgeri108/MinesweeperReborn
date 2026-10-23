@@ -51,4 +51,8 @@ public partial class MainWindow : Window
     {
 
     }
+    public void MoreGames_Click(object? sender, RoutedEventArgs e)
+    {
+
+    }
 }
