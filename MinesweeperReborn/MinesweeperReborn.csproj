@@ -22,6 +22,7 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <AvaloniaResource Include="images\**" />
+    <AvaloniaResource Include="Assets\**" />
 	  <EmbeddedResource Update="Localization\Strings.resx">
 		  <Generator>MSBuild:Compile</Generator>
 		  <StronglyTypedFileName>Localization\Strings.Designer.cs</StronglyTypedFileName>
