@@ -67,6 +67,7 @@ namespace MinesweeperReborn
 
                     btn.AddHandler(InputElement.PointerPressedEvent, Button_LeftClick, RoutingStrategies.Bubble, handledEventsToo: true);
                     btn.AddHandler(InputElement.PointerPressedEvent, Button_RightClick, RoutingStrategies.Bubble, handledEventsToo: true);
+                    btn.AddHandler(InputElement.DoubleTappedEvent, Button_DoubleClick, RoutingStrategies.Bubble, handledEventsToo: true);
 
                     using Stream imageStream = AssetLoader.Open(new Uri("avares://MinesweeperReborn/images/Themes/Covered.png"));
                     Bitmap bmp = new(imageStream);
@@ -146,6 +147,17 @@ namespace MinesweeperReborn
 
 
             game.Cycle((int)point.X, (int)point.Y);
+            DrawBoard();
+
+            e.Handled = true;
+        }
+
+        private void Button_DoubleClick(object? sender, TappedEventArgs e)
+        {
+            if (sender is not Button { Tag: Point point })
+                return;
+
+            game.EasyMine((int)point.X, (int)point.Y);
             DrawBoard();
 
             e.Handled = true;
