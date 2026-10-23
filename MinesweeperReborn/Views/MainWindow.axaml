@@ -18,31 +18,31 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" Background="{DynamicResource ThemeBackgroundBrush}">
-    <MenuItem Header="{x:Static loc:Strings.GameMenu}">
-        <MenuItem Header="{x:Static loc:Strings.NewGame}" x:Name="NewGame"/>
-        <Separator/>
-        <MenuItem Header="{x:Static loc:Strings.Statistics}" x:Name="Stats"/>
-        <MenuItem Header="{x:Static loc:Strings.Settings}" x:Name="Settings"/>
-        <MenuItem Header="{x:Static loc:Strings.ChangeAppearance}" x:Name="AppearanceMenu"/>
-        <Separator/>
-        <MenuItem Header="{x:Static loc:Strings.Exit}" x:Name="Exit"/>
-    </MenuItem>
+            <MenuItem Header="{x:Static loc:Strings.GameMenu}">
+                <MenuItem Header="{x:Static loc:Strings.NewGame}" x:Name="NewGame"/>
+                <Separator/>
+                <MenuItem Header="{x:Static loc:Strings.Statistics}" x:Name="Stats"/>
+                <MenuItem Header="{x:Static loc:Strings.Settings}" x:Name="Settings"/>
+                <MenuItem Header="{x:Static loc:Strings.ChangeAppearance}" x:Name="AppearanceMenu"/>
+                <Separator/>
+                <MenuItem Header="{x:Static loc:Strings.Exit}" x:Name="Exit"/>
+            </MenuItem>
 
-    <MenuItem Header="{x:Static loc:Strings.Settings}">
-        <MenuItem Header="{x:Static loc:Strings.GameSettings}"/>
-        <MenuItem Header="{x:Static loc:Strings.ApplicationSettings}"/>
-        <Separator/>
-        <MenuItem Header="{x:Static loc:Strings.CheckForUpdates}" x:Name="CheckForUpdates"/>
-    </MenuItem>
+            <MenuItem Header="{x:Static loc:Strings.Settings}">
+                <MenuItem Header="{x:Static loc:Strings.GameSettings}"/>
+                <MenuItem Header="{x:Static loc:Strings.ApplicationSettings}"/>
+                <Separator/>
+                <MenuItem Header="{x:Static loc:Strings.CheckForUpdates}" x:Name="CheckForUpdates"/>
+            </MenuItem>
 
-    <MenuItem Header="{x:Static loc:Strings.HelpMenu}">
-        <MenuItem Header="{x:Static loc:Strings.ShowHelp}" x:Name="Help"/>
-        <Separator/>
-        <MenuItem Header="{x:Static loc:Strings.About}" x:Name="About"/>
-        <Separator/>
-        <MenuItem Header="{x:Static loc:Strings.MoreGames}" x:Name="MoreGames"/>
-    </MenuItem>
-</Menu>
+            <MenuItem Header="{x:Static loc:Strings.HelpMenu}">
+                <MenuItem Header="{x:Static loc:Strings.ShowHelp}" x:Name="Help"/>
+                <Separator/>
+                <MenuItem Header="{x:Static loc:Strings.About}" x:Name="About"/>
+                <Separator/>
+                <MenuItem Header="{x:Static loc:Strings.MoreGames}" x:Name="MoreGames"/>
+            </MenuItem>
+        </Menu>
 
         <Viewbox Grid.Row="1"
                  Stretch="Uniform"
