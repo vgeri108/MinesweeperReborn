@@ -17,6 +17,7 @@ namespace MinesweeperReborn
         public Game game;
         public UniformGrid grid;
         private readonly List<Button> buttonPool = new();
+        private readonly ButtonClicks buttonClicks;
 
         private static Dictionary<object, Bitmap> ImageCache = new Dictionary<object, Bitmap>();
 
@@ -24,6 +25,7 @@ namespace MinesweeperReborn
         {
             this.game = game;
             this.grid = grid;
+            buttonClicks = new ButtonClicks(game, DrawBoard);
 
             CacheImages();
             InitBoard();
@@ -65,9 +67,9 @@ namespace MinesweeperReborn
                         Padding = new Thickness(0),
                     };
 
-                    btn.AddHandler(InputElement.PointerPressedEvent, Button_LeftClick, RoutingStrategies.Bubble, handledEventsToo: true);
-                    btn.AddHandler(InputElement.PointerPressedEvent, Button_RightClick, RoutingStrategies.Bubble, handledEventsToo: true);
-                    btn.AddHandler(InputElement.DoubleTappedEvent, Button_DoubleClick, RoutingStrategies.Bubble, handledEventsToo: true);
+                    btn.AddHandler(InputElement.PointerPressedEvent, buttonClicks.Button_LeftClick, RoutingStrategies.Bubble, handledEventsToo: true);
+                    btn.AddHandler(InputElement.PointerPressedEvent, buttonClicks.Button_RightClick, RoutingStrategies.Bubble, handledEventsToo: true);
+                    btn.AddHandler(InputElement.DoubleTappedEvent, buttonClicks.Button_DoubleClick, RoutingStrategies.Bubble, handledEventsToo: true);
 
                     using Stream imageStream = AssetLoader.Open(new Uri("avares://MinesweeperReborn/images/Themes/Covered.png"));
                     Bitmap bmp = new(imageStream);
@@ -121,46 +123,6 @@ namespace MinesweeperReborn
                     };
                 }
             }
-        }
-
-        private void Button_LeftClick(object? sender, PointerPressedEventArgs e)
-        {
-            if (e.GetCurrentPoint(null).Properties.PointerUpdateKind != PointerUpdateKind.LeftButtonPressed)
-                return;
-
-            if (sender is not Button { Tag: Point point })
-                return;
-
-            game.Dig((int)point.X, (int)point.Y);
-            DrawBoard();
-
-            e.Handled = true;
-        }
-
-        private void Button_RightClick(object? sender, PointerPressedEventArgs e)
-        {
-            if (e.GetCurrentPoint(null).Properties.PointerUpdateKind != PointerUpdateKind.RightButtonPressed)
-                return;
-
-            if (sender is not Button { Tag: Point point })
-                return;
-
-
-            game.Cycle((int)point.X, (int)point.Y);
-            DrawBoard();
-
-            e.Handled = true;
-        }
-
-        private void Button_DoubleClick(object? sender, TappedEventArgs e)
-        {
-            if (sender is not Button { Tag: Point point })
-                return;
-
-            game.EasyMine((int)point.X, (int)point.Y);
-            DrawBoard();
-
-            e.Handled = true;
         }
     }
 }
