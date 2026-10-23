@@ -28,6 +28,7 @@ namespace MinesweeperReborn
 
         public void Exit_Click(object? sender, RoutedEventArgs e)
         {
+            Environment.Exit(0);
         }
 
         public void CheckForUpdates_Click(object? sender, RoutedEventArgs e)
