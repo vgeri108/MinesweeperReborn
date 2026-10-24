@@ -2,13 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MinesweeperReborn.Views.Settings"
         Width="430"
         Height="440"
         CanResize="False"
         FontSize="12"
-        Title="Settings">
+        Title="{x:Static loc:Strings.Settings}">
 
 
     <Grid Margin="10">
@@ -21,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <!-- NEHÉZSÉGI SZINT -->
-        <GroupBox Header="Nehézségi szint" Grid.Row="0">
+        <GroupBox Header="{x:Static loc:Strings.Difficulty}" Grid.Row="0">
             <Grid Margin="10">
 
                 <!-- 2 oszlop: bal oldali rádiók + jobb oldali egyéni -->
@@ -39,25 +40,25 @@
 
                     <RadioButton x:Name="Easy" Margin="0,0,0,8" VerticalContentAlignment="Center" IsChecked="True" GroupName="difficulty">
                         <StackPanel Margin="2,0,0,0">
-                            <TextBlock Text="Kezdő"/>
-                            <TextBlock Text="10 akna"/>
-                            <TextBlock Text="9 × 9-es rács"/>
+                            <TextBlock Text="{x:Static loc:Strings.Beginner}"/>
+                            <TextBlock Text="{x:Static loc:Strings.BeginnerMineCount}"/>
+                            <TextBlock Text="{x:Static loc:Strings.BeginnerGrid}"/>
                         </StackPanel>
                     </RadioButton>
 
                     <RadioButton x:Name="Intermediate" Margin="0,0,0,8" VerticalContentAlignment="Center" GroupName="difficulty">
                         <StackPanel Margin="2,0,0,0">
-                            <TextBlock Text="Középhaladó"/>
-                            <TextBlock Text="40 akna"/>
-                            <TextBlock Text="16 × 16-os rács"/>
+                            <TextBlock Text="{x:Static loc:Strings.Intermediate}"/>
+                            <TextBlock Text="{x:Static loc:Strings.IntermediateMineCount}"/>
+                            <TextBlock Text="{x:Static loc:Strings.IntermediateGrid}"/>
                         </StackPanel>
                     </RadioButton>
 
                     <RadioButton x:Name="Advanced" Margin="0,0,0,0" VerticalContentAlignment="Center" GroupName="difficulty">
                         <StackPanel Margin="2,0,0,0">
-                            <TextBlock Text="Haladó"/>
-                            <TextBlock Text="99 akna"/>
-                            <TextBlock Text="16 × 30-as rács"/>
+                            <TextBlock Text="{x:Static loc:Strings.Advanced}"/>
+                            <TextBlock Text="{x:Static loc:Strings.AdvancedMineCount}"/>
+                            <TextBlock Text="{x:Static loc:Strings.AdvancedGrid}"/>
                         </StackPanel>
                     </RadioButton>
 
@@ -68,7 +69,7 @@
 
                     <!-- Egyéni radiobutton -->
                     <RadioButton x:Name="rbCustom"
-                                 Content="Egyéni"
+                                 Content="{x:Static loc:Strings.Custom}"
                                  Margin="0,0,0,10"
                                  GroupName="difficulty"/>
 
@@ -90,7 +91,7 @@
 
                         <!-- Magasság -->
                         <TextBlock Grid.Row="0" Grid.Column="0"
-                                 Text="Magasság (9–24):"
+                                 Text="{x:Static loc:Strings.HeightRange}"
                                  Margin="0,0,5,5"
                                  IsEnabled="{Binding IsChecked, ElementName=rbCustom}"/>
 
@@ -106,7 +107,7 @@
 
                         <!-- Szélesség -->
                         <TextBlock Grid.Row="1" Grid.Column="0"
-                                   Text="Szélesség (9–30):"
+                                   Text="{x:Static loc:Strings.WidthRange}"
                                    Margin="0,0,5,5"/>
 
                         <TextBox Grid.Row="1" Grid.Column="1"
@@ -122,7 +123,7 @@
                         <!-- Aknák -->
                         <TextBlock x:Name="MineCountText"
                                    Grid.Row="2" Grid.Column="0"
-                                   Text="Aknák (10-668):"
+                                   Text="{x:Static loc:Strings.MinesRange}"
                                    Margin="0,0,5,0" IsEnabled="{Binding IsChecked, ElementName=rbCustom}"/>
 
                         <TextBox Grid.Row="2" Grid.Column="1"
@@ -148,19 +149,19 @@
                 <TextBlock Text="Animációk megjelenítése"/>
             </CheckBox> -->
             <CheckBox x:Name="Sounds" Margin="0,0,0,8" IsChecked="True" >
-                <TextBlock Text="Hangok lejátszása"/>
+                <TextBlock Text="{x:Static loc:Strings.PlaySounds}"/>
             </CheckBox>
             <CheckBox x:Name="Tips" Margin="0,0,0,8" IsChecked="True">
-                <TextBlock Text="Tippek megjelenítése"/>
+                <TextBlock Text="{x:Static loc:Strings.ShowTips}"/>
             </CheckBox>
             <CheckBox x:Name="ContinueSaved" Margin="0,0,0,8">
-                <TextBlock Text="Mindig a mentett játék folytatása"/>
+                <TextBlock Text="{x:Static loc:Strings.AlwaysContinueSavedGame}"/>
             </CheckBox>
             <CheckBox x:Name="SaveExit" Margin="0,0,0,8">
-                <TextBlock Text="Kilépéskor mindig mentse a játékot"/>
+                <TextBlock Text="{x:Static loc:Strings.AlwaysSaveOnExit}"/>
             </CheckBox>
             <CheckBox x:Name="QuestionMarks" Margin="0,0,0,8" IsChecked="True">
-                <TextBlock Text="Kérdőjelek engedélyezése (kétszer kattintás a jobb egérgombbal)"
+                <TextBlock Text="{x:Static loc:Strings.EnableQuestionMarks}"
                            TextWrapping="Wrap"/>
             </CheckBox>
 
@@ -171,8 +172,8 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="0,10,10,0">
-            <Button Content="OK" Width="105" Click="OK_Click" Margin="0,0,10,0"/>
-            <Button Content="Mégse" Width="105" Click="Cancel_Click"/>
+            <Button Content="{x:Static loc:Strings.Ok}" Width="105" Click="OK_Click" Margin="0,0,10,0"/>
+            <Button Content="{x:Static loc:Strings.Cancel}" Width="105" Click="Cancel_Click"/>
         </StackPanel>
 
     </Grid>

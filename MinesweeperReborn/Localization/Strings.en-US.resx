@@ -72,4 +72,67 @@
   <data name="MoreGames" xml:space="preserve">
     <value>More Games Online</value>
   </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="Beginner" xml:space="preserve">
+    <value>Beginner</value>
+  </data>
+  <data name="BeginnerMineCount" xml:space="preserve">
+    <value>10 mines</value>
+  </data>
+  <data name="BeginnerGrid" xml:space="preserve">
+    <value>9 × 9 grid</value>
+  </data>
+  <data name="Intermediate" xml:space="preserve">
+    <value>Intermediate</value>
+  </data>
+  <data name="IntermediateMineCount" xml:space="preserve">
+    <value>40 mines</value>
+  </data>
+  <data name="IntermediateGrid" xml:space="preserve">
+    <value>16 × 16 grid</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Expert</value>
+  </data>
+  <data name="AdvancedMineCount" xml:space="preserve">
+    <value>99 mines</value>
+  </data>
+  <data name="AdvancedGrid" xml:space="preserve">
+    <value>16 × 30 grid</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="HeightRange" xml:space="preserve">
+    <value>Height (9–24):</value>
+  </data>
+  <data name="WidthRange" xml:space="preserve">
+    <value>Width (9–30):</value>
+  </data>
+  <data name="MinesRange" xml:space="preserve">
+    <value>Mines ({0}-{1}):</value>
+  </data>
+  <data name="PlaySounds" xml:space="preserve">
+    <value>Play sounds</value>
+  </data>
+  <data name="ShowTips" xml:space="preserve">
+    <value>Show tips</value>
+  </data>
+  <data name="AlwaysContinueSavedGame" xml:space="preserve">
+    <value>Always continue the saved game</value>
+  </data>
+  <data name="AlwaysSaveOnExit" xml:space="preserve">
+    <value>Always save the game on exit</value>
+  </data>
+  <data name="EnableQuestionMarks" xml:space="preserve">
+    <value>Enable question marks (right-click twice)</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

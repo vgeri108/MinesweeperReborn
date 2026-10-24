@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using MinesweeperCore;
+using MinesweeperReborn.Localization;
 using System;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -55,7 +56,7 @@ namespace MinesweeperReborn.Views
         private void CalcMaxMines()
         {
             MaxMines = (int)Math.Round((Convert.ToInt32(tbHeight.Text) * Convert.ToInt32(tbWidth.Text)) * 0.80);
-            MineCountText.Text = $"Aknák (10-{MaxMines})";
+            MineCountText.Text = string.Format(Strings.MinesRange, 10, MaxMines);
         }
         private void tbHeight_TextChanged(object? sender, TextChangedEventArgs e)
         {

@@ -72,4 +72,67 @@
   <data name="MoreGames" xml:space="preserve">
     <value>További játékok az interneten</value>
   </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Nehézségi szint</value>
+  </data>
+  <data name="Beginner" xml:space="preserve">
+    <value>Kezdő</value>
+  </data>
+  <data name="BeginnerMineCount" xml:space="preserve">
+    <value>10 akna</value>
+  </data>
+  <data name="BeginnerGrid" xml:space="preserve">
+    <value>9 × 9-es rács</value>
+  </data>
+  <data name="Intermediate" xml:space="preserve">
+    <value>Középhaladó</value>
+  </data>
+  <data name="IntermediateMineCount" xml:space="preserve">
+    <value>40 akna</value>
+  </data>
+  <data name="IntermediateGrid" xml:space="preserve">
+    <value>16 × 16-os rács</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Haladó</value>
+  </data>
+  <data name="AdvancedMineCount" xml:space="preserve">
+    <value>99 akna</value>
+  </data>
+  <data name="AdvancedGrid" xml:space="preserve">
+    <value>16 × 30-as rács</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Egyéni</value>
+  </data>
+  <data name="HeightRange" xml:space="preserve">
+    <value>Magasság (9–24):</value>
+  </data>
+  <data name="WidthRange" xml:space="preserve">
+    <value>Szélesség (9–30):</value>
+  </data>
+  <data name="MinesRange" xml:space="preserve">
+    <value>Aknák (10-{1}):</value>
+  </data>
+  <data name="PlaySounds" xml:space="preserve">
+    <value>Hangok lejátszása</value>
+  </data>
+  <data name="ShowTips" xml:space="preserve">
+    <value>Tippek megjelenítése</value>
+  </data>
+  <data name="AlwaysContinueSavedGame" xml:space="preserve">
+    <value>Mindig a mentett játék folytatása</value>
+  </data>
+  <data name="AlwaysSaveOnExit" xml:space="preserve">
+    <value>Kilépéskor mindig mentse a játékot</value>
+  </data>
+  <data name="EnableQuestionMarks" xml:space="preserve">
+    <value>Kérdőjelek engedélyezése (kétszer kattintás a jobb egérgombbal)</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
 </root>
