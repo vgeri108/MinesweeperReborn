@@ -7,17 +7,22 @@ namespace MinesweeperReborn.Views
 {
     public partial class NewGame_SettingsDialog : Window
     {
+        public string Selected { get; private set; } = "Cancel";
         public NewGame_SettingsDialog()
         {
             InitializeComponent();
         }
-        public void StartNew_Click(object? sender, RoutedEventArgs e)
-        {
 
+        private void StartNew_Click(object sender, RoutedEventArgs e)
+        {
+            Selected = "StartNew";
+            Close();
         }
-        public void OnNextGame_Click(object? sender, RoutedEventArgs e)
-        {
 
+        private void OnNextGame_Click(object sender, RoutedEventArgs e)
+        {
+            Selected = "OnNextGame";
+            Close();
         }
     }
 }
