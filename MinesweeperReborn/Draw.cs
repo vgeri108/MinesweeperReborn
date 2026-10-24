@@ -37,14 +37,14 @@ namespace MinesweeperReborn
             foreach (var item in Enum.GetValues<Cell>())
             {
                 using Stream imageStream = AssetLoader.Open(ThemeManager.CellImage[item]);
-                ImageCache.Add(item, new Bitmap(imageStream));
+                if (!ImageCache.ContainsKey(item)) ImageCache.Add(item, new Bitmap(imageStream));
             }
             foreach (var item in Enum.GetValues<CellStatus>())
             {
                 if (item != CellStatus.Uncovered)
                 {
                     using Stream imageStream = AssetLoader.Open(ThemeManager.CellStatusImage[item]);
-                    ImageCache.Add(item, new Bitmap(imageStream));
+                    if (!ImageCache.ContainsKey(item)) ImageCache.Add(item, new Bitmap(imageStream));
                 }
             }
         }
