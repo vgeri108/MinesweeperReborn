@@ -16,7 +16,7 @@ public partial class MainWindow : Window
 
     public void NewGame_Click(object? sender, RoutedEventArgs e)
     {
-        game = new Game(16, 16, 10);
+        game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         game.Dig(1, 1);
         Draw draw = new Draw(game, GameBoard);
     }

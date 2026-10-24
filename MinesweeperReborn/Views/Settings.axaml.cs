@@ -4,6 +4,8 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using MinesweeperCore;
 using MinesweeperReborn.Localization;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 using System;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -11,13 +13,14 @@ namespace MinesweeperReborn.Views
 {
     public partial class Settings : Window
     {
-        public bool IsCanceled { get; private set; } = true;
         public bool NeedNewGame { get; private set; } = false;
         public bool ContinueTimer { get; private set; } = false;
         private int MaxMines;
-        public Settings(Game game)
+        private Game game;
+        public Settings(Game _game)
         {
             InitializeComponent();
+            game = _game;
 
             //Sounds.IsChecked = Configuration.Sounds;
             //Tips.IsChecked = Configuration.Tips;
@@ -116,7 +119,91 @@ namespace MinesweeperReborn.Views
 
         private void OK_Click(object? sender, RoutedEventArgs e)
         {
+            if (rbCustom.IsChecked == false)
+            {
+                if (Easy.IsChecked == true)
+                {
+                    GameDetails.Height = PredefinedDifficulty.Get(Difficulty.Beginner).Height;
+                    GameDetails.Width = PredefinedDifficulty.Get(Difficulty.Beginner).Width;
+                    GameDetails.MineCount = PredefinedDifficulty.Get(Difficulty.Beginner).Mines;
+                }
 
+                if (Intermediate.IsChecked == true)
+                {
+                    GameDetails.Height = PredefinedDifficulty.Get(Difficulty.Intermediate).Height;
+                    GameDetails.Width = PredefinedDifficulty.Get(Difficulty.Intermediate).Width;
+                    GameDetails.MineCount = PredefinedDifficulty.Get(Difficulty.Intermediate).Mines;
+                }
+
+                if (Advanced.IsChecked == true)
+                {
+                    GameDetails.Height = PredefinedDifficulty.Get(Difficulty.Expert).Height;
+                    GameDetails.Width = PredefinedDifficulty.Get(Difficulty.Expert).Width;
+                    GameDetails.MineCount = PredefinedDifficulty.Get(Difficulty.Expert).Mines;
+                }
+            }
+            else
+            {
+                try
+                {
+                    GameDetails.Height = int.Parse(tbHeight.Text);
+                    GameDetails.Width = int.Parse(tbWidth.Text);
+                    GameDetails.MineCount = int.Parse(tbMines.Text);
+
+                    GameDetails.Height = int.Parse(tbHeight.Text);
+                    GameDetails.Width = int.Parse(tbWidth.Text);
+                    GameDetails.MineCount = int.Parse(tbMines.Text);
+                }
+                catch (Exception error)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Hiba", error.Message, ButtonEnum.Ok).ShowAsync();
+                }
+            }
+
+            ////Configuration.Animations = (bool)Animations.IsChecked;
+            //Configuration.Sounds = (bool)Sounds.IsChecked;
+            //Configuration.Tips = (bool)Tips.IsChecked;
+            //Configuration.AlwaysContinueSavedGame = (bool)ContinueSaved.IsChecked;
+            //Configuration.AlwaysSaveGameOnExit = (bool)SaveExit.IsChecked;
+            //Configuration.EnableQuestionMarks = (bool)QuestionMarks.IsChecked;
+
+
+
+            if (game.Height != GameDetails.Height || game.Width != GameDetails.Width || game.MineCount != GameDetails.MineCount) NeedNewGame = true;
+
+
+            //if (NeedNewGame && !MainWindow.AllCellsAreHidden())
+            //{
+            //    NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
+            //    if (!(System.Windows.Application.Current?.MainWindow is MainWindow mw)) return;
+            //    newGame_SettingsDialog.Owner = mw;
+            //    newGame_SettingsDialog.ShowDialog();
+
+            //    if (newGame_SettingsDialog.Selected == "Cancel")
+            //    {
+            //        ContinueTimer = true;
+            //    }
+            //    if (newGame_SettingsDialog.Selected == "OnNextGame")
+            //    {
+            //        Data.ApplyOnNextGame = true;
+            //        JsonManager.Settings.Save();
+            //        ContinueTimer = true;
+            //    }
+            //    if (newGame_SettingsDialog.Selected == "StartNew")
+            //    {
+            //        Data.meretM = Data.NextMeretM;
+            //        Data.meretSZ = Data.NextMeretSZ;
+            //        Data.aknakszama = Data.NextAknakszama;
+            //        Data.Difficulty = Data.NextDifficulty;
+            //        JsonManager.Settings.Save();
+            //        BoardManager.Init();
+            //    }
+            //}
+            //else
+            //{
+            //    BoardManager.Init();
+            //}
+            Close();
         }
 
         private void Cancel_Click(object? sender, RoutedEventArgs e)
