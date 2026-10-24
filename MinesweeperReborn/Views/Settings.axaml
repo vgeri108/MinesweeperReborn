@@ -1,0 +1,180 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MinesweeperReborn.Views.Settings"
+        Width="430"
+        Height="440"
+        CanResize="False"
+        FontSize="12"
+        Title="Settings">
+
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- NEHÉZSÉGI SZINT -->
+        <GroupBox Header="Nehézségi szint" Grid.Row="0">
+            <Grid Margin="10">
+
+                <!-- 2 oszlop: bal oldali rádiók + jobb oldali egyéni -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <!-- bal oldali rádiók -->
+                    <ColumnDefinition Width="0"/>
+                    <!-- minimális távolság -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- jobb oldali egyéni -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Bal oldali 3 rádió -->
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+
+                    <RadioButton x:Name="Easy" Margin="0,0,0,8" VerticalContentAlignment="Center" IsChecked="True" GroupName="difficulty">
+                        <StackPanel Margin="2,0,0,0">
+                            <TextBlock Text="Kezdő"/>
+                            <TextBlock Text="10 akna"/>
+                            <TextBlock Text="9 × 9-es rács"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton x:Name="Intermediate" Margin="0,0,0,8" VerticalContentAlignment="Center" GroupName="difficulty">
+                        <StackPanel Margin="2,0,0,0">
+                            <TextBlock Text="Középhaladó"/>
+                            <TextBlock Text="40 akna"/>
+                            <TextBlock Text="16 × 16-os rács"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton x:Name="Advanced" Margin="0,0,0,0" VerticalContentAlignment="Center" GroupName="difficulty">
+                        <StackPanel Margin="2,0,0,0">
+                            <TextBlock Text="Haladó"/>
+                            <TextBlock Text="99 akna"/>
+                            <TextBlock Text="16 × 30-as rács"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                </StackPanel>
+
+                <!-- Jobb oldali Egyéni + mezők -->
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="0">
+
+                    <!-- Egyéni radiobutton -->
+                    <RadioButton x:Name="rbCustom"
+                                 Content="Egyéni"
+                                 Margin="0,0,0,10"
+                                 GroupName="difficulty"/>
+
+                    <!-- Egyéni mezők -->
+                    <Grid Margin="10,0,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="105"/>
+                            <!-- címkék -->
+                            <ColumnDefinition Width="Auto"/>
+                            <!-- textboxok -->
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Magasság -->
+                        <TextBlock Grid.Row="0" Grid.Column="0"
+                                 Text="Magasság (9–24):"
+                                 Margin="0,0,5,5"
+                                 IsEnabled="{Binding IsChecked, ElementName=rbCustom}"/>
+
+                        <TextBox Grid.Row="0" Grid.Column="1"
+                                 Width="50"
+                                 Height="20"
+                                 Padding="2,0,2,0"
+                                 x:Name="tbHeight"
+                                 IsEnabled="{Binding IsChecked, ElementName=rbCustom}"
+                                 Margin="0,0,0,5" Text="9"
+                                 TextChanged="tbHeight_TextChanged"
+                                 LostFocus="tbHeight_LostFocus"/>
+
+                        <!-- Szélesség -->
+                        <TextBlock Grid.Row="1" Grid.Column="0"
+                                   Text="Szélesség (9–30):"
+                                   Margin="0,0,5,5"/>
+
+                        <TextBox Grid.Row="1" Grid.Column="1"
+                                 Width="50"
+                                 Height="20"
+                                 Padding="2,0,2,0"
+                                 x:Name="tbWidth"
+                                 IsEnabled="{Binding IsChecked, ElementName=rbCustom}"
+                                 Margin="0,0,0,5" Text="9"
+                                 TextChanged="tbWidth_TextChanged"
+                                 LostFocus="tbWidth_LostFocus"/>
+
+                        <!-- Aknák -->
+                        <TextBlock x:Name="MineCountText"
+                                   Grid.Row="2" Grid.Column="0"
+                                   Text="Aknák (10-668):"
+                                   Margin="0,0,5,0" IsEnabled="{Binding IsChecked, ElementName=rbCustom}"/>
+
+                        <TextBox Grid.Row="2" Grid.Column="1"
+                                 Width="50"
+                                 Height="20"
+                                 Padding="2,0,2,0"
+                                 x:Name="tbMines"
+                                 IsEnabled="{Binding IsChecked, ElementName=rbCustom}" Text="10"
+                                 TextChanged="tbMines_TextChanged"
+                                 LostFocus="tbMines_LostFocus"/>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </Grid>
+        </GroupBox>
+
+        <!-- EGYÉB BEÁLLÍTÁSOK -->
+        <StackPanel Grid.Row="2" Margin="15,0,10,0">
+
+            <!-- <CheckBox x:Name="Animations" Margin="0,0,0,8" IsChecked="True">
+                <TextBlock Text="Animációk megjelenítése"/>
+            </CheckBox> -->
+            <CheckBox x:Name="Sounds" Margin="0,0,0,8" IsChecked="True" >
+                <TextBlock Text="Hangok lejátszása"/>
+            </CheckBox>
+            <CheckBox x:Name="Tips" Margin="0,0,0,8" IsChecked="True">
+                <TextBlock Text="Tippek megjelenítése"/>
+            </CheckBox>
+            <CheckBox x:Name="ContinueSaved" Margin="0,0,0,8">
+                <TextBlock Text="Mindig a mentett játék folytatása"/>
+            </CheckBox>
+            <CheckBox x:Name="SaveExit" Margin="0,0,0,8">
+                <TextBlock Text="Kilépéskor mindig mentse a játékot"/>
+            </CheckBox>
+            <CheckBox x:Name="QuestionMarks" Margin="0,0,0,8" IsChecked="True">
+                <TextBlock Text="Kérdőjelek engedélyezése (kétszer kattintás a jobb egérgombbal)"
+                           TextWrapping="Wrap"/>
+            </CheckBox>
+
+        </StackPanel>
+
+        <!-- GOMBOK -->
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,10,10,0">
+            <Button Content="OK" Width="105" Click="OK_Click" Margin="0,0,10,0"/>
+            <Button Content="Mégse" Width="105" Click="Cancel_Click"/>
+        </StackPanel>
+
+    </Grid>
+
+</Window>
