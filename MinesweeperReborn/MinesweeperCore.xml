@@ -85,6 +85,18 @@
             <param name="seed">előre megadott seed vagy null</param>
             <returns>érvényes seed ami nem null</returns>
         </member>
+        <member name="T:MinesweeperCore.BoardChecker">
+            <summary>
+            tábla körbejárása és közben adott ellenőrzés
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.BoardChecker.AllCellsAreHidden(MinesweeperCore.CellStatus[0:,0:])">
+            <summary>
+            Megnézi minden cella fedve van-e.
+            </summary>
+            <param name="board">Játéktábla cella státuszai</param>
+            <returns>Minden cella fedett-e</returns>
+        </member>
         <member name="T:MinesweeperCore.Dig">
             <summary>
             Mezők felfedését, kiásását kezelő osztály
