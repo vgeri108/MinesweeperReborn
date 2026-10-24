@@ -8,18 +8,18 @@ namespace MinesweeperReborn;
 
 public partial class MainWindow : Window
 {
-    Game game;
+    private Game game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
     public Action NewGameEvent => () => NewGame_Click(null, new RoutedEventArgs());
     public MainWindow()
     {
         InitializeComponent();
+        new Draw(game, GameBoard);
     }
 
     public void NewGame_Click(object? sender, RoutedEventArgs e)
     {
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
-        game.Dig(1, 1);
-        Draw draw = new Draw(game, GameBoard);
+        new Draw(game, GameBoard);
     }
 
     public void Stats_Click(object? sender, RoutedEventArgs e)
