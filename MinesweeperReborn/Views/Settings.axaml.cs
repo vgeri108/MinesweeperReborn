@@ -119,7 +119,7 @@ namespace MinesweeperReborn.Views
             if (Convert.ToInt32(tbMines.Text) > MaxMines) tbMines.Text = MaxMines.ToString();
         }
 
-        private void OK_Click(object? sender, RoutedEventArgs e)
+        private async void OK_Click(object? sender, RoutedEventArgs e)
         {
             if (rbCustom.IsChecked == false)
             {
@@ -158,7 +158,7 @@ namespace MinesweeperReborn.Views
                 }
                 catch (Exception error)
                 {
-                    MessageBoxManager.GetMessageBoxStandard("Hiba", error.Message, ButtonEnum.Ok).ShowAsync();
+                    await MessageBoxManager.GetMessageBoxStandard("Hiba", error.Message, ButtonEnum.Ok).ShowAsync();
                 }
             }
 
@@ -177,7 +177,7 @@ namespace MinesweeperReborn.Views
             if (NeedNewGame && !game.IsAllCellsAreHidden)
             {
                 NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
-                newGame_SettingsDialog.ShowDialog(this);
+                await newGame_SettingsDialog.ShowDialog(this);
 
                 if (newGame_SettingsDialog.Selected == "Cancel")
                 {
