@@ -22,11 +22,11 @@ namespace MinesweeperReborn.Views
             InitializeComponent();
             game = _game;
 
-            //Sounds.IsChecked = Configuration.Sounds;
-            //Tips.IsChecked = Configuration.Tips;
-            //ContinueSaved.IsChecked = Configuration.AlwaysContinueSavedGame;
-            //SaveExit.IsChecked = Configuration.AlwaysSaveGameOnExit;
-            //QuestionMarks.IsChecked = Configuration.EnableQuestionMarks;
+            Sounds.IsChecked = AppSettings.Sounds;
+            Tips.IsChecked = AppSettings.Tips;
+            ContinueSaved.IsChecked = AppSettings.AlwaysContinueSavedGame;
+            SaveExit.IsChecked = AppSettings.AlwaysSaveGameOnExit;
+            QuestionMarks.IsChecked = AppSettings.EnableQuestionMarks;
             tbHeight.Text = game.Height.ToString();
             tbWidth.Text = game.Width.ToString();
             tbMines.Text = game.MineCount.ToString();
@@ -160,12 +160,12 @@ namespace MinesweeperReborn.Views
                 }
             }
 
-            ////Configuration.Animations = (bool)Animations.IsChecked;
-            //Configuration.Sounds = (bool)Sounds.IsChecked;
-            //Configuration.Tips = (bool)Tips.IsChecked;
-            //Configuration.AlwaysContinueSavedGame = (bool)ContinueSaved.IsChecked;
-            //Configuration.AlwaysSaveGameOnExit = (bool)SaveExit.IsChecked;
-            //Configuration.EnableQuestionMarks = (bool)QuestionMarks.IsChecked;
+            //Configuration.Animations = (bool)Animations.IsChecked;
+            AppSettings.Sounds = (bool)Sounds.IsChecked;
+            AppSettings.Tips = (bool)Tips.IsChecked;
+            AppSettings.AlwaysContinueSavedGame = (bool)ContinueSaved.IsChecked;
+            AppSettings.AlwaysSaveGameOnExit = (bool)SaveExit.IsChecked;
+            AppSettings.EnableQuestionMarks = (bool)QuestionMarks.IsChecked;
 
 
 
