@@ -9,6 +9,7 @@ namespace MinesweeperReborn;
 public partial class MainWindow : Window
 {
     Game game;
+    public Action NewGameEvent => () => NewGame_Click(null, new RoutedEventArgs());
     public MainWindow()
     {
         InitializeComponent();
@@ -28,7 +29,7 @@ public partial class MainWindow : Window
 
     public void Settings_Click(object? sender, RoutedEventArgs e)
     {
-        Settings settings = new Settings(game);
+        Settings settings = new Settings(game, NewGameEvent);
         settings.Show();
     }
 
@@ -49,7 +50,8 @@ public partial class MainWindow : Window
 
     public void Help_Click(object? sender, RoutedEventArgs e)
     {
-
+        NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
+        newGame_SettingsDialog.Show();
     }
 
     public void About_Click(object? sender, RoutedEventArgs e)

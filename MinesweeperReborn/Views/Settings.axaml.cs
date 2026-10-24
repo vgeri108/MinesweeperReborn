@@ -17,7 +17,8 @@ namespace MinesweeperReborn.Views
         public bool ContinueTimer { get; private set; } = false;
         private int MaxMines;
         private Game game;
-        public Settings(Game _game)
+        private readonly Action StartNewGame;
+        public Settings(Game _game, Action startNewGame)
         {
             InitializeComponent();
             game = _game;
@@ -54,6 +55,7 @@ namespace MinesweeperReborn.Views
                 rbCustom.IsChecked = true;
             }
             CalcMaxMines();
+            StartNewGame = startNewGame;
         }
 
         private void CalcMaxMines()
@@ -172,37 +174,28 @@ namespace MinesweeperReborn.Views
             if (game.Height != GameDetails.Height || game.Width != GameDetails.Width || game.MineCount != GameDetails.MineCount) NeedNewGame = true;
 
 
-            //if (NeedNewGame && !MainWindow.AllCellsAreHidden())
-            //{
-            //    NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
-            //    if (!(System.Windows.Application.Current?.MainWindow is MainWindow mw)) return;
-            //    newGame_SettingsDialog.Owner = mw;
-            //    newGame_SettingsDialog.ShowDialog();
+            if (NeedNewGame && !game.IsAllCellsAreHidden)
+            {
+                NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
+                newGame_SettingsDialog.ShowDialog(this);
 
-            //    if (newGame_SettingsDialog.Selected == "Cancel")
-            //    {
-            //        ContinueTimer = true;
-            //    }
-            //    if (newGame_SettingsDialog.Selected == "OnNextGame")
-            //    {
-            //        Data.ApplyOnNextGame = true;
-            //        JsonManager.Settings.Save();
-            //        ContinueTimer = true;
-            //    }
-            //    if (newGame_SettingsDialog.Selected == "StartNew")
-            //    {
-            //        Data.meretM = Data.NextMeretM;
-            //        Data.meretSZ = Data.NextMeretSZ;
-            //        Data.aknakszama = Data.NextAknakszama;
-            //        Data.Difficulty = Data.NextDifficulty;
-            //        JsonManager.Settings.Save();
-            //        BoardManager.Init();
-            //    }
-            //}
-            //else
-            //{
-            //    BoardManager.Init();
-            //}
+                if (newGame_SettingsDialog.Selected == "Cancel")
+                {
+                    ContinueTimer = true;
+                }
+                if (newGame_SettingsDialog.Selected == "OnNextGame")
+                {
+                    ContinueTimer = true;
+                }
+                if (newGame_SettingsDialog.Selected == "StartNew")
+                {
+                    StartNewGame();
+                }
+            }
+            else
+            {
+                StartNewGame();
+            }
             Close();
         }
 
