@@ -72,6 +72,24 @@
   <data name="MoreGames" xml:space="preserve">
     <value>További játékok az interneten</value>
   </data>
+  <data name="NewGameSettingsDialogTitle" xml:space="preserve">
+    <value>Játékbeállítások módosítása</value>
+  </data>
+  <data name="NewGameSettingsDialogPrompt" xml:space="preserve">
+    <value>Ezek a beállítások nem alkalmazhatók a jelenleg folyó játékra. Mit szeretne tenni?</value>
+  </data>
+  <data name="StartNewGameWithSettings" xml:space="preserve">
+    <value>➜ Kilépés és új játék indítása az új beállításokkal</value>
+  </data>
+  <data name="StartNewGameLossNote" xml:space="preserve">
+    <value>Ez a statisztikában vereségnek számít.</value>
+  </data>
+  <data name="FinishCurrentGame" xml:space="preserve">
+    <value>➜ A játék befejezése</value>
+  </data>
+  <data name="SettingsApplyNextGame" xml:space="preserve">
+    <value>Az új beállítások a következő játéktól kezdve lesznek érvényesek.</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Nehézségi szint</value>
   </data>

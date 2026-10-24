@@ -72,6 +72,24 @@
   <data name="MoreGames" xml:space="preserve">
     <value>More Games Online</value>
   </data>
+  <data name="NewGameSettingsDialogTitle" xml:space="preserve">
+    <value>Game settings changed</value>
+  </data>
+  <data name="NewGameSettingsDialogPrompt" xml:space="preserve">
+    <value>These settings can't be applied to the game currently in progress. What would you like to do?</value>
+  </data>
+  <data name="StartNewGameWithSettings" xml:space="preserve">
+    <value>➜ Exit and start a new game with the new settings</value>
+  </data>
+  <data name="StartNewGameLossNote" xml:space="preserve">
+    <value>This will count as a loss in the statistics.</value>
+  </data>
+  <data name="FinishCurrentGame" xml:space="preserve">
+    <value>➜ Finish the current game</value>
+  </data>
+  <data name="SettingsApplyNextGame" xml:space="preserve">
+    <value>The new settings will take effect starting with the next game.</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Difficulty</value>
   </data>

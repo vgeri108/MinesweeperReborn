@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        CanResize="False"
+        x:Class="MinesweeperReborn.Views.NewGame_SettingsDialog"
+        Title="{x:Static loc:Strings.NewGameSettingsDialogTitle}" Height="260" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{x:Static loc:Strings.NewGameSettingsDialogPrompt}"
+           FontSize="16" Margin="0,0,20,20" Foreground="#FF0077B6" TextWrapping="Wrap"/>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Top">
+
+            <Button Name="StartNew"
+            HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF305995" Click="StartNew_Click">
+                <StackPanel>
+                    <TextBlock Text="{x:Static loc:Strings.StartNewGameWithSettings}" FontSize="14"/>
+                    <TextBlock Text="{x:Static loc:Strings.StartNewGameLossNote}" Margin="20,0,0,0" FontSize="12"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="OnNextGame"
+            HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}" Click="OnNextGame_Click">
+                <StackPanel>
+                    <TextBlock Text="{x:Static loc:Strings.FinishCurrentGame}" FontSize="14"/>
+                    <TextBlock Text="{x:Static loc:Strings.SettingsApplyNextGame}" Margin="20,0,0,0" FontSize="12" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
