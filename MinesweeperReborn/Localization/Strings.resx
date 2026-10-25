@@ -102,6 +102,18 @@
   <data name="DontSaveGame" xml:space="preserve">
     <value>Ne mentse</value>
   </data>
+  <data name="LoadGameDialogTitle" xml:space="preserve">
+    <value>Mentett játék folytatása</value>
+  </data>
+  <data name="LoadGameDialogPrompt" xml:space="preserve">
+    <value>Folytatja a mentett játékot?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nem</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Nehézségi szint</value>
   </data>

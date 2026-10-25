@@ -102,6 +102,18 @@
   <data name="DontSaveGame" xml:space="preserve">
     <value>Don't save</value>
   </data>
+  <data name="LoadGameDialogTitle" xml:space="preserve">
+    <value>Continue saved game</value>
+  </data>
+  <data name="LoadGameDialogPrompt" xml:space="preserve">
+    <value>Would you like to continue the saved game?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Difficulty</value>
   </data>

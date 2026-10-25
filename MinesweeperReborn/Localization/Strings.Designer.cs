@@ -355,6 +355,24 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Folytatja a mentett játékot?.
+        /// </summary>
+        public static string LoadGameDialogPrompt {
+            get {
+                return ResourceManager.GetString("LoadGameDialogPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mentett játék folytatása.
+        /// </summary>
+        public static string LoadGameDialogTitle {
+            get {
+                return ResourceManager.GetString("LoadGameDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aknák (10-{1}):.
         /// </summary>
         public static string MinesRange {
@@ -396,6 +414,15 @@ namespace MinesweeperReborn.Localization {
         public static string NewGameSettingsDialogTitle {
             get {
                 return ResourceManager.GetString("NewGameSettingsDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nem.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -540,6 +567,15 @@ namespace MinesweeperReborn.Localization {
         public static string WidthRange {
             get {
                 return ResourceManager.GetString("WidthRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Igen.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

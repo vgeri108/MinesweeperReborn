@@ -2,17 +2,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MinesweeperReborn.Views.LoadGame_OpenDialog"
         CanResize="False"
-        Title="LoadGame_OpenDialog" Height="130" Width="410">
+        Title="{x:Static loc:Strings.LoadGameDialogTitle}" Height="130" Width="410">
   <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Folytatja a mentett játékot?"
+        <TextBlock Text="{x:Static loc:Strings.LoadGameDialogPrompt}"
                Foreground="#FF025DD0" FontSize="17"
                Margin="15,15,0,0"/>
 
@@ -23,9 +24,9 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <CheckBox x:Name="AlwaysContinue" Content="Mindig a mentett játék folytatása" Grid.Column="0" HorizontalAlignment="Left" IsCheckedChanged="AlwaysContinue_IsCheckedChanged"/>
-            <Button x:Name="Continue" Content="Igen" Grid.Column="1" HorizontalAlignment="Right" Margin="0,10,10,10" Width="75" Padding="2,0,2,0" Click="Continue_Click"/>
-            <Button x:Name="DontContinue" Content="Nem" Grid.Column="2" HorizontalAlignment="Right" Margin="0,10,15,10" Width="75" Padding="2,0,2,0" Click="DontContinue_Click"/>
+            <CheckBox x:Name="AlwaysContinue" Content="{x:Static loc:Strings.AlwaysContinueSavedGame}" Grid.Column="0" HorizontalAlignment="Left" IsCheckedChanged="AlwaysContinue_IsCheckedChanged"/>
+            <Button x:Name="Continue" Content="{x:Static loc:Strings.Yes}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,10,10,10" Width="75" Padding="2,0,2,0" Click="Continue_Click"/>
+            <Button x:Name="DontContinue" Content="{x:Static loc:Strings.No}" Grid.Column="2" HorizontalAlignment="Right" Margin="0,10,15,10" Width="75" Padding="2,0,2,0" Click="DontContinue_Click"/>
         </Grid>
     </Grid>
 </Window>
