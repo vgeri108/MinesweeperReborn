@@ -18,6 +18,7 @@ namespace MinesweeperReborn.Views
             game = _game;
             LoadGame = loadGame;
             AlwaysContinue.IsChecked = AppSettings.AlwaysContinueSavedGame;
+            JsonManager.Save();
         }
 
         private void AlwaysContinue_IsCheckedChanged(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

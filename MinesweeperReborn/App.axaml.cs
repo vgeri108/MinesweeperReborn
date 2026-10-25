@@ -9,6 +9,7 @@ public partial class App : Application
 {
     public override void Initialize()
     {
+        JsonManager.Load();
         LanguageSettings.ApplyAtStartup();
         AvaloniaXamlLoader.Load(this);
     }

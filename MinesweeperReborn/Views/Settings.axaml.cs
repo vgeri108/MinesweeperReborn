@@ -196,6 +196,7 @@ namespace MinesweeperReborn.Views
             {
                 StartNewGame();
             }
+            JsonManager.Save();
             Close();
         }
 
