@@ -202,6 +202,15 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ne mentse.
+        /// </summary>
+        public static string DontSaveGame {
+            get {
+                return ResourceManager.GetString("DontSaveGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kérdőjelek engedélyezése (kétszer kattintás a jobb egérgombbal).
         /// </summary>
         public static string EnableQuestionMarks {
@@ -414,6 +423,33 @@ namespace MinesweeperReborn.Localization {
         public static string RestartToApply {
             get {
                 return ResourceManager.GetString("RestartToApply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mentés.
+        /// </summary>
+        public static string SaveGame {
+            get {
+                return ResourceManager.GetString("SaveGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mit szeretne tenni a folyamatban lévő játékkal?.
+        /// </summary>
+        public static string SaveGameCloseDialogPrompt {
+            get {
+                return ResourceManager.GetString("SaveGameCloseDialogPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Játék bezárása.
+        /// </summary>
+        public static string SaveGameCloseDialogTitle {
+            get {
+                return ResourceManager.GetString("SaveGameCloseDialogTitle", resourceCulture);
             }
         }
         

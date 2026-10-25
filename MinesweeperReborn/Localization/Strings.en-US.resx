@@ -90,6 +90,18 @@
   <data name="SettingsApplyNextGame" xml:space="preserve">
     <value>The new settings will take effect starting with the next game.</value>
   </data>
+  <data name="SaveGameCloseDialogTitle" xml:space="preserve">
+    <value>Close game</value>
+  </data>
+  <data name="SaveGameCloseDialogPrompt" xml:space="preserve">
+    <value>What would you like to do with the game in progress?</value>
+  </data>
+  <data name="SaveGame" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DontSaveGame" xml:space="preserve">
+    <value>Don't save</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Difficulty</value>
   </data>

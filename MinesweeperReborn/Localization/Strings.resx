@@ -90,6 +90,18 @@
   <data name="SettingsApplyNextGame" xml:space="preserve">
     <value>Az új beállítások a következő játéktól kezdve lesznek érvényesek.</value>
   </data>
+  <data name="SaveGameCloseDialogTitle" xml:space="preserve">
+    <value>Játék bezárása</value>
+  </data>
+  <data name="SaveGameCloseDialogPrompt" xml:space="preserve">
+    <value>Mit szeretne tenni a folyamatban lévő játékkal?</value>
+  </data>
+  <data name="SaveGame" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="DontSaveGame" xml:space="preserve">
+    <value>Ne mentse</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Nehézségi szint</value>
   </data>
