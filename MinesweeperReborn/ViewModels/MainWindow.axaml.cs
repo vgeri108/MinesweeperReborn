@@ -87,7 +87,7 @@ public partial class MainWindow : Window
         if (ClosePromptOpen) return;
 
         ClosePromptOpen = true;
-        SaveGame_CloseDialog saveGame_CloseDialog = new SaveGame_CloseDialog();
+        SaveGame_CloseDialog saveGame_CloseDialog = new SaveGame_CloseDialog(game);
         try
         {
             await saveGame_CloseDialog.ShowDialog(this);
