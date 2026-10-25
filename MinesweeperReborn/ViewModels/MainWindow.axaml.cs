@@ -40,7 +40,7 @@ public partial class MainWindow : Window
 
     public void LoadGame()
     {
-        game = Game.Load(Path.Combine(AppContext.BaseDirectory, "saves", "exit.mine"));
+        game = Game.Load(AppSettings.SaveFileOnExit);
         new Draw(game, GameBoard);
     }
 

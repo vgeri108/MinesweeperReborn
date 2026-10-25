@@ -17,7 +17,7 @@ namespace MinesweeperReborn
         {
             try
             {
-                File.Delete(Path.Combine(AppContext.BaseDirectory, "saves", "exit.mine"));
+                File.Delete(AppSettings.SaveFileOnExit);
             }
             catch { }
         }

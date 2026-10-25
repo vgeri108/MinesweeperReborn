@@ -20,7 +20,7 @@ namespace MinesweeperReborn.Views
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             IsCanceled = false;
-            game.Save(Path.Combine(AppContext.BaseDirectory, "saves", "exit.mine"));
+            game.Save(AppSettings.SaveFileOnExit);
             Close();
         }
         private void DontSave_Click(object sender, RoutedEventArgs e)
