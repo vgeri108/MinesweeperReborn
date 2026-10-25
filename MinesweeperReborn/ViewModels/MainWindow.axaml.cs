@@ -4,6 +4,7 @@ using MinesweeperCore;
 using MinesweeperReborn.Views;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace MinesweeperReborn;
 
@@ -11,6 +12,7 @@ public partial class MainWindow : Window
 {
     private Game game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
     public Action NewGameEvent => () => NewGame_Click(null, new RoutedEventArgs());
+    public Action LoadGameEvent => LoadGame;
     private bool ClosePromptOpen;
     private bool AllowClose;
     public MainWindow()
@@ -26,11 +28,19 @@ public partial class MainWindow : Window
 
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         new Draw(game, GameBoard);
+
+        if (SaveGameHelper.IsThereAnySavedGame()) AskGameLoad();
     }
 
     public void NewGame_Click(object? sender, RoutedEventArgs e)
     {
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
+        new Draw(game, GameBoard);
+    }
+
+    public void LoadGame()
+    {
+        game = Game.Load(Path.Combine(AppContext.BaseDirectory, "saves", "exit.mine"));
         new Draw(game, GameBoard);
     }
 
@@ -101,5 +111,18 @@ public partial class MainWindow : Window
         {
             ClosePromptOpen = false;
         }
+    }
+    private async void AskGameLoad()
+    {
+        if (!AppSettings.AlwaysContinueSavedGame)
+        {
+            LoadGame_OpenDialog loadGame_OpenDialog = new LoadGame_OpenDialog(game, LoadGameEvent);
+            await loadGame_OpenDialog.ShowDialog(this);
+        }
+        else
+        {
+            LoadGame();
+        }
+        
     }
 }
