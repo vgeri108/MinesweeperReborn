@@ -5,6 +5,7 @@
         xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MinesweeperReborn.MainWindow"
+        Closing="MainWindow_Closing"
         Title="{x:Static loc:Strings.AppTitle}">
     <Grid>
         

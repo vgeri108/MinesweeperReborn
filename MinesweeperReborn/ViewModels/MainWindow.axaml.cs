@@ -11,6 +11,8 @@ public partial class MainWindow : Window
 {
     private Game game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
     public Action NewGameEvent => () => NewGame_Click(null, new RoutedEventArgs());
+    private bool ClosePromptOpen;
+    private bool AllowClose;
     public MainWindow()
     {
         InitializeComponent();
@@ -75,5 +77,29 @@ public partial class MainWindow : Window
             FileName = "https://github.com/vgeri108",
             UseShellExecute = true
         });
+    }
+
+    private async void MainWindow_Closing(object? sender, WindowClosingEventArgs e)
+    {
+        if (AllowClose) return;
+
+        e.Cancel = true;
+        if (ClosePromptOpen) return;
+
+        ClosePromptOpen = true;
+        SaveGame_CloseDialog saveGame_CloseDialog = new SaveGame_CloseDialog();
+        try
+        {
+            await saveGame_CloseDialog.ShowDialog(this);
+            if (!saveGame_CloseDialog.IsCanceled)
+            {
+                AllowClose = true;
+                Close();
+            }
+        }
+        finally
+        {
+            ClosePromptOpen = false;
+        }
     }
 }
