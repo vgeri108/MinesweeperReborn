@@ -3,6 +3,7 @@ using Avalonia.Interactivity;
 using MinesweeperCore;
 using MinesweeperReborn.Views;
 using System;
+using System.Diagnostics;
 
 namespace MinesweeperReborn;
 
@@ -60,6 +61,10 @@ public partial class MainWindow : Window
     }
     public void MoreGames_Click(object? sender, RoutedEventArgs e)
     {
-
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = "https://github.com/vgeri108",
+            UseShellExecute = true
+        });
     }
 }
