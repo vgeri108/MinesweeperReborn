@@ -93,6 +93,15 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Difficulty</value>
   </data>
+  <data name="FirstStartDifficultyTitle" xml:space="preserve">
+    <value>Choose a difficulty</value>
+  </data>
+  <data name="FirstStartDifficultyPrompt" xml:space="preserve">
+    <value>Which difficulty would you like to play?</value>
+  </data>
+  <data name="FirstStartDifficultyNote" xml:space="preserve">
+    <value>Note: You can change the difficulty later by selecting Settings from the Game menu.</value>
+  </data>
   <data name="Beginner" xml:space="preserve">
     <value>Beginner</value>
   </data>

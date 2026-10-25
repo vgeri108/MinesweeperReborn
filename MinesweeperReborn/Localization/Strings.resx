@@ -93,6 +93,15 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Nehézségi szint</value>
   </data>
+  <data name="FirstStartDifficultyTitle" xml:space="preserve">
+    <value>Nehézségi szint kiválasztása</value>
+  </data>
+  <data name="FirstStartDifficultyPrompt" xml:space="preserve">
+    <value>Milyen nehézségi fokon kíván játszani?</value>
+  </data>
+  <data name="FirstStartDifficultyNote" xml:space="preserve">
+    <value>Megjegyzés: A nehézségi szint később is módosítható a Játék menü Beállítások parancsára kattintva.</value>
+  </data>
   <data name="Beginner" xml:space="preserve">
     <value>Kezdő</value>
   </data>

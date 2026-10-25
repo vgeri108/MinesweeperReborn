@@ -2,11 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MinesweeperReborn.Views.FirstStartDifficulty"
         WindowStartupLocation="CenterScreen"
         CanResize="False"
-        Title="FirstStartDifficulty" Height="330" Width="420">
+        Title="{x:Static loc:Strings.FirstStartDifficultyTitle}" Height="330" Width="420">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,7 +15,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Milyen nehézségi fokon kíván játszani?"
+        <TextBlock Text="{x:Static loc:Strings.FirstStartDifficultyPrompt}"
                    FontSize="16" Margin="0,0,0,20" Foreground="#FF0077B6"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top">
@@ -22,29 +23,29 @@
             <Button Name="BeginnerButton" Click="NewBeginner"
                     HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF305995">
                 <StackPanel>
-                    <TextBlock FontSize="14"><Run Foreground="Green" Text="➜"/> Kezdő</TextBlock>
-                    <TextBlock Text="     10 akna, 9 x 9-es rács" FontSize="12"/>
+                    <TextBlock FontSize="14"><Run Foreground="Green" Text="➜ "/><Run Text="{x:Static loc:Strings.Beginner}"/></TextBlock>
+                    <TextBlock FontSize="12" Margin="10,0,0,0" Text="   "><Run Text="{x:Static loc:Strings.BeginnerMineCount}"/><Run Text=", "/><Run Text="{x:Static loc:Strings.BeginnerGrid}"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Name="IntermediateButton" Click="NewIntermediate"
                     HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}">
                 <StackPanel>
-                    <TextBlock FontSize="14"><Run Foreground="Green" Text="➜"/> Középhaladó</TextBlock>
-                    <TextBlock Text="      40 akna, 16 x 16-es rács" FontSize="12"/>
+                    <TextBlock FontSize="14"><Run Foreground="Green" Text="➜ "/><Run Text="{x:Static loc:Strings.Intermediate}"/></TextBlock>
+                    <TextBlock FontSize="12" Margin="10,0,0,0" Text="   "><Run Text="{x:Static loc:Strings.IntermediateMineCount}"/><Run Text=", "/><Run Text="{x:Static loc:Strings.IntermediateGrid}"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Name="AdvancedButton" Click="NewAdvanced"
                     HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}">
                 <StackPanel>
-                    <TextBlock FontSize="14"><Run Foreground="Green" Text="➜"/> Haladó</TextBlock>
-                    <TextBlock Text="     99 akna, 16 x 30-es rács" FontSize="12"/>
+                    <TextBlock FontSize="14"><Run Foreground="Green" Text="➜ "/><Run Text="{x:Static loc:Strings.Advanced}"/></TextBlock>
+                    <TextBlock FontSize="12" Margin="10,0,0,0" Text="   "><Run Text="{x:Static loc:Strings.AdvancedMineCount}"/><Run Text=", "/><Run Text="{x:Static loc:Strings.AdvancedGrid}"/></TextBlock>
                 </StackPanel>
             </Button>
         </StackPanel>
 
-        <TextBlock Grid.Row="2" Text="Megjegyzés: A nehézségi szint később is módosítható a Játék menü Beállítások parancsára kattintva."
+        <TextBlock Grid.Row="2" Text="{x:Static loc:Strings.FirstStartDifficultyNote}"
                    FontSize="12" TextWrapping="Wrap" Margin="-9,0,-9,-9" VerticalAlignment="Top" Height="40"
                    Padding="5"/>
     </Grid>
