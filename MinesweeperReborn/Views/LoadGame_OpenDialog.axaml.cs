@@ -33,6 +33,7 @@ namespace MinesweeperReborn.Views
 
         private void DontContinue_Click(object sender, RoutedEventArgs e)
         {
+            SaveGameHelper.DeleteSave();
             Close();
         }
     }

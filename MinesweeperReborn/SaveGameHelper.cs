@@ -13,5 +13,13 @@ namespace MinesweeperReborn
             if (files.Length == 0) return false;
             return true;
         }
+        public static void DeleteSave()
+        {
+            try
+            {
+                File.Delete(Path.Combine(AppContext.BaseDirectory, "saves", "exit.mine"));
+            }
+            catch { }
+        }
     }
 }

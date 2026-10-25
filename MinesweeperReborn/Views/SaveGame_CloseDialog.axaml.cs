@@ -26,6 +26,7 @@ namespace MinesweeperReborn.Views
         private void DontSave_Click(object sender, RoutedEventArgs e)
         {
             IsCanceled = false;
+            SaveGameHelper.DeleteSave();
             Close();
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
