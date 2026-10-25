@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="410" d:DesignHeight="130"
+        x:Class="MinesweeperReborn.Views.SaveGame_CloseDialog"
+        CanResize="False"
+        Title="SaveGame_CloseDialog" Height="130" Width="410">
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Mit szeretne tenni a folyamatban lévő játékkal?"
+                   Foreground="#FF025DD0" FontSize="17"
+                   Margin="15,15,0,0"/>
+
+        <Grid Grid.Row="1" Width="400" HorizontalAlignment="Right" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Save" Content="Mentés" Grid.Column="0" HorizontalAlignment="Right" Margin="10" Width="75" Padding="2,0,2,0" Click="Save_Click"/>
+            <Button x:Name="DontSave" Content="Ne mentsen" Grid.Column="1" HorizontalAlignment="Right" Margin="0,10,10,10" Width="100" Padding="2,0,2,0" Click="DontSave_Click"/>
+            <Button x:Name="Cancel" Content="Mégse" Grid.Column="2" HorizontalAlignment="Right" Margin="0,10,15,10" Width="75" Padding="2,0,2,0" Click="Cancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>
