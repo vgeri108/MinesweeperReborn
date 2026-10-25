@@ -14,6 +14,15 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        Opened += OnOpened;
+        new Draw(game, GameBoard);
+    }
+    private async void OnOpened(object? sender, EventArgs e)
+    {
+        FirstStartDifficulty firstStartDifficulty = new FirstStartDifficulty();
+        await firstStartDifficulty.ShowDialog(this);
+
+        game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         new Draw(game, GameBoard);
     }
 
