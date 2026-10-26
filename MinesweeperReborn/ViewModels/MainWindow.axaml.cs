@@ -57,7 +57,8 @@ public partial class MainWindow : Window
 
     public void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
     {
-
+        ThemeSelect themeSelect = new ThemeSelect();
+        themeSelect.Show();
     }
 
     public void Exit_Click(object? sender, RoutedEventArgs e)

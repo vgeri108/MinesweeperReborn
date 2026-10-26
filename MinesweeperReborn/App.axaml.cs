@@ -10,7 +10,7 @@ public partial class App : Application
     public override void Initialize()
     {
         JsonManager.Load();
-        ThemeManager.LoadTheme(ThemeManager.CurrentTheme);
+        ThemeManager.LoadTheme(AppSettings.CurrentTheme);
         LanguageSettings.ApplyAtStartup();
         AvaloniaXamlLoader.Load(this);
     }

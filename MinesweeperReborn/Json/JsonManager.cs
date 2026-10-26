@@ -24,6 +24,7 @@ namespace MinesweeperReborn
             {
                 SaveFolder = AppSettings.SaveFolder,
                 SaveFileOnExit = AppSettings.SaveFileOnExit,
+                CurrentTheme = AppSettings.CurrentTheme,
                 Sounds = AppSettings.Sounds,
                 Tips = AppSettings.Tips,
                 AlwaysContinueSavedGame = AppSettings.AlwaysContinueSavedGame,
@@ -43,6 +44,7 @@ namespace MinesweeperReborn
                 {
                     SaveFolder = AppSettings.SaveFolder,
                     SaveFileOnExit = AppSettings.SaveFileOnExit,
+                    CurrentTheme = AppSettings.CurrentTheme,
                     Sounds = AppSettings.Sounds,
                     Tips = AppSettings.Tips,
                     AlwaysContinueSavedGame = AppSettings.AlwaysContinueSavedGame,
@@ -58,6 +60,7 @@ namespace MinesweeperReborn
 
             AppSettings.SaveFolder = data.SaveFolder;
             AppSettings.SaveFileOnExit = data.SaveFileOnExit;
+            AppSettings.CurrentTheme = data.CurrentTheme;
             AppSettings.Sounds = data.Sounds;
             AppSettings.Tips = data.Tips;
             AppSettings.AlwaysContinueSavedGame = data.AlwaysContinueSavedGame;

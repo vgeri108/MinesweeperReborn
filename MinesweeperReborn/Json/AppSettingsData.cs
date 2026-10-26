@@ -8,6 +8,7 @@ namespace MinesweeperReborn
     {
         public string SaveFolder {  get; set; }
         public string SaveFileOnExit { get; set; }
+        public string CurrentTheme { get; set; } = "Default";
         public bool Sounds { get; set; }
         public bool Tips { get; set; }
         public bool AlwaysContinueSavedGame { get; set; }

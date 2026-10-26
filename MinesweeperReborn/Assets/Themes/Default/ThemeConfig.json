@@ -1,4 +1,8 @@
 {
+  "ThemeName": "Alapértelmezett",
+  "Creator": "vgeri108",
+  "Description": "Alapértelmezett aknakereső kinézet a Windows 7-es játékra alapozva.",
+  "ThemeImage": "Covered.png",
   "Cells": {
     "Empty": "Empty.png",
     "Mine": "Mine.png",
