@@ -58,6 +58,7 @@ public partial class MainWindow : Window
     public void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
     {
         ThemeSelect themeSelect = new ThemeSelect();
+        themeSelect.Closed += (_, _) => new Draw(game, GameBoard);
         themeSelect.Show();
     }
 

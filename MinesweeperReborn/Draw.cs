@@ -19,7 +19,7 @@ namespace MinesweeperReborn
         private readonly List<Button> buttonPool = new();
         private readonly ButtonClicks buttonClicks;
 
-        private static Dictionary<object, Bitmap> ImageCache = new Dictionary<object, Bitmap>();
+        private Dictionary<object, Bitmap> ImageCache = new Dictionary<object, Bitmap>();
 
         public Draw(Game game, UniformGrid grid)
         {
