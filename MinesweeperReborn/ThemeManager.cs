@@ -1,4 +1,5 @@
-﻿using MinesweeperCore;
+﻿using Avalonia.Media;
+using MinesweeperCore;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -11,6 +12,8 @@ namespace MinesweeperReborn
         public static Dictionary<Cell, string> CellImage { get; private set; } = new();
         public static Dictionary<CellStatus, string> CellStatusImage { get; private set; } = new();
         public static ThemeGui Gui { get; private set; } = new();
+        public static Color TextBoxBackgroundColor { get; private set; } = Color.Parse("#31569C");
+        public static Color TextBoxTextColor { get; private set; } = Color.Parse("#FFFFFF");
 
         public static void LoadTheme(string themeName)
         {
@@ -40,11 +43,15 @@ namespace MinesweeperReborn
                 Clock = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Clock)),
                 Flower = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Flower))
             };
+            Color textBoxBackgroundColor = Color.Parse(config.TextBoxBackgroundColor);
+            Color textBoxTextColor = Color.Parse(config.TextBoxTextColor);
 
             CurrentTheme = themeName;
             CellImage = cellImages;
             CellStatusImage = statusImages;
             Gui = guiImages;
+            TextBoxBackgroundColor = textBoxBackgroundColor;
+            TextBoxTextColor = textBoxTextColor;
         }
 
         private static string BuildImagePath(string themeName, string imagePath)

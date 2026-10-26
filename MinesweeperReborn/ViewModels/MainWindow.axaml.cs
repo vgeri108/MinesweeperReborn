@@ -32,6 +32,10 @@ public partial class MainWindow : Window
         };
         ClockImage.Source = AssetPaths.LoadBitmap(ThemeManager.Gui.Clock);
         FlowerImage.Source = AssetPaths.LoadBitmap(ThemeManager.Gui.Flower);
+        TimerBox.Background = new SolidColorBrush(ThemeManager.TextBoxBackgroundColor);
+        MineCounterBox.Background = new SolidColorBrush(ThemeManager.TextBoxBackgroundColor);
+        Timer.Foreground = new SolidColorBrush(ThemeManager.TextBoxTextColor);
+        MineCounter.Foreground = new SolidColorBrush(ThemeManager.TextBoxTextColor);
     }
     private async void OnOpened(object? sender, EventArgs e)
     {
