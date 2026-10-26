@@ -2,11 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MinesweeperReborn.Views.ThemeSelect"
         Height="500" MinHeight="500"
         Width="500" MinWidth="500"
-        Title="ThemeSelect">
+        Title="{x:Static loc:Strings.ThemeSelectTitle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,7 +17,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Téma kiválasztása"
+        <TextBlock Text="{x:Static loc:Strings.ThemeSelectHeading}"
                Margin="10,0,10,5"
                Grid.Row="0"
                FontWeight="Bold"
@@ -28,9 +29,9 @@
                VerticalAlignment="Top"/>
 
         <StackPanel Grid.Row="2" Margin="10">
-            <TextBlock x:Name="ThemeName" Text="Téma neve: Alapértelmezett"/>
-            <TextBlock x:Name="ThemeCreator" Text="Téma készítője: vgeri108"/>
-            <TextBlock x:Name="ThemeDescription" TextWrapping="Wrap" Text="Téma leírása: Alapértelmezett aknakereső kinézet a Windows 7-es játékra alapozva."/>
+            <TextBlock x:Name="ThemeName"/>
+            <TextBlock x:Name="ThemeCreator"/>
+            <TextBlock x:Name="ThemeDescription" TextWrapping="Wrap"/>
         </StackPanel>
 
         <Grid Grid.Row="3" Margin="10">
@@ -44,39 +45,39 @@
             <Viewbox Stretch="Uniform" Grid.Column="0" Height="80">
                 <StackPanel>
                     <Image x:Name="SelectedBoardIcon" Width="45"/>
-                    <TextBlock Text="Tábla" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock x:Name="BoardSelected" HorizontalAlignment="Center" Text="Alapértelmezett"/>
+                    <TextBlock Text="{x:Static loc:Strings.ThemeBoard}" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock x:Name="BoardSelected" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Viewbox>
 
             <Viewbox Stretch="Uniform" Grid.Column="1" Height="80">
                 <StackPanel>
                     <Image x:Name="SelectedMineIcon" Width="45"/>
-                    <TextBlock Text="Aknák" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock x:Name="MinesSelected" HorizontalAlignment="Center" Text="Alapértelmezett"/>
+                    <TextBlock Text="{x:Static loc:Strings.ThemeMines}" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock x:Name="MinesSelected" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Viewbox>
 
             <Viewbox Stretch="Uniform" Grid.Column="2" Height="80">
                 <StackPanel>
                     <Image x:Name="SelectedNumberIcon" Width="45"/>
-                    <TextBlock Text="Számok" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock x:Name="NumbersSelected" HorizontalAlignment="Center" Text="Alapértelmezett"/>
+                    <TextBlock Text="{x:Static loc:Strings.ThemeNumbers}" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock x:Name="NumbersSelected" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Viewbox>
 
             <Viewbox Stretch="Uniform" Grid.Column="3" Height="80">
                 <StackPanel>
                     <Image x:Name="SelectedBackgroundIcon" Width="45"/>
-                    <TextBlock Text="Háttér" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock x:Name="BackgroundSelected" HorizontalAlignment="Center" Text="Alapértelmezett"/>
+                    <TextBlock Text="{x:Static loc:Strings.ThemeBackground}" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock x:Name="BackgroundSelected" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Viewbox>
         </Grid>
 
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right" Margin="10">
-            <Button x:Name="Canel" Content="Mégse" Height="20" Width="120" Margin="0,0,5,0" Padding="2,0,2,0" Click="Cancel_Click"/>
-            <Button x:Name="Save" Content="Mentés" Height="20" Width="120" Margin="5,0,0,0" Padding="2,0,2,0" Click="Save_Click"/>
+            <Button x:Name="Canel" Content="{x:Static loc:Strings.Cancel}" Height="20" Width="120" Margin="0,0,5,0" Padding="2,0,2,0" Click="Cancel_Click"/>
+            <Button x:Name="Save" Content="{x:Static loc:Strings.SaveGame}" Height="20" Width="120" Margin="5,0,0,0" Padding="2,0,2,0" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

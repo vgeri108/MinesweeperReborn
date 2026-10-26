@@ -4,6 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using MinesweeperCore;
+using MinesweeperReborn.Localization;
 using System;
 using System.IO;
 
@@ -34,9 +35,9 @@ namespace MinesweeperReborn.Views
             NumbersSelected.Text = themeName;
             BackgroundSelected.Text = themeName;
 
-            ThemeName.Text = $"Téma neve: {themeName}";
-            ThemeCreator.Text = $"Téma készítője: {ThemeFinder.GetThemeCreatorFromJson(ThemeManager.CurrentTheme)}";
-            ThemeDescription.Text = $"Téma leírása: {ThemeFinder.GetThemeDescriptionFromJson(ThemeManager.CurrentTheme)}";
+            ThemeName.Text = string.Format(Strings.ThemeNameLabel, themeName);
+            ThemeCreator.Text = string.Format(Strings.ThemeCreatorLabel, ThemeFinder.GetThemeCreatorFromJson(ThemeManager.CurrentTheme));
+            ThemeDescription.Text = string.Format(Strings.ThemeDescriptionLabel, ThemeFinder.GetThemeDescriptionFromJson(ThemeManager.CurrentTheme));
 
             ThemeList.Children.Clear();
             foreach (string themeFolder in ThemeFinder.GetThemeList())

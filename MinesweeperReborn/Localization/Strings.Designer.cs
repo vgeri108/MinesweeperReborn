@@ -562,6 +562,87 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Háttér.
+        /// </summary>
+        public static string ThemeBackground {
+            get {
+                return ResourceManager.GetString("ThemeBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tábla.
+        /// </summary>
+        public static string ThemeBoard {
+            get {
+                return ResourceManager.GetString("ThemeBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Téma készítője: {0}.
+        /// </summary>
+        public static string ThemeCreatorLabel {
+            get {
+                return ResourceManager.GetString("ThemeCreatorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Téma leírása: {0}.
+        /// </summary>
+        public static string ThemeDescriptionLabel {
+            get {
+                return ResourceManager.GetString("ThemeDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aknák.
+        /// </summary>
+        public static string ThemeMines {
+            get {
+                return ResourceManager.GetString("ThemeMines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Téma neve: {0}.
+        /// </summary>
+        public static string ThemeNameLabel {
+            get {
+                return ResourceManager.GetString("ThemeNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Számok.
+        /// </summary>
+        public static string ThemeNumbers {
+            get {
+                return ResourceManager.GetString("ThemeNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Téma kiválasztása.
+        /// </summary>
+        public static string ThemeSelectHeading {
+            get {
+                return ResourceManager.GetString("ThemeSelectHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Témák.
+        /// </summary>
+        public static string ThemeSelectTitle {
+            get {
+                return ResourceManager.GetString("ThemeSelectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Szélesség (9–30):.
         /// </summary>
         public static string WidthRange {

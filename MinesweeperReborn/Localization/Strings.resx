@@ -186,4 +186,31 @@
   <data name="Cancel" xml:space="preserve">
     <value>Mégse</value>
   </data>
+  <data name="ThemeSelectTitle" xml:space="preserve">
+    <value>Témák</value>
+  </data>
+  <data name="ThemeSelectHeading" xml:space="preserve">
+    <value>Téma kiválasztása</value>
+  </data>
+  <data name="ThemeNameLabel" xml:space="preserve">
+    <value>Téma neve: {0}</value>
+  </data>
+  <data name="ThemeCreatorLabel" xml:space="preserve">
+    <value>Téma készítője: {0}</value>
+  </data>
+  <data name="ThemeDescriptionLabel" xml:space="preserve">
+    <value>Téma leírása: {0}</value>
+  </data>
+  <data name="ThemeBoard" xml:space="preserve">
+    <value>Tábla</value>
+  </data>
+  <data name="ThemeMines" xml:space="preserve">
+    <value>Aknák</value>
+  </data>
+  <data name="ThemeNumbers" xml:space="preserve">
+    <value>Számok</value>
+  </data>
+  <data name="ThemeBackground" xml:space="preserve">
+    <value>Háttér</value>
+  </data>
 </root>

@@ -186,4 +186,31 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ThemeSelectTitle" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="ThemeSelectHeading" xml:space="preserve">
+    <value>Select a theme</value>
+  </data>
+  <data name="ThemeNameLabel" xml:space="preserve">
+    <value>Theme name: {0}</value>
+  </data>
+  <data name="ThemeCreatorLabel" xml:space="preserve">
+    <value>Created by: {0}</value>
+  </data>
+  <data name="ThemeDescriptionLabel" xml:space="preserve">
+    <value>Description: {0}</value>
+  </data>
+  <data name="ThemeBoard" xml:space="preserve">
+    <value>Board</value>
+  </data>
+  <data name="ThemeMines" xml:space="preserve">
+    <value>Mines</value>
+  </data>
+  <data name="ThemeNumbers" xml:space="preserve">
+    <value>Numbers</value>
+  </data>
+  <data name="ThemeBackground" xml:space="preserve">
+    <value>Background</value>
+  </data>
 </root>
