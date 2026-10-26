@@ -2,8 +2,6 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
-using System;
-using System.Threading.Tasks;
 
 namespace MinesweeperReborn.Views
 {
@@ -13,11 +11,13 @@ namespace MinesweeperReborn.Views
         {
             InitializeComponent();
 
+            UpdateCheck.IsChecked = AppSettings.AutomaticUpdateSearch;
             ContinueSaved.IsChecked = AppSettings.AlwaysContinueSavedGame;
             SaveExit.IsChecked = AppSettings.AlwaysSaveGameOnExit;
         }
         private void OK_Click(object sender, RoutedEventArgs e)
         {
+            AppSettings.AutomaticUpdateSearch = (bool)UpdateCheck.IsChecked;
             AppSettings.AlwaysContinueSavedGame = (bool)ContinueSaved.IsChecked;
             AppSettings.AlwaysSaveGameOnExit = (bool)SaveExit.IsChecked;
             JsonManager.Save();

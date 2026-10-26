@@ -18,5 +18,7 @@ namespace MinesweeperReborn
         public static bool AlwaysContinueSavedGame = false;
         public static bool AlwaysSaveGameOnExit = false;
         public static bool EnableQuestionMarks = true;
+
+        public static bool AutomaticUpdateSearch = true;
     }
 }
