@@ -77,6 +77,12 @@ public partial class MainWindow : Window
         settings.Show();
     }
 
+    private void ApplicationSettings_Click(object? sender, RoutedEventArgs e)
+    {
+        AppSettingsMenu appSettingsMenu = new AppSettingsMenu();
+        appSettingsMenu.Show();
+    }
+
     public void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
     {
         ThemeSelect themeSelect = new ThemeSelect();

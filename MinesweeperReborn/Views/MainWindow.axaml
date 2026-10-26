@@ -27,7 +27,7 @@
 
             <MenuItem Header="{x:Static loc:Strings.Settings}">
                 <MenuItem Header="{x:Static loc:Strings.GameSettings}" Click="Settings_Click"/>
-                <MenuItem Header="{x:Static loc:Strings.ApplicationSettings}"/>
+                <MenuItem Header="{x:Static loc:Strings.ApplicationSettings}" Click="ApplicationSettings_Click"/>
                 <Separator/>
                 <MenuItem Header="{x:Static loc:Strings.CheckForUpdates}" x:Name="CheckForUpdates" Click="CheckForUpdates_Click"/>
             </MenuItem>
