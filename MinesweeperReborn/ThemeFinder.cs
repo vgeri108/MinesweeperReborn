@@ -1,23 +1,23 @@
-using Avalonia.Platform;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 
 namespace MinesweeperReborn
 {
     internal class ThemeFinder
     {
-        private static readonly Uri _themesUri = new("avares://MinesweeperReborn/Assets/Themes/");
-
         public static List<string> GetThemeList()
         {
-            return AssetLoader.GetAssets(_themesUri, null)
-                              .Where(asset => asset.AbsolutePath.EndsWith("/ThemeConfig.json", StringComparison.OrdinalIgnoreCase))
-                              .Select(asset => asset.Segments[asset.Segments.Length - 2].TrimEnd('/'))
-                              .Distinct()
-                              .ToList();
+            List<string> themes = new();
+            foreach (string themeDirectory in Directory.GetDirectories(AssetPaths.GetPath("Themes")))
+            {
+                if (File.Exists(Path.Combine(themeDirectory, "ThemeConfig.json")))
+                {
+                    themes.Add(Path.GetFileName(themeDirectory));
+                }
+            }
+
+            return themes;
         }
 
         public static string GetThemeNameFromJson(string themeFolder)
@@ -44,15 +44,14 @@ namespace MinesweeperReborn
             return string.IsNullOrWhiteSpace(config.ThemeImage) ? config.Statuses[MinesweeperCore.CellStatus.Covered] : config.ThemeImage;
         }
 
-        public static Uri GetThemeImageUri(string themeFolder)
+        public static string GetThemeImagePath(string themeFolder)
         {
-            return new Uri($"avares://MinesweeperReborn/Assets/Themes/{Uri.EscapeDataString(themeFolder)}/{GetThemeImageFromJson(themeFolder)}");
+            return AssetPaths.GetPath("Themes", themeFolder, GetThemeImageFromJson(themeFolder));
         }
 
         private static ThemeConfig GetThemeConfig(string themeFolder)
         {
-            Uri configUri = new($"avares://MinesweeperReborn/Assets/Themes/{Uri.EscapeDataString(themeFolder)}/ThemeConfig.json");
-            using Stream configStream = AssetLoader.Open(configUri);
+            using Stream configStream = File.OpenRead(AssetPaths.GetPath("Themes", themeFolder, "ThemeConfig.json"));
             ThemeConfig? config = JsonSerializer.Deserialize<ThemeConfig>(configStream);
 
             if (config == null)

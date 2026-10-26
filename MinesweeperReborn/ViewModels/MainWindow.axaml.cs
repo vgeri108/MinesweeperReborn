@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using MinesweeperCore;
 using MinesweeperReborn.Views;
 using System;
@@ -18,8 +19,19 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        ApplyThemeImages();
         Opened += OnOpened;
         new Draw(game, GameBoard);
+    }
+
+    private void ApplyThemeImages()
+    {
+        RootGrid.Background = new ImageBrush(AssetPaths.LoadBitmap(ThemeManager.Gui.Background))
+        {
+            Stretch = Stretch.UniformToFill
+        };
+        ClockImage.Source = AssetPaths.LoadBitmap(ThemeManager.Gui.Clock);
+        FlowerImage.Source = AssetPaths.LoadBitmap(ThemeManager.Gui.Flower);
     }
     private async void OnOpened(object? sender, EventArgs e)
     {
@@ -58,7 +70,11 @@ public partial class MainWindow : Window
     public void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
     {
         ThemeSelect themeSelect = new ThemeSelect();
-        themeSelect.Closed += (_, _) => new Draw(game, GameBoard);
+        themeSelect.Closed += (_, _) =>
+        {
+            ApplyThemeImages();
+            new Draw(game, GameBoard);
+        };
         themeSelect.Show();
     }
 

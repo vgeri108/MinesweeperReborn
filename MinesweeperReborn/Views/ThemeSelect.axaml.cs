@@ -1,12 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 using MinesweeperCore;
 using MinesweeperReborn.Localization;
 using System;
-using System.IO;
 
 namespace MinesweeperReborn.Views
 {
@@ -25,10 +22,10 @@ namespace MinesweeperReborn.Views
         {
             string themeName = ThemeFinder.GetThemeNameFromJson(ThemeManager.CurrentTheme);
 
-            SelectedBoardIcon.Source = LoadBitmap(ThemeManager.CellStatusImage[CellStatus.Covered]);
-            SelectedMineIcon.Source = LoadBitmap(ThemeManager.CellImage[Cell.Mine]);
-            SelectedNumberIcon.Source = LoadBitmap(ThemeManager.CellImage[Cell.One]);
-            SelectedBackgroundIcon.Source = LoadBitmap(ThemeFinder.GetThemeImageUri(ThemeManager.CurrentTheme));
+            SelectedBoardIcon.Source = AssetPaths.LoadBitmap(ThemeManager.CellStatusImage[CellStatus.Covered]);
+            SelectedMineIcon.Source = AssetPaths.LoadBitmap(ThemeManager.CellImage[Cell.Mine]);
+            SelectedNumberIcon.Source = AssetPaths.LoadBitmap(ThemeManager.CellImage[Cell.One]);
+            SelectedBackgroundIcon.Source = AssetPaths.LoadBitmap(ThemeFinder.GetThemeImagePath(ThemeManager.CurrentTheme));
 
             BoardSelected.Text = themeName;
             MinesSelected.Text = themeName;
@@ -44,7 +41,7 @@ namespace MinesweeperReborn.Views
             {
                 Image image = new Image
                 {
-                    Source = LoadBitmap(ThemeFinder.GetThemeImageUri(themeFolder)),
+                    Source = AssetPaths.LoadBitmap(ThemeFinder.GetThemeImagePath(themeFolder)),
                     Width = 64,
                     Height = 64,
                     Margin = new Thickness(0, 0, 0, 5)
@@ -78,12 +75,6 @@ namespace MinesweeperReborn.Views
 
                 ThemeList.Children.Add(button);
             }
-        }
-
-        private static Bitmap LoadBitmap(Uri assetUri)
-        {
-            using Stream imageStream = AssetLoader.Open(assetUri);
-            return new Bitmap(imageStream);
         }
 
         private void ThemeButton_Click(object? sender, RoutedEventArgs e)

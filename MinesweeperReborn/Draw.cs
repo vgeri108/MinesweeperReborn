@@ -4,11 +4,9 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 using MinesweeperCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace MinesweeperReborn
 {
@@ -36,15 +34,13 @@ namespace MinesweeperReborn
         {
             foreach (var item in Enum.GetValues<Cell>())
             {
-                using Stream imageStream = AssetLoader.Open(ThemeManager.CellImage[item]);
-                if (!ImageCache.ContainsKey(item)) ImageCache.Add(item, new Bitmap(imageStream));
+                if (!ImageCache.ContainsKey(item)) ImageCache.Add(item, AssetPaths.LoadBitmap(ThemeManager.CellImage[item]));
             }
             foreach (var item in Enum.GetValues<CellStatus>())
             {
                 if (item != CellStatus.Uncovered)
                 {
-                    using Stream imageStream = AssetLoader.Open(ThemeManager.CellStatusImage[item]);
-                    if (!ImageCache.ContainsKey(item)) ImageCache.Add(item, new Bitmap(imageStream));
+                    if (!ImageCache.ContainsKey(item)) ImageCache.Add(item, AssetPaths.LoadBitmap(ThemeManager.CellStatusImage[item]));
                 }
             }
         }

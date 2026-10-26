@@ -1,6 +1,4 @@
-﻿using Avalonia.Platform;
-using MinesweeperCore;
-using System;
+﻿using MinesweeperCore;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -10,13 +8,13 @@ namespace MinesweeperReborn
     internal class ThemeManager
     {
         public static string CurrentTheme { get; private set; } = "Default";
-        public static Dictionary<Cell, Uri> CellImage { get; private set; }
-        public static Dictionary<CellStatus, Uri> CellStatusImage { get; private set; }
+        public static Dictionary<Cell, string> CellImage { get; private set; } = new();
+        public static Dictionary<CellStatus, string> CellStatusImage { get; private set; } = new();
+        public static ThemeGui Gui { get; private set; } = new();
 
         public static void LoadTheme(string themeName)
         {
-            Uri configUri = new($"avares://MinesweeperReborn/Assets/Themes/{Uri.EscapeDataString(themeName)}/ThemeConfig.json");
-            using Stream configStream = AssetLoader.Open(configUri);
+            using Stream configStream = File.OpenRead(AssetPaths.GetPath("Themes", themeName, "ThemeConfig.json"));
             ThemeConfig? config = JsonSerializer.Deserialize<ThemeConfig>(configStream);
 
             if (config == null)
@@ -24,26 +22,34 @@ namespace MinesweeperReborn
                 throw new InvalidDataException($"A(z) '{themeName}' téma konfigurációja üres.");
             }
 
-            Dictionary<Cell, Uri> cellImages = new();
+            Dictionary<Cell, string> cellImages = new();
             foreach (var image in config.Cells)
             {
-                cellImages.Add(image.Key, BuildImageUri(themeName, image.Value));
+                cellImages.Add(image.Key, BuildImagePath(themeName, image.Value));
             }
 
-            Dictionary<CellStatus, Uri> statusImages = new();
+            Dictionary<CellStatus, string> statusImages = new();
             foreach (var image in config.Statuses)
             {
-                statusImages.Add(image.Key, BuildImageUri(themeName, image.Value));
+                statusImages.Add(image.Key, BuildImagePath(themeName, image.Value));
             }
+
+            ThemeGui guiImages = new()
+            {
+                Background = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Background)),
+                Clock = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Clock)),
+                Flower = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Flower))
+            };
 
             CurrentTheme = themeName;
             CellImage = cellImages;
             CellStatusImage = statusImages;
+            Gui = guiImages;
         }
 
-        private static Uri BuildImageUri(string themeName, string imagePath)
+        private static string BuildImagePath(string themeName, string imagePath)
         {
-            return new Uri($"avares://MinesweeperReborn/Assets/Themes/{Uri.EscapeDataString(themeName)}/{imagePath}");
+            return AssetPaths.GetPath("Themes", themeName, imagePath);
         }
     }
 }

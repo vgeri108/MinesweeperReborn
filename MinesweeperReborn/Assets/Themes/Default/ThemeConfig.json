@@ -19,5 +19,10 @@
     "Covered": "Covered.png",
     "Flagged": "Flagged.png",
     "Questioned": "Question.png"
+  },
+  "GUI": {
+    "Background": "hatter.png",
+    "Clock": "clock.png",
+    "Flower": "flower.png"
   }
 }

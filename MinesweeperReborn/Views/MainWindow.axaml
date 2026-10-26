@@ -7,11 +7,7 @@
         x:Class="MinesweeperReborn.MainWindow"
         Closing="MainWindow_Closing"
         Title="{x:Static loc:Strings.AppTitle}">
-    <Grid>
-        
-        <Grid.Background>
-            <ImageBrush Source="/images/hatter.png" Stretch="UniformToFill"/>
-        </Grid.Background>
+    <Grid x:Name="RootGrid">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
