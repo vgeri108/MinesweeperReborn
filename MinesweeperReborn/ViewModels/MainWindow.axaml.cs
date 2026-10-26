@@ -6,6 +6,7 @@ using MinesweeperReborn.Views;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace MinesweeperReborn;
 
@@ -50,7 +51,12 @@ public partial class MainWindow : Window
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         new Draw(game, GameBoard);
 
-        if (SaveGameHelper.IsThereAnySavedGame()) AskGameLoad();
+        if (SaveGameHelper.IsThereAnySavedGame()) await AskGameLoad();
+
+        if (AppSettings.AutomaticUpdateSearch)
+        {
+            _ = Update.CheckAndPrompt(this, automatic: true);
+        }
     }
 
     public void NewGame_Click(object? sender, RoutedEventArgs e)
@@ -99,9 +105,9 @@ public partial class MainWindow : Window
         Close();
     }
 
-    public void CheckForUpdates_Click(object? sender, RoutedEventArgs e)
+    public async void CheckForUpdates_Click(object? sender, RoutedEventArgs e)
     {
-
+        await Update.CheckAndPrompt(this);
     }
 
     public void Help_Click(object? sender, RoutedEventArgs e)
@@ -153,7 +159,7 @@ public partial class MainWindow : Window
             ClosePromptOpen = false;
         }
     }
-    private async void AskGameLoad()
+    private async Task AskGameLoad()
     {
         if (!AppSettings.AlwaysContinueSavedGame)
         {

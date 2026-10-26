@@ -30,6 +30,7 @@ namespace MinesweeperReborn.Views
 
         private async void CheckUpdates_Click(object sender, RoutedEventArgs e)
         {
+            await Update.CheckAndPrompt(this);
         }
     }
 }
