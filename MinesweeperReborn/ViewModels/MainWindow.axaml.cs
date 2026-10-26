@@ -90,7 +90,7 @@ public partial class MainWindow : Window
 
     public void Exit_Click(object? sender, RoutedEventArgs e)
     {
-        Environment.Exit(0);
+        Close();
     }
 
     public void CheckForUpdates_Click(object? sender, RoutedEventArgs e)
@@ -123,6 +123,13 @@ public partial class MainWindow : Window
 
         e.Cancel = true;
         if (ClosePromptOpen) return;
+
+        if (game.IsAllCellsAreHidden)
+        {
+            AllowClose = true;
+            Close();
+            return;
+        }
 
         ClosePromptOpen = true;
         SaveGame_CloseDialog saveGame_CloseDialog = new SaveGame_CloseDialog(game);
