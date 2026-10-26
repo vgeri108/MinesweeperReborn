@@ -39,8 +39,12 @@ public partial class MainWindow : Window
     }
     private async void OnOpened(object? sender, EventArgs e)
     {
-        FirstStartDifficulty firstStartDifficulty = new FirstStartDifficulty();
-        await firstStartDifficulty.ShowDialog(this);
+        if (!File.Exists(Path.Combine(AppContext.BaseDirectory, "AppSettings.json")))
+        {
+            FirstStartDifficulty firstStartDifficulty = new FirstStartDifficulty();
+            await firstStartDifficulty.ShowDialog(this);
+            JsonManager.Save();
+        }
 
         Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
