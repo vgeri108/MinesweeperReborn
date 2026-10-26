@@ -71,12 +71,9 @@ namespace MinesweeperReborn
                     btn.AddHandler(InputElement.PointerPressedEvent, buttonClicks.Button_RightClick, RoutingStrategies.Bubble, handledEventsToo: true);
                     btn.AddHandler(InputElement.DoubleTappedEvent, buttonClicks.Button_DoubleClick, RoutingStrategies.Bubble, handledEventsToo: true);
 
-                    using Stream imageStream = AssetLoader.Open(new Uri("avares://MinesweeperReborn/images/Themes/Covered.png"));
-                    Bitmap bmp = new(imageStream);
-
                     Image img = new Image
                     {
-                        Source = bmp,
+                        Source = ImageCache[CellStatus.Covered],
                         Stretch = Avalonia.Media.Stretch.UniformToFill,
                         Margin = new Thickness(0),
                     };

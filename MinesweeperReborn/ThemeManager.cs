@@ -1,39 +1,49 @@
-﻿using Avalonia.Input;
+﻿using Avalonia.Platform;
+using MinesweeperCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MinesweeperCore;
+using System.IO;
+using System.Text.Json;
 
 namespace MinesweeperReborn
 {
     internal class ThemeManager
     {
-        public static string CurrentTheme = "Default";
+        public static string CurrentTheme { get; private set; } = "Default";
+        public static Dictionary<Cell, Uri> CellImage { get; private set; }
+        public static Dictionary<CellStatus, Uri> CellStatusImage { get; private set; }
 
-        public static Dictionary<Cell, Uri> CellImage = new Dictionary<Cell, Uri>()
+        public static void LoadTheme(string themeName)
         {
-            { Cell.Empty, UriBuilder("Empty.png") },
-            { Cell.Mine, UriBuilder("Mine.png") },
-            { Cell.One, UriBuilder("1.png")},
-            { Cell.Two, UriBuilder("2.png")},
-            { Cell.Three, UriBuilder("3.png")},
-            { Cell.Four, UriBuilder("4.png")},
-            { Cell.Five, UriBuilder("5.png")},
-            { Cell.Six, UriBuilder("6.png")},
-            { Cell.Seven, UriBuilder("7.png")},
-            { Cell.Eight, UriBuilder("8.png")},
-        };
+            Uri configUri = new($"avares://MinesweeperReborn/Assets/Themes/{Uri.EscapeDataString(themeName)}/ThemeConfig.json");
+            using Stream configStream = AssetLoader.Open(configUri);
+            ThemeConfig? config = JsonSerializer.Deserialize<ThemeConfig>(configStream);
 
-        public static Dictionary<CellStatus, Uri> CellStatusImage = new Dictionary<CellStatus, Uri>()
-        {
-            { CellStatus.Covered, UriBuilder("Covered.png") },
-            { CellStatus.Flagged, UriBuilder("Flagged.png") },
-            { CellStatus.Questioned, UriBuilder("Question.png") },
-        };
+            if (config == null)
+            {
+                throw new InvalidDataException($"A(z) '{themeName}' téma konfigurációja üres.");
+            }
 
-        private static Uri UriBuilder(string imageName)
+            Dictionary<Cell, Uri> cellImages = new();
+            foreach (var image in config.Cells)
+            {
+                cellImages.Add(image.Key, BuildImageUri(themeName, image.Value));
+            }
+
+            Dictionary<CellStatus, Uri> statusImages = new();
+            foreach (var image in config.Statuses)
+            {
+                statusImages.Add(image.Key, BuildImageUri(themeName, image.Value));
+            }
+
+            CurrentTheme = themeName;
+            CellImage = cellImages;
+            CellStatusImage = statusImages;
+        }
+
+        private static Uri BuildImageUri(string themeName, string imagePath)
         {
-            return new($"avares://MinesweeperReborn/Assets/Themes/{CurrentTheme}/{imageName}", UriKind.Absolute);
+            return new Uri($"avares://MinesweeperReborn/Assets/Themes/{Uri.EscapeDataString(themeName)}/{imagePath}");
         }
     }
 }
