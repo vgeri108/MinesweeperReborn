@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using MinesweeperReborn.Localization;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
@@ -32,19 +33,19 @@ namespace MinesweeperReborn
                 JsonElement root = release.RootElement;
 
                 string tag = root.GetProperty("tag_name").GetString()
-                    ?? throw new InvalidDataException("A GitHub-kiadás nem tartalmaz verziócímkét.");
+                    ?? throw new InvalidDataException(Strings.MissingReleaseTag);
                 Version installed = Assembly.GetEntryAssembly()?.GetName().Version
-                    ?? throw new InvalidOperationException("Az alkalmazás verziója nem olvasható.");
+                    ?? throw new InvalidOperationException(Strings.AppVersionUnavailable);
                 if (!Version.TryParse(tag.TrimStart('v', 'V'), out Version? latest))
                 {
-                    throw new InvalidDataException($"Érvénytelen GitHub-verziócímke: {tag}");
+                    throw new InvalidDataException(string.Format(Strings.InvalidReleaseVersion, tag));
                 }
 
                 if (latest <= installed)
                 {
                     if (!automatic)
                     {
-                        await ShowMessage(owner, "Frissítés", "A legfrissebb verzió van telepítve.");
+                        await ShowMessage(owner, Strings.UpdateTitle, Strings.LatestVersionInstalled);
                     }
 
                     return;
@@ -54,8 +55,8 @@ namespace MinesweeperReborn
                     ? body.GetString() ?? string.Empty
                     : string.Empty;
                 var result = await MessageBoxManager.GetMessageBoxStandard(
-                    "Frissítés érhető el",
-                    $"{tag}\n{description}\n\nMegnyitja a GitHub Releases oldalt?",
+                    Strings.UpdateAvailable,
+                    string.Format(Strings.UpdatePrompt, tag, description),
                     ButtonEnum.YesNo).ShowWindowDialogAsync(owner);
 
                 if (result == ButtonResult.Yes)
@@ -67,7 +68,7 @@ namespace MinesweeperReborn
             {
                 if (!automatic)
                 {
-                    await ShowMessage(owner, "Frissítési hiba", ex.Message);
+                    await ShowMessage(owner, Strings.UpdateError, ex.Message);
                 }
             }
         }

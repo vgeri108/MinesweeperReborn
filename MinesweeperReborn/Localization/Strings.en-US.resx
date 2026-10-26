@@ -60,6 +60,39 @@
   <data name="CheckForUpdates" xml:space="preserve">
     <value>Check for Updates</value>
   </data>
+  <data name="UpdateSettings" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="CheckForUpdatesOnStartup" xml:space="preserve">
+    <value>Check for updates on startup</value>
+  </data>
+  <data name="SavedGames" xml:space="preserve">
+    <value>Saved Games</value>
+  </data>
+  <data name="UpdateTitle" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="LatestVersionInstalled" xml:space="preserve">
+    <value>The latest version is already installed.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="UpdatePrompt" xml:space="preserve">
+    <value>{0}&#10;{1}&#10;&#10;Open the GitHub Releases page?</value>
+  </data>
+  <data name="UpdateError" xml:space="preserve">
+    <value>Update error</value>
+  </data>
+  <data name="MissingReleaseTag" xml:space="preserve">
+    <value>The GitHub release does not contain a version tag.</value>
+  </data>
+  <data name="AppVersionUnavailable" xml:space="preserve">
+    <value>The application version could not be read.</value>
+  </data>
+  <data name="InvalidReleaseVersion" xml:space="preserve">
+    <value>Invalid GitHub version tag: {0}</value>
+  </data>
   <data name="HelpMenu" xml:space="preserve">
     <value>Help</value>
   </data>

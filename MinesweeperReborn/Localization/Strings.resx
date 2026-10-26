@@ -60,6 +60,39 @@
   <data name="CheckForUpdates" xml:space="preserve">
     <value>Frissítések keresése</value>
   </data>
+  <data name="UpdateSettings" xml:space="preserve">
+    <value>Frissítések</value>
+  </data>
+  <data name="CheckForUpdatesOnStartup" xml:space="preserve">
+    <value>Frissítések keresése indításkor</value>
+  </data>
+  <data name="SavedGames" xml:space="preserve">
+    <value>Mentések</value>
+  </data>
+  <data name="UpdateTitle" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="LatestVersionInstalled" xml:space="preserve">
+    <value>A legfrissebb verzió van telepítve.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Frissítés érhető el</value>
+  </data>
+  <data name="UpdatePrompt" xml:space="preserve">
+    <value>{0}&#10;{1}&#10;&#10;Megnyitja a GitHub Releases oldalt?</value>
+  </data>
+  <data name="UpdateError" xml:space="preserve">
+    <value>Frissítési hiba</value>
+  </data>
+  <data name="MissingReleaseTag" xml:space="preserve">
+    <value>A GitHub-kiadás nem tartalmaz verziócímkét.</value>
+  </data>
+  <data name="AppVersionUnavailable" xml:space="preserve">
+    <value>Az alkalmazás verziója nem olvasható.</value>
+  </data>
+  <data name="InvalidReleaseVersion" xml:space="preserve">
+    <value>Érvénytelen GitHub-verziócímke: {0}</value>
+  </data>
   <data name="HelpMenu" xml:space="preserve">
     <value>Súgó</value>
   </data>

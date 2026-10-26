@@ -130,6 +130,15 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Az alkalmazás verziója nem olvasható..
+        /// </summary>
+        public static string AppVersionUnavailable {
+            get {
+                return ResourceManager.GetString("AppVersionUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kezdő.
         /// </summary>
         public static string Beginner {
@@ -180,6 +189,15 @@ namespace MinesweeperReborn.Localization {
         public static string CheckForUpdates {
             get {
                 return ResourceManager.GetString("CheckForUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frissítések keresése indításkor.
+        /// </summary>
+        public static string CheckForUpdatesOnStartup {
+            get {
+                return ResourceManager.GetString("CheckForUpdatesOnStartup", resourceCulture);
             }
         }
         
@@ -346,11 +364,29 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Érvénytelen GitHub-verziócímke: {0}.
+        /// </summary>
+        public static string InvalidReleaseVersion {
+            get {
+                return ResourceManager.GetString("InvalidReleaseVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nyelv.
         /// </summary>
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A legfrissebb verzió van telepítve..
+        /// </summary>
+        public static string LatestVersionInstalled {
+            get {
+                return ResourceManager.GetString("LatestVersionInstalled", resourceCulture);
             }
         }
         
@@ -378,6 +414,15 @@ namespace MinesweeperReborn.Localization {
         public static string MinesRange {
             get {
                 return ResourceManager.GetString("MinesRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A GitHub-kiadás nem tartalmaz verziócímkét..
+        /// </summary>
+        public static string MissingReleaseTag {
+            get {
+                return ResourceManager.GetString("MissingReleaseTag", resourceCulture);
             }
         }
         
@@ -450,6 +495,15 @@ namespace MinesweeperReborn.Localization {
         public static string RestartToApply {
             get {
                 return ResourceManager.GetString("RestartToApply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mentések.
+        /// </summary>
+        public static string SavedGames {
+            get {
+                return ResourceManager.GetString("SavedGames", resourceCulture);
             }
         }
         
@@ -639,6 +693,54 @@ namespace MinesweeperReborn.Localization {
         public static string ThemeSelectTitle {
             get {
                 return ResourceManager.GetString("ThemeSelectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frissítés érhető el.
+        /// </summary>
+        public static string UpdateAvailable {
+            get {
+                return ResourceManager.GetString("UpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frissítési hiba.
+        /// </summary>
+        public static string UpdateError {
+            get {
+                return ResourceManager.GetString("UpdateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///{1}
+        ///
+        ///Megnyitja a GitHub Releases oldalt?.
+        /// </summary>
+        public static string UpdatePrompt {
+            get {
+                return ResourceManager.GetString("UpdatePrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frissítések.
+        /// </summary>
+        public static string UpdateSettings {
+            get {
+                return ResourceManager.GetString("UpdateSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frissítés.
+        /// </summary>
+        public static string UpdateTitle {
+            get {
+                return ResourceManager.GetString("UpdateTitle", resourceCulture);
             }
         }
         
