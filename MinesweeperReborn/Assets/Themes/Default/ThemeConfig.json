@@ -26,5 +26,11 @@
     "Background": "hatter.png",
     "Clock": "clock.png",
     "Flower": "flower.png"
+  },
+  "Sounds": {
+    "Start": "Sounds/start.wav",
+    "Click": "Sounds/click.wav",
+    "FlagPlace": "Sounds/Silence.wav",
+    "EveryClick": "Sounds/Silence.wav"
   }
 }

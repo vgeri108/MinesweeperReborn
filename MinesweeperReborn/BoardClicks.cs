@@ -10,6 +10,7 @@ namespace MinesweeperReborn
     {
         private readonly Game game;
         private readonly Action drawBoard;
+        private bool gameStarted;
 
         public ButtonClicks(Game game, Action drawBoard)
         {
@@ -25,6 +26,16 @@ namespace MinesweeperReborn
             if (sender is not Button { Tag: Point point })
                 return;
 
+            if (!gameStarted)
+            {
+                Sounds.PlayClick();
+                gameStarted = true;
+            }
+            else
+            {
+                Sounds.PlayEveryClick();
+            }
+            
             game.Dig((int)point.X, (int)point.Y);
             drawBoard();
 
@@ -39,6 +50,7 @@ namespace MinesweeperReborn
             if (sender is not Button { Tag: Point point })
                 return;
 
+            Sounds.PlayFlag();
 
             game.Cycle((int)point.X, (int)point.Y);
             drawBoard();

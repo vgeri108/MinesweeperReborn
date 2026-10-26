@@ -42,6 +42,7 @@ public partial class MainWindow : Window
         FirstStartDifficulty firstStartDifficulty = new FirstStartDifficulty();
         await firstStartDifficulty.ShowDialog(this);
 
+        Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         new Draw(game, GameBoard);
 
@@ -50,6 +51,7 @@ public partial class MainWindow : Window
 
     public void NewGame_Click(object? sender, RoutedEventArgs e)
     {
+        Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         new Draw(game, GameBoard);
     }
