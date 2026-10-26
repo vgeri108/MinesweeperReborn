@@ -52,7 +52,12 @@ namespace MinesweeperReborn
 
             Sounds.PlayFlag();
 
-            game.Cycle((int)point.X, (int)point.Y);
+            int row = (int)point.X;
+            int column = (int)point.Y;
+            game.Cycle(row, column);
+            if (!AppSettings.EnableQuestionMarks && game.Status[row, column] == CellStatus.Questioned)
+                game.Cycle(row, column);
+
             drawBoard();
 
             e.Handled = true;
