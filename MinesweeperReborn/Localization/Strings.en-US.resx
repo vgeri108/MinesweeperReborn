@@ -57,6 +57,12 @@
   <data name="StatisticsResetPrompt" xml:space="preserve">
     <value>Are you sure you want to reset statistics for the selected game mode?</value>
   </data>
+  <data name="StatisticsRenameDifficulty" xml:space="preserve">
+    <value>Rename difficulty</value>
+  </data>
+  <data name="StatisticsSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="StatisticsWinPercentage" xml:space="preserve">
     <value>Win percentage: {0}%</value>
   </data>

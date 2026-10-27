@@ -57,6 +57,12 @@
   <data name="StatisticsResetPrompt" xml:space="preserve">
     <value>Biztosan törli a kiválasztott játékmód statisztikáit?</value>
   </data>
+  <data name="StatisticsRenameDifficulty" xml:space="preserve">
+    <value>Név módosítása</value>
+  </data>
+  <data name="StatisticsSave" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
   <data name="StatisticsWinPercentage" xml:space="preserve">
     <value>Nyerési arány: {0}%</value>
   </data>

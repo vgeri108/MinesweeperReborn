@@ -95,12 +95,12 @@ namespace MinesweeperReborn.Views
         private void RefreshStatistics()
         {
             StatsData stats = Statistics.Get(selectedStatisticsId);
-            PlayedGames.Text = $"Lejátszott játékok: {stats.PlayedGames}";
-            WinnedGames.Text = $"Megnyert játékok: {stats.WinnedGames}";
-            WinPercentage.Text = $"Nyerési arány: {stats.WinPercentage}%";
-            LongestWinStreak.Text = $"Leghosszabb győzelemsorozat: {stats.LongestWinStreak}";
-            LongestLoseStreak.Text = $"Leghosszabb vereségsorozat: {stats.LongestLoseStreak}";
-            CurrentStreak.Text = $"Jelenlegi sorozat: {stats.CurrentStreak}";
+            PlayedGames.Text = string.Format(Strings.StatisticsPlayedGames, stats.PlayedGames);
+            WinnedGames.Text = string.Format(Strings.StatisticsWonGames, stats.WinnedGames);
+            WinPercentage.Text = string.Format(Strings.StatisticsWinPercentage, stats.WinPercentage);
+            LongestWinStreak.Text = string.Format(Strings.StatisticsLongestWinStreak, stats.LongestWinStreak);
+            LongestLoseStreak.Text = string.Format(Strings.StatisticsLongestLoseStreak, stats.LongestLoseStreak);
+            CurrentStreak.Text = string.Format(Strings.StatisticsCurrentStreak, stats.CurrentStreak);
 
             Times.Children.Clear();
             Dates.Children.Clear();
@@ -142,13 +142,13 @@ namespace MinesweeperReborn.Views
             TextBox nameInput = new() { Text = currentName, MinWidth = 240 };
             Window dialog = new()
             {
-                Title = "Név módosítása",
+                Title = Strings.StatisticsRenameDifficulty,
                 Width = 300,
                 SizeToContent = SizeToContent.Height,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
-            Button saveButton = new() { Content = "Mentés" };
-            Button cancelButton = new() { Content = "Mégse" };
+            Button saveButton = new() { Content = Strings.StatisticsSave };
+            Button cancelButton = new() { Content = Strings.Cancel };
             saveButton.Click += (_, _) => dialog.Close(nameInput.Text);
             cancelButton.Click += (_, _) => dialog.Close(null);
             dialog.Content = new StackPanel
