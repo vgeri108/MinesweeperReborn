@@ -38,6 +38,8 @@ namespace MinesweeperReborn
             
             game.Dig((int)point.X, (int)point.Y);
             drawBoard();
+            if (game.IsGameOver)
+                game.SaveStatistics(GameDetails.StatisticsPath);
 
             e.Handled = true;
         }
@@ -70,6 +72,8 @@ namespace MinesweeperReborn
 
             game.EasyMine((int)point.X, (int)point.Y);
             drawBoard();
+            if (game.IsGameOver)
+                game.SaveStatistics(GameDetails.StatisticsPath);
 
             e.Handled = true;
         }

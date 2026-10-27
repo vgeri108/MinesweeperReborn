@@ -607,6 +607,123 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} mp — {1}.
+        /// </summary>
+        public static string StatisticsBestTimeEntry {
+            get {
+                return ResourceManager.GetString("StatisticsBestTimeEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legjobb idők.
+        /// </summary>
+        public static string StatisticsBestTimes {
+            get {
+                return ResourceManager.GetString("StatisticsBestTimes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bezárás.
+        /// </summary>
+        public static string StatisticsClose {
+            get {
+                return ResourceManager.GetString("StatisticsClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jelenlegi sorozat: {0}.
+        /// </summary>
+        public static string StatisticsCurrentStreak {
+            get {
+                return ResourceManager.GetString("StatisticsCurrentStreak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} × {1}, {2} akna.
+        /// </summary>
+        public static string StatisticsCustomMode {
+            get {
+                return ResourceManager.GetString("StatisticsCustomMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leghosszabb vereségsorozat: {0}.
+        /// </summary>
+        public static string StatisticsLongestLoseStreak {
+            get {
+                return ResourceManager.GetString("StatisticsLongestLoseStreak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leghosszabb győzelmi sorozat: {0}.
+        /// </summary>
+        public static string StatisticsLongestWinStreak {
+            get {
+                return ResourceManager.GetString("StatisticsLongestWinStreak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Még nincs eredmény..
+        /// </summary>
+        public static string StatisticsNoBestTimes {
+            get {
+                return ResourceManager.GetString("StatisticsNoBestTimes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lejátszott játékok: {0}.
+        /// </summary>
+        public static string StatisticsPlayedGames {
+            get {
+                return ResourceManager.GetString("StatisticsPlayedGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alaphelyzetbe állítás.
+        /// </summary>
+        public static string StatisticsReset {
+            get {
+                return ResourceManager.GetString("StatisticsReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biztosan törli a kiválasztott játékmód statisztikáit?.
+        /// </summary>
+        public static string StatisticsResetPrompt {
+            get {
+                return ResourceManager.GetString("StatisticsResetPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nyerési arány: {0}%.
+        /// </summary>
+        public static string StatisticsWinPercentage {
+            get {
+                return ResourceManager.GetString("StatisticsWinPercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Megnyert játékok: {0}.
+        /// </summary>
+        public static string StatisticsWonGames {
+            get {
+                return ResourceManager.GetString("StatisticsWonGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Windows nyelve.
         /// </summary>
         public static string SystemLanguage {

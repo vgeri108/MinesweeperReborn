@@ -24,6 +24,45 @@
   <data name="Statistics" xml:space="preserve">
     <value>Statistics</value>
   </data>
+  <data name="StatisticsBestTimes" xml:space="preserve">
+    <value>Best times</value>
+  </data>
+  <data name="StatisticsBestTimeEntry" xml:space="preserve">
+    <value>{0} s — {1}</value>
+  </data>
+  <data name="StatisticsClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="StatisticsCustomMode" xml:space="preserve">
+    <value>{0} × {1}, {2} mines</value>
+  </data>
+  <data name="StatisticsCurrentStreak" xml:space="preserve">
+    <value>Current streak: {0}</value>
+  </data>
+  <data name="StatisticsLongestLoseStreak" xml:space="preserve">
+    <value>Longest losing streak: {0}</value>
+  </data>
+  <data name="StatisticsLongestWinStreak" xml:space="preserve">
+    <value>Longest winning streak: {0}</value>
+  </data>
+  <data name="StatisticsNoBestTimes" xml:space="preserve">
+    <value>No records yet.</value>
+  </data>
+  <data name="StatisticsPlayedGames" xml:space="preserve">
+    <value>Games played: {0}</value>
+  </data>
+  <data name="StatisticsReset" xml:space="preserve">
+    <value>Reset statistics</value>
+  </data>
+  <data name="StatisticsResetPrompt" xml:space="preserve">
+    <value>Are you sure you want to reset statistics for the selected game mode?</value>
+  </data>
+  <data name="StatisticsWinPercentage" xml:space="preserve">
+    <value>Win percentage: {0}%</value>
+  </data>
+  <data name="StatisticsWonGames" xml:space="preserve">
+    <value>Games won: {0}</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>

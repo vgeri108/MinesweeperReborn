@@ -24,6 +24,45 @@
   <data name="Statistics" xml:space="preserve">
     <value>Statisztika</value>
   </data>
+  <data name="StatisticsBestTimes" xml:space="preserve">
+    <value>Legjobb idők</value>
+  </data>
+  <data name="StatisticsBestTimeEntry" xml:space="preserve">
+    <value>{0} mp — {1}</value>
+  </data>
+  <data name="StatisticsClose" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="StatisticsCustomMode" xml:space="preserve">
+    <value>{0} × {1}, {2} akna</value>
+  </data>
+  <data name="StatisticsCurrentStreak" xml:space="preserve">
+    <value>Jelenlegi sorozat: {0}</value>
+  </data>
+  <data name="StatisticsLongestLoseStreak" xml:space="preserve">
+    <value>Leghosszabb vereségsorozat: {0}</value>
+  </data>
+  <data name="StatisticsLongestWinStreak" xml:space="preserve">
+    <value>Leghosszabb győzelmi sorozat: {0}</value>
+  </data>
+  <data name="StatisticsNoBestTimes" xml:space="preserve">
+    <value>Még nincs eredmény.</value>
+  </data>
+  <data name="StatisticsPlayedGames" xml:space="preserve">
+    <value>Lejátszott játékok: {0}</value>
+  </data>
+  <data name="StatisticsReset" xml:space="preserve">
+    <value>Alaphelyzetbe állítás</value>
+  </data>
+  <data name="StatisticsResetPrompt" xml:space="preserve">
+    <value>Biztosan törli a kiválasztott játékmód statisztikáit?</value>
+  </data>
+  <data name="StatisticsWinPercentage" xml:space="preserve">
+    <value>Nyerési arány: {0}%</value>
+  </data>
+  <data name="StatisticsWonGames" xml:space="preserve">
+    <value>Megnyert játékok: {0}</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Beállítások</value>
   </data>

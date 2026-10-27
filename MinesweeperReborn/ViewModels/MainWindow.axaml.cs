@@ -40,6 +40,8 @@ public partial class MainWindow : Window
     }
     private async void OnOpened(object? sender, EventArgs e)
     {
+        Game.LoadStatistics(AppSettings.StatisticsPath);
+
         if (!File.Exists(Path.Combine(AppContext.BaseDirectory, "AppSettings.json")))
         {
             FirstStartDifficulty firstStartDifficulty = new FirstStartDifficulty();
@@ -72,9 +74,9 @@ public partial class MainWindow : Window
         new Draw(game, GameBoard);
     }
 
-    public void Stats_Click(object? sender, RoutedEventArgs e)
+    public async void Stats_Click(object? sender, RoutedEventArgs e)
     {
-
+        await new Stats(game).ShowDialog(this);
     }
 
     public void Settings_Click(object? sender, RoutedEventArgs e)

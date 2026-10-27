@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
+        mc:Ignorable="d"
+        x:Class="MinesweeperReborn.Views.Stats"
+        Width="760"
+        Height="360"
+        MinWidth="700"
+        MinHeight="340"
+        Title="{x:Static loc:Strings.Statistics}"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox x:Name="Difficulties"
+                      SelectionChanged="Difficulties_SelectionChanged"
+                      VerticalAlignment="Top"
+                      HorizontalAlignment="Left"
+                      Width="150">
+                 <ListBox.ContextMenu>
+                     <ContextMenu>
+                         <MenuItem x:Name="RenameMenuItem" Header="Név módosítása" Click="Rename_Click"/>
+                     </ContextMenu>
+                 </ListBox.ContextMenu>
+             </ListBox>
+
+            <GroupBox Grid.Column="1"
+                      Header="Legjobb idők" Margin="15,0,15,0"
+                      VerticalAlignment="Top"
+                      Height="105">
+                <Grid x:Name="BestTimes">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel x:Name="Times">
+                        <TextBlock x:Name="NoStatTime" Text="999" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel x:Name="Dates" Grid.Column="1">
+                        <TextBlock x:Name="NoStatDate" Text="2026.01.09." TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                </Grid>
+            </GroupBox>
+
+            <StackPanel Grid.Column="2" Margin="0,0,60,0">
+                <TextBlock x:Name="PlayedGames" Text="Jejátszott játékok: 0"/>
+                <TextBlock x:Name="WinnedGames" Text="Megnyert játékok: 0"/>
+                <TextBlock x:Name="WinPercentage" Text="Nyerési arány: 000%"/>
+                <TextBlock x:Name="LongestWinStreak" Text="Leghosszabb győzelemsorozat: 0"/>
+                <TextBlock x:Name="LongestLoseStreak" Text="Leghosszabb vereségsorozat: 0"/>
+                <TextBlock x:Name="CurrentStreak" Text="Jelenlegi sorozat: 0"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Height="20"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+            <Button x:Name="Close" Content="Bezárás" Width="120" Margin="0,0,5,0" Click="Close_Click"/>
+            <Button x:Name="Reset" Content="Alaphelyzetbe állítás" Width="120" Margin="5,0,25,0" Click="Reset_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
