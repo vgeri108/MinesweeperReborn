@@ -160,9 +160,39 @@
             Csak ez az osztály látszik kívülről. Ez a Játék magja.
             </summary>
         </member>
+        <member name="P:MinesweeperCore.Game.Height">
+            <summary>
+            Játéktábla magassága
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.Width">
+            <summary>
+            Játéktábla szélessége
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.StatisticsId">
+            <summary>
+            Jelenlegi nehézség azonosítója a statisztika számára
+            </summary>
+        </member>
         <member name="T:MinesweeperCore.Game.GameStatus">
             <summary>
             A játék vége lehetőségei, ide tartozik még az is, hogy nincs vége
+            </summary>
+        </member>
+        <member name="F:MinesweeperCore.Game.GameStatus.None">
+            <summary>
+            A játék még folyamatban van, nem ért véget
+            </summary>
+        </member>
+        <member name="F:MinesweeperCore.Game.GameStatus.Win">
+            <summary>
+            A játék nyerési állapotban van, vége van
+            </summary>
+        </member>
+        <member name="F:MinesweeperCore.Game.GameStatus.Lose">
+            <summary>
+            A játékos aknára lépett, vesztett, vége van
             </summary>
         </member>
         <member name="M:MinesweeperCore.Game.#ctor(System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
@@ -173,6 +203,36 @@
             <param name="width">Szélesség</param>
             <param name="mines">Aknák száma</param>
             <param name="seed">Előre megadott seed vagy null</param>
+        </member>
+        <member name="P:MinesweeperCore.Game.Status">
+            <summary>
+            Mezők láthatósági állapota
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.MineCount">
+            <summary>
+            Aknák száma
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.FlagCount">
+            <summary>
+            Zészlózások száma
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.RemainingFlags">
+            <summary>
+            Be nem zászlózott aknák, zászló helyesség ellenőrzés nélkül
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.IsAllCellsAreHidden">
+            <summary>
+            Ellenőrzés, hogy az összes cella fedve van-e a táblán
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Game.Seed">
+            <summary>
+            A játéktábla randomgenerátorának kiindulási értéke, az első kattintás helye nem befolyásolja
+            </summary>
         </member>
         <member name="P:MinesweeperCore.Game.Result">
             <summary>
@@ -204,6 +264,18 @@
             </summary>
             <param name="row">Sor</param>
             <param name="column">Oszlop</param>
+        </member>
+        <member name="M:MinesweeperCore.Game.SaveStatistics(System.String)">
+            <summary>
+            Statisztikák kirása fileba
+            </summary>
+            <param name="path">Mentés elérési útja</param>
+        </member>
+        <member name="M:MinesweeperCore.Game.LoadStatistics(System.String)">
+            <summary>
+            Statisztikák betöltése fileból
+            </summary>
+            <param name="path">Mentés elérési útja</param>
         </member>
         <member name="M:MinesweeperCore.Game.GetCell(System.Int32,System.Int32)">
             <summary>
@@ -458,6 +530,60 @@
             Játékállapot beolvasása
             </summary>
             <returns>Mentett adatok</returns>
+        </member>
+        <member name="T:MinesweeperCore.Statistics">
+            <summary>
+            Statisztikák kezelése
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Statistics.Get(System.String)">
+            <summary>
+            Statisztikák lekérése egy adott nehézségű pályához
+            </summary>
+            <param name="id">Pálya nehézségének azonosítója</param>
+            <returns></returns>
+        </member>
+        <member name="M:MinesweeperCore.Statistics.Save(System.String)">
+            <summary>
+            Statisztikák mentése fájlba
+            </summary>
+            <param name="path">Mentés elérési útja</param>
+        </member>
+        <member name="M:MinesweeperCore.Statistics.Load(System.String)">
+            <summary>
+            Statisztikák betöltése fájlból
+            </summary>
+            <param name="path">Mentés elérési útja</param>
+        </member>
+        <member name="P:MinesweeperCore.StatsData.PlayedGames">
+            <summary>
+            Játszott játékok
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.StatsData.WinnedGames">
+            <summary>
+            Megnyert játékok
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.StatsData.WinPercentage">
+            <summary>
+            Nyerési arány
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.StatsData.LongestWinStreak">
+            <summary>
+            Leghosszabb győzelemsorozat
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.StatsData.LongestLoseStreak">
+            <summary>
+            Leghosszabb vereségsorozat
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.StatsData.CurrentStreak">
+            <summary>
+            Jelenlegi sorozat
+            </summary>
         </member>
         <member name="T:MinesweeperCore.StatusCycle">
             <summary>
