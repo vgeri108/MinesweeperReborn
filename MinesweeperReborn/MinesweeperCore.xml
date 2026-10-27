@@ -97,6 +97,35 @@
             <param name="board">Játéktábla cella státuszai</param>
             <returns>Minden cella fedett-e</returns>
         </member>
+        <member name="T:MinesweeperCore.DifficultyNameManager">
+            <summary>
+            Egyedi nehézségek nevének mentése és lekérdezése.
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.DifficultyNameManager.#ctor(System.String)">
+            <summary>
+            Nehézségekhez tartozó nevek kezelése
+            </summary>
+            <param name="path">Név json konfiguráció elérési út</param>
+        </member>
+        <member name="M:MinesweeperCore.DifficultyNameManager.GetName(MinesweeperCore.DifficultySettings)">
+            <summary>
+            Nehézség nevének lekérése
+            </summary>
+            <param name="settings">A lekérdezett nehézség adatai</param>
+            <returns>Nehézséghez társított név, ha nins akkor azonosíttó</returns>
+        </member>
+        <member name="M:MinesweeperCore.DifficultyNameManager.SaveName(MinesweeperCore.DifficultySettings,System.String)">
+            <summary>
+            Egyedi nehézség nevének elmentése, a beépítetteké nem módosítható
+            </summary>
+            <param name="settings">Elnevezendő nehézség adatai</param>
+            <param name="name">Nehézség megjelenítési új neve</param>
+            <returns>
+            Igaz: A mentés sikeres.
+            Hamis: Mentés sikertelen, mert az adott nehézség beépített és nem nevezhető át
+            </returns>
+        </member>
         <member name="T:MinesweeperCore.Dig">
             <summary>
             Mezők felfedését, kiásását kezelő osztály
@@ -542,6 +571,12 @@
             </summary>
             <param name="id">Pálya nehézségének azonosítója</param>
             <returns></returns>
+        </member>
+        <member name="M:MinesweeperCore.Statistics.Delete(System.String)">
+            <summary>
+            Egy pálya statisztikájának törlése.
+            </summary>
+            <param name="id">A pálya azonosítója</param>
         </member>
         <member name="M:MinesweeperCore.Statistics.Save(System.String)">
             <summary>
