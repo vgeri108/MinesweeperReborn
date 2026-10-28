@@ -72,12 +72,21 @@ public partial class MainWindow : Window
         }
     }
 
-    public void NewGame_Click(object? sender, RoutedEventArgs e)
+    public async void NewGame_Click(object? sender, RoutedEventArgs e)
     {
-        Sounds.PlayStart();
-        game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
-        pausedTimerSeconds = 0;
-        new Draw(game, GameBoard);
+        if (!game.IsAllCellsAreHidden)
+        {
+            NewGame_MenuDialog newGame_MenuDialog = new NewGame_MenuDialog();
+            await ShowDialogWithPausedTimer(newGame_MenuDialog);
+
+            if (newGame_MenuDialog.Selected == "StartNew")
+            {
+                Sounds.PlayStart();
+                game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
+                pausedTimerSeconds = 0;
+                new Draw(game, GameBoard);
+            }
+        }
     }
 
     public void LoadGame()

@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
+        mc:Ignorable="d"
+        x:Class="MinesweeperReborn.Views.NewGame_MenuDialog"
+        CanResize="False"
+        Title="Új játék kezdése" Height="260" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Biztosan új játékot kezd?"
+           FontSize="16" Margin="0,0,20,20" Foreground="#FF0077B6" TextWrapping="Wrap"/>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Top">
+
+            <Button Name="StartNew"
+            HorizontalContentAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF305995" Click="StartNew_Click">
+                <StackPanel>
+                    <TextBlock Text="-> Új játék indítása" FontSize="14"/>
+                    <TextBlock Text="{x:Static loc:Strings.StartNewGameLossNote}" Margin="20,0,0,0" FontSize="12"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="OnNextGame"
+            HorizontalContentAlignment="Left" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}" Click="Cancel_Click">
+                <StackPanel>
+                    <TextBlock Text="-> A jelenlegi játék befejezése" FontSize="14"/>
+                    <TextBlock Text="Visszatérés a jelenlegi játékba" Margin="20,0,0,0" FontSize="12" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

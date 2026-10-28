@@ -194,7 +194,7 @@ namespace MinesweeperReborn.Views
             }
             else
             {
-                StartNewGame();
+                if (game.IsAllCellsAreHidden) StartNewGame();
             }
             JsonManager.Save();
             Close();
