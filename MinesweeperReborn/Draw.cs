@@ -18,6 +18,7 @@ namespace MinesweeperReborn
         private readonly List<Button> buttonPool = new();
         private readonly ButtonClicks buttonClicks;
         private IBrush buttonBackground = Brushes.Transparent;
+        private double buttonCorner;
 
         private Dictionary<object, Bitmap> ImageCache = new Dictionary<object, Bitmap>();
 
@@ -54,6 +55,9 @@ namespace MinesweeperReborn
             grid.Rows = game.Height;
             grid.Columns = game.Width;
             buttonBackground = new SolidColorBrush(ThemeManager.GameBoardButtonColor);
+            double boardScale = Math.Min(1d, 9d / Math.Max(game.Width, game.Height));
+            double buttonMargin = ThemeManager.GameBoardMargin * boardScale;
+            buttonCorner = ThemeManager.GameBoardCorner * boardScale;
 
             for (int x = 0; x < game.Height; x++)
             {
@@ -62,7 +66,7 @@ namespace MinesweeperReborn
                     Button btn = new Button
                     {
                         Tag = new Point(x, y),
-                        Margin = new Thickness(ThemeManager.GameBoardMargin),
+                        Margin = new Thickness(buttonMargin),
                         Padding = new Thickness(0),
                         BorderThickness = new Thickness(0),
                         BorderBrush = Brushes.Transparent,
@@ -117,7 +121,7 @@ namespace MinesweeperReborn
         {
             return new Border
             {
-                CornerRadius = new CornerRadius(ThemeManager.GameBoardCorner),
+                CornerRadius = new CornerRadius(buttonCorner),
                 ClipToBounds = true,
                 Background = buttonBackground,
                 Child = new Image
