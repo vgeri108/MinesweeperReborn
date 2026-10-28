@@ -83,27 +83,24 @@ public partial class MainWindow : Window
         await new Stats(game).ShowDialog(this);
     }
 
-    public void Settings_Click(object? sender, RoutedEventArgs e)
+    public async void Settings_Click(object? sender, RoutedEventArgs e)
     {
         Settings settings = new Settings(game, NewGameEvent);
-        settings.Show();
+        await settings.ShowDialog(this);
     }
 
-    private void ApplicationSettings_Click(object? sender, RoutedEventArgs e)
+    private async void ApplicationSettings_Click(object? sender, RoutedEventArgs e)
     {
         AppSettingsMenu appSettingsMenu = new AppSettingsMenu();
-        appSettingsMenu.Show();
+        await appSettingsMenu.ShowDialog(this);
     }
 
-    public void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
+    public async void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
     {
         ThemeSelect themeSelect = new ThemeSelect();
-        themeSelect.Closed += (_, _) =>
-        {
-            ApplyThemeImages();
-            new Draw(game, GameBoard);
-        };
-        themeSelect.Show();
+        await themeSelect.ShowDialog(this);
+        ApplyThemeImages();
+        new Draw(game, GameBoard);
     }
 
     public void Exit_Click(object? sender, RoutedEventArgs e)
@@ -116,10 +113,10 @@ public partial class MainWindow : Window
         await Update.CheckAndPrompt(this);
     }
 
-    public void Help_Click(object? sender, RoutedEventArgs e)
+    public async void Help_Click(object? sender, RoutedEventArgs e)
     {
         NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
-        newGame_SettingsDialog.Show();
+        await newGame_SettingsDialog.ShowDialog(this);
     }
 
     public void About_Click(object? sender, RoutedEventArgs e)
