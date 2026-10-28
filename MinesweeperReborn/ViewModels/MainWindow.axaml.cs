@@ -115,8 +115,7 @@ public partial class MainWindow : Window
 
     public async void Help_Click(object? sender, RoutedEventArgs e)
     {
-        NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
-        await newGame_SettingsDialog.ShowDialog(this);
+
     }
 
     public void About_Click(object? sender, RoutedEventArgs e)
