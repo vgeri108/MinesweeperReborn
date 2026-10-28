@@ -639,5 +639,37 @@
             <param name="row">Sor</param>
             <param name="column">Oszlop</param>
         </member>
+        <member name="T:MinesweeperCore.Timer">
+            <summary>
+            Időmérő stopper
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.Timer.ElapsedSeconds">
+            <summary>
+            Eltelt idő (mp)
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Timer.#ctor(System.Double)">
+            <summary>
+            Időmérő létrehozása
+            </summary>
+            <param name="seconds">Kezdőérték, opcionális</param>
+        </member>
+        <member name="M:MinesweeperCore.Timer.Start">
+            <summary>
+            Elindítja vagy folytatja a stoppert
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Timer.Stop">
+            <summary>
+            Megállítja a stoppert
+            </summary>
+        </member>
+        <member name="M:MinesweeperCore.Timer.Reset(System.Double)">
+            <summary>
+            Stopper visszaállítása
+            </summary>
+            <param name="seconds">Beállítandó érték (alapból 0)</param>
+        </member>
     </members>
 </doc>
