@@ -1,0 +1,39 @@
+{
+  "ThemeName": "Microsoft",
+  "Creator": "vgeri108",
+  "Description": "A Microsoftos aknakeresőhöz hasonló kinézet.",
+  "ThemeImage": "pack.png",
+  "TextBoxBackgroundColor": "#323340",
+  "TextBoxTextColor": "#FFFFFF",
+  "GameBoardCorner": 8,
+  "GameBoardMargin": 2,
+  "GameBoardButtonColor": "#00FFFFFF",
+  "Cells": {
+    "Empty": "Images/Empty.png",
+    "Mine": "Images/Mine.png",
+    "One": "Images/1.png",
+    "Two": "Images/2.png",
+    "Three": "Images/3.png",
+    "Four": "Images/4.png",
+    "Five": "Images/5.png",
+    "Six": "Images/6.png",
+    "Seven": "Images/7.png",
+    "Eight": "Images/8.png"
+  },
+  "Statuses": {
+    "Covered": "Images/Covered.png",
+    "Flagged": "Images/Flagged.png",
+    "Questioned": "Images/Question.png"
+  },
+  "GUI": {
+    "Background": "Images/GUI/hatter.png",
+    "Clock": "Images/GUI/clock.png",
+    "Flower": "Images/GUI/MineIcon.png"
+  },
+  "Sounds": {
+    "Start": "Sounds/Silence.wav",
+    "Click": "Sounds/Silence.wav",
+    "FlagPlace": "Sounds/Silence.wav",
+    "EveryClick": "Sounds/Silence.wav"
+  }
+}
