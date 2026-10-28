@@ -445,6 +445,51 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Visszatérés a jelenlegi játékba.
+        /// </summary>
+        public static string NewGameMenuCancelNote {
+            get {
+                return ResourceManager.GetString("NewGameMenuCancelNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ➜ A jelenlegi játék befejezése.
+        /// </summary>
+        public static string NewGameMenuCancelOption {
+            get {
+                return ResourceManager.GetString("NewGameMenuCancelOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biztosan új játékot kezd?.
+        /// </summary>
+        public static string NewGameMenuDialogPrompt {
+            get {
+                return ResourceManager.GetString("NewGameMenuDialogPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Új játék kezdése.
+        /// </summary>
+        public static string NewGameMenuDialogTitle {
+            get {
+                return ResourceManager.GetString("NewGameMenuDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ➜ Új játék indítása.
+        /// </summary>
+        public static string NewGameMenuStartOption {
+            get {
+                return ResourceManager.GetString("NewGameMenuStartOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ezek a beállítások nem alkalmazhatók a jelenleg folyó játékra. Mit szeretne tenni?.
         /// </summary>
         public static string NewGameSettingsDialogPrompt {

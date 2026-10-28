@@ -153,6 +153,21 @@
   <data name="NewGameSettingsDialogTitle" xml:space="preserve">
     <value>Játékbeállítások módosítása</value>
   </data>
+  <data name="NewGameMenuDialogTitle" xml:space="preserve">
+    <value>Új játék kezdése</value>
+  </data>
+  <data name="NewGameMenuDialogPrompt" xml:space="preserve">
+    <value>Biztosan új játékot kezd?</value>
+  </data>
+  <data name="NewGameMenuStartOption" xml:space="preserve">
+    <value>➜ Új játék indítása</value>
+  </data>
+  <data name="NewGameMenuCancelOption" xml:space="preserve">
+    <value>➜ A jelenlegi játék befejezése</value>
+  </data>
+  <data name="NewGameMenuCancelNote" xml:space="preserve">
+    <value>Visszatérés a jelenlegi játékba</value>
+  </data>
   <data name="NewGameSettingsDialogPrompt" xml:space="preserve">
     <value>Ezek a beállítások nem alkalmazhatók a jelenleg folyó játékra. Mit szeretne tenni?</value>
   </data>
