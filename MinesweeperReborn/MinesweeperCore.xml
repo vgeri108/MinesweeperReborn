@@ -615,6 +615,11 @@
             Nyerési arány
             </summary>
         </member>
+        <member name="P:MinesweeperCore.StatsData.BestWinTimes">
+            <summary>
+            Az öt legjobb győzelmi idő
+            </summary>
+        </member>
         <member name="P:MinesweeperCore.StatsData.LongestWinStreak">
             <summary>
             Leghosszabb győzelemsorozat
@@ -628,6 +633,21 @@
         <member name="P:MinesweeperCore.StatsData.CurrentStreak">
             <summary>
             Jelenlegi sorozat
+            </summary>
+        </member>
+        <member name="T:MinesweeperCore.BestWinTime">
+            <summary>
+            Nyerési idő és dátum
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.BestWinTime.TimeSeconds">
+            <summary>
+            Nyerési idő
+            </summary>
+        </member>
+        <member name="P:MinesweeperCore.BestWinTime.Date">
+            <summary>
+            Nyerés dátuma
             </summary>
         </member>
         <member name="T:MinesweeperCore.StatusCycle">
