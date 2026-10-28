@@ -5,6 +5,9 @@
   "ThemeImage": "Covered.png",
   "TextBoxBackgroundColor": "#31569C",
   "TextBoxTextColor": "#FFFFFF",
+  "GameBoardCorner": 0,
+  "GameBoardMargin": 0,
+  "GameBoardButtonColor": "#00FFFFFF",
   "Cells": {
     "Empty": "Empty.png",
     "Mine": "Mine.png",

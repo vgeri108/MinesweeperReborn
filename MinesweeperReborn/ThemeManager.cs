@@ -15,6 +15,9 @@ namespace MinesweeperReborn
         public static ThemeSounds Sounds { get; private set; } = new();
         public static Color TextBoxBackgroundColor { get; private set; } = Color.Parse("#31569C");
         public static Color TextBoxTextColor { get; private set; } = Color.Parse("#FFFFFF");
+        public static double GameBoardCorner { get; private set; }
+        public static double GameBoardMargin { get; private set; }
+        public static Color GameBoardButtonColor { get; private set; } = Color.Parse("#00FFFFFF");
 
         public static void LoadTheme(string themeName)
         {
@@ -53,6 +56,7 @@ namespace MinesweeperReborn
             };
             Color textBoxBackgroundColor = Color.Parse(config.TextBoxBackgroundColor);
             Color textBoxTextColor = Color.Parse(config.TextBoxTextColor);
+            Color gameBoardButtonColor = Color.Parse(config.GameBoardButtonColor);
 
             CurrentTheme = themeName;
             CellImage = cellImages;
@@ -61,6 +65,9 @@ namespace MinesweeperReborn
             Sounds = sounds;
             TextBoxBackgroundColor = textBoxBackgroundColor;
             TextBoxTextColor = textBoxTextColor;
+            GameBoardCorner = config.GameBoardCorner;
+            GameBoardMargin = config.GameBoardMargin;
+            GameBoardButtonColor = gameBoardButtonColor;
         }
 
         private static string BuildSoundPath(string themeName, string soundPath)

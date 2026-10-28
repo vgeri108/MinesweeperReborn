@@ -11,6 +11,9 @@ namespace MinesweeperReborn
         public string ThemeImage { get; set; }
         public string TextBoxBackgroundColor { get; set; } = "#31569C";
         public string TextBoxTextColor { get; set; } = "#FFFFFF";
+        public double GameBoardCorner { get; set; }
+        public double GameBoardMargin { get; set; }
+        public string GameBoardButtonColor { get; set; } = "#00FFFFFF";
         public Dictionary<Cell, string> Cells { get; set; } = new();
         public Dictionary<CellStatus, string> Statuses { get; set; } = new();
         public ThemeGui GUI { get; set; } = new();
