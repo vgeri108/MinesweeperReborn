@@ -273,6 +273,11 @@
             Játék vége lekérdezés
             </summary>
         </member>
+        <member name="P:MinesweeperCore.Game.ElapsedSeconds">
+            <summary>
+            A játék kezdete óta eltelt idő másodpercben
+            </summary>
+        </member>
         <member name="M:MinesweeperCore.Game.Dig(System.Int32,System.Int32)">
             <summary>
             Mező kiásása, ha első ásás aknák generálása biztonságosan
