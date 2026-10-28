@@ -173,7 +173,7 @@ public partial class MainWindow : Window
         e.Cancel = true;
         if (ClosePromptOpen) return;
 
-        if (game.IsAllCellsAreHidden)
+        if (game.IsAllCellsAreHidden || game.IsGameOver)
         {
             AllowClose = true;
             Close();
