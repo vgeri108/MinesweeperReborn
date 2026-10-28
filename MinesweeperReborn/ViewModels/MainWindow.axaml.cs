@@ -18,12 +18,18 @@ public partial class MainWindow : Window
     public Action LoadGameEvent => LoadGame;
     private bool ClosePromptOpen;
     private bool AllowClose;
+    private bool timerPaused;
+    private double pausedTimerSeconds;
     private readonly DispatcherTimer uiTimer = new() { Interval = TimeSpan.FromMilliseconds(100) };
     public MainWindow()
     {
         InitializeComponent();
         ApplyThemeImages();
-        uiTimer.Tick += (_, _) => Timer.Text = ((int)game.ElapsedSeconds).ToString();
+        uiTimer.Tick += (_, _) =>
+        {
+            if (!timerPaused)
+                Timer.Text = ((int)Math.Max(0, game.ElapsedSeconds - pausedTimerSeconds)).ToString();
+        };
         uiTimer.Start();
         Opened += OnOpened;
         new Draw(game, GameBoard);
@@ -49,12 +55,13 @@ public partial class MainWindow : Window
         if (!File.Exists(Path.Combine(AppContext.BaseDirectory, "AppSettings.json")))
         {
             FirstStartDifficulty firstStartDifficulty = new FirstStartDifficulty();
-            await firstStartDifficulty.ShowDialog(this);
+            await ShowDialogWithPausedTimer(firstStartDifficulty);
             JsonManager.Save();
         }
 
         Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
+        pausedTimerSeconds = 0;
         new Draw(game, GameBoard);
 
         if (SaveGameHelper.IsThereAnySavedGame()) await AskGameLoad();
@@ -69,36 +76,38 @@ public partial class MainWindow : Window
     {
         Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
+        pausedTimerSeconds = 0;
         new Draw(game, GameBoard);
     }
 
     public void LoadGame()
     {
         game = Game.Load(AppSettings.SaveFileOnExit);
+        pausedTimerSeconds = 0;
         new Draw(game, GameBoard);
     }
 
     public async void Stats_Click(object? sender, RoutedEventArgs e)
     {
-        await new Stats(game).ShowDialog(this);
+        await ShowDialogWithPausedTimer(new Stats(game));
     }
 
     public async void Settings_Click(object? sender, RoutedEventArgs e)
     {
         Settings settings = new Settings(game, NewGameEvent);
-        await settings.ShowDialog(this);
+        await ShowDialogWithPausedTimer(settings);
     }
 
     private async void ApplicationSettings_Click(object? sender, RoutedEventArgs e)
     {
         AppSettingsMenu appSettingsMenu = new AppSettingsMenu();
-        await appSettingsMenu.ShowDialog(this);
+        await ShowDialogWithPausedTimer(appSettingsMenu);
     }
 
     public async void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
     {
         ThemeSelect themeSelect = new ThemeSelect();
-        await themeSelect.ShowDialog(this);
+        await ShowDialogWithPausedTimer(themeSelect);
         ApplyThemeImages();
         new Draw(game, GameBoard);
     }
@@ -116,6 +125,23 @@ public partial class MainWindow : Window
     public async void Help_Click(object? sender, RoutedEventArgs e)
     {
 
+    }
+
+    private async Task ShowDialogWithPausedTimer(Window dialog)
+    {
+        Game currentGame = game;
+        Stopwatch pauseDuration = Stopwatch.StartNew();
+        timerPaused = true;
+        try
+        {
+            await dialog.ShowDialog(this);
+        }
+        finally
+        {
+            pauseDuration.Stop();
+            if (ReferenceEquals(currentGame, game)) pausedTimerSeconds += pauseDuration.Elapsed.TotalSeconds;
+            timerPaused = false;
+        }
     }
 
     public void About_Click(object? sender, RoutedEventArgs e)
@@ -149,7 +175,7 @@ public partial class MainWindow : Window
         SaveGame_CloseDialog saveGame_CloseDialog = new SaveGame_CloseDialog(game);
         try
         {
-            await saveGame_CloseDialog.ShowDialog(this);
+            await ShowDialogWithPausedTimer(saveGame_CloseDialog);
             if (!saveGame_CloseDialog.IsCanceled)
             {
                 AllowClose = true;
@@ -166,7 +192,7 @@ public partial class MainWindow : Window
         if (!AppSettings.AlwaysContinueSavedGame)
         {
             LoadGame_OpenDialog loadGame_OpenDialog = new LoadGame_OpenDialog(game, LoadGameEvent);
-            await loadGame_OpenDialog.ShowDialog(this);
+            await ShowDialogWithPausedTimer(loadGame_OpenDialog);
         }
         else
         {
