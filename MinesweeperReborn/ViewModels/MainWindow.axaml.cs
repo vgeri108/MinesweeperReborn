@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Threading;
 using MinesweeperCore;
 using MinesweeperReborn.Views;
 using System;
@@ -17,10 +18,13 @@ public partial class MainWindow : Window
     public Action LoadGameEvent => LoadGame;
     private bool ClosePromptOpen;
     private bool AllowClose;
+    private readonly DispatcherTimer uiTimer = new() { Interval = TimeSpan.FromSeconds(1) };
     public MainWindow()
     {
         InitializeComponent();
         ApplyThemeImages();
+        uiTimer.Tick += (_, _) => Timer.Text = ((int)game.ElapsedSeconds).ToString();
+        uiTimer.Start();
         Opened += OnOpened;
         new Draw(game, GameBoard);
     }
