@@ -43,9 +43,9 @@ namespace MinesweeperReborn
 
             ThemeGui guiImages = new()
             {
-                Background = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Background)),
-                Clock = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Clock)),
-                Flower = BuildImagePath(themeName, Path.Combine("GUI", config.GUI.Flower))
+                Background = BuildImagePath(themeName, config.GUI.Background),
+                Clock = BuildImagePath(themeName, config.GUI.Clock),
+                Flower = BuildImagePath(themeName, config.GUI.Flower)
             };
             ThemeSounds sounds = new()
             {

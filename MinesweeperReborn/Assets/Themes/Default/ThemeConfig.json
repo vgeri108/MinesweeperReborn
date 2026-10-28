@@ -26,9 +26,9 @@
     "Questioned": "Question.png"
   },
   "GUI": {
-    "Background": "hatter.png",
-    "Clock": "clock.png",
-    "Flower": "flower.png"
+    "Background": "GUI/hatter.png",
+    "Clock": "GUI/clock.png",
+    "Flower": "GUI/flower.png"
   },
   "Sounds": {
     "Start": "Sounds/start.wav",
