@@ -14,7 +14,7 @@ namespace MinesweeperReborn;
 public partial class MainWindow : Window
 {
     private Game game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
-    public Action NewGameEvent => () => NewGame_Click(null, new RoutedEventArgs());
+    public Action StartNewGameEvent => StartNewGame;
     public Action LoadGameEvent => LoadGame;
     private bool ClosePromptOpen;
     private bool AllowClose;
@@ -59,10 +59,7 @@ public partial class MainWindow : Window
             JsonManager.Save();
         }
 
-        Sounds.PlayStart();
-        game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
-        pausedTimerSeconds = 0;
-        new Draw(game, GameBoard);
+        StartNewGame();
 
         if (SaveGameHelper.IsThereAnySavedGame()) await AskGameLoad();
 
@@ -81,12 +78,17 @@ public partial class MainWindow : Window
 
             if (newGame_MenuDialog.Selected == "StartNew")
             {
-                Sounds.PlayStart();
-                game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
-                pausedTimerSeconds = 0;
-                new Draw(game, GameBoard);
+                StartNewGame();
             }
         }
+    }
+
+    private void StartNewGame()
+    {
+        Sounds.PlayStart();
+        game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
+        pausedTimerSeconds = 0;
+        new Draw(game, GameBoard);
     }
 
     public void LoadGame()
@@ -103,7 +105,7 @@ public partial class MainWindow : Window
 
     public async void Settings_Click(object? sender, RoutedEventArgs e)
     {
-        Settings settings = new Settings(game, NewGameEvent);
+        Settings settings = new Settings(game, StartNewGameEvent);
         await ShowDialogWithPausedTimer(settings);
     }
 
