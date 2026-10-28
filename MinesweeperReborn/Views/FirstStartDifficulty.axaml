@@ -21,7 +21,7 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Top">
 
             <Button Name="BeginnerButton" Click="NewBeginner"
-                    HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF305995">
+                    HorizontalContentAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF305995">
                 <StackPanel>
                     <TextBlock FontSize="14"><Run Foreground="Green" Text="➜ "/><Run Text="{x:Static loc:Strings.Beginner}"/></TextBlock>
                     <TextBlock FontSize="12" Margin="10,0,0,0" Text="   "><Run Text="{x:Static loc:Strings.BeginnerMineCount}"/><Run Text=", "/><Run Text="{x:Static loc:Strings.BeginnerGrid}"/></TextBlock>
@@ -29,7 +29,7 @@
             </Button>
 
             <Button Name="IntermediateButton" Click="NewIntermediate"
-                    HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}">
+                    HorizontalContentAlignment="Left" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}">
                 <StackPanel>
                     <TextBlock FontSize="14"><Run Foreground="Green" Text="➜ "/><Run Text="{x:Static loc:Strings.Intermediate}"/></TextBlock>
                     <TextBlock FontSize="12" Margin="10,0,0,0" Text="   "><Run Text="{x:Static loc:Strings.IntermediateMineCount}"/><Run Text=", "/><Run Text="{x:Static loc:Strings.IntermediateGrid}"/></TextBlock>
@@ -37,7 +37,7 @@
             </Button>
 
             <Button Name="AdvancedButton" Click="NewAdvanced"
-                    HorizontalContentAlignment="Left" Padding="10" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}">
+                    HorizontalContentAlignment="Left" Background="{x:Null}" Foreground="#FF305995" BorderBrush="{x:Null}">
                 <StackPanel>
                     <TextBlock FontSize="14"><Run Foreground="Green" Text="➜ "/><Run Text="{x:Static loc:Strings.Advanced}"/></TextBlock>
                     <TextBlock FontSize="12" Margin="10,0,0,0" Text="   "><Run Text="{x:Static loc:Strings.AdvancedMineCount}"/><Run Text=", "/><Run Text="{x:Static loc:Strings.AdvancedGrid}"/></TextBlock>

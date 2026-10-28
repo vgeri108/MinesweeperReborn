@@ -76,8 +76,8 @@
         </Grid>
 
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right" Margin="10">
-            <Button x:Name="Canel" Content="{x:Static loc:Strings.Cancel}" Height="20" Width="120" Margin="0,0,5,0" Padding="2,0,2,0" Click="Cancel_Click"/>
-            <Button x:Name="Save" Content="{x:Static loc:Strings.SaveGame}" Height="20" Width="120" Margin="5,0,0,0" Padding="2,0,2,0" Click="Save_Click"/>
+            <Button Classes="dialog-button" x:Name="Canel" Content="{x:Static loc:Strings.Cancel}" Height="20" Width="120" Margin="0,0,5,0" Click="Cancel_Click"/>
+            <Button Classes="dialog-button" x:Name="Save" Content="{x:Static loc:Strings.SaveGame}" Height="20" Width="120" Margin="5,0,0,0" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

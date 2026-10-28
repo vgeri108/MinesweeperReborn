@@ -22,7 +22,7 @@
                         <CheckBox x:Name="UpdateCheck" Margin="0,0,0,0" IsChecked="True">
                             <TextBlock Text="{x:Static loc:Strings.CheckForUpdatesOnStartup}"/>
                         </CheckBox>
-                        <Button x:Name="CheckUpdates" Content="{x:Static loc:Strings.CheckForUpdates}" Margin="5" Click="CheckUpdates_Click"/>
+                        <Button Classes="dialog-button" x:Name="CheckUpdates" Content="{x:Static loc:Strings.CheckForUpdates}" Margin="5" Click="CheckUpdates_Click"/>
                     </StackPanel>
                 </GroupBox>
                 <GroupBox Header="{x:Static loc:Strings.SavedGames}">
@@ -34,8 +34,8 @@
             </StackPanel>
         </ScrollViewer>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="{x:Static loc:Strings.Ok}" Width="105" Click="OK_Click" Margin="0,0,10,0" Padding="2,0,2,0"/>
-            <Button Content="{x:Static loc:Strings.Cancel}" Width="105" Click="Cancel_Click" Padding="2,0,2,0"/>
+            <Button Classes="dialog-button" Content="{x:Static loc:Strings.Ok}" Width="105" Click="OK_Click" Margin="0,0,10,0"/>
+            <Button Classes="dialog-button" Content="{x:Static loc:Strings.Cancel}" Width="105" Click="Cancel_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -6,5 +6,9 @@
 
     <Application.Styles>
         <SimpleTheme />
+        <Style Selector="Button.dialog-button">
+            <Setter Property="CornerRadius" Value="3"/>
+            <Setter Property="Padding" Value="2,0,2,0"/>
+        </Style>
     </Application.Styles>
 </Application>
