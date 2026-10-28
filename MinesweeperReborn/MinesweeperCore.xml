@@ -532,6 +532,11 @@
             Aknák lettek-e generálva
             </summary>
         </member>
+        <member name="P:MinesweeperCore.SaveGameData.TimerSeconds">
+            <summary>
+            Eltelt idő másodpercben
+            </summary>
+        </member>
         <member name="P:MinesweeperCore.SaveGameData.Status">
             <summary>
             A látható réteg: fedett, zászlós, kérdőjelezett, felfedett mezők
