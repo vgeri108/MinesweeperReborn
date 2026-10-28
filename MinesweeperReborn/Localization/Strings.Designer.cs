@@ -695,7 +695,7 @@ namespace MinesweeperReborn.Localization {
                 return ResourceManager.GetString("StatisticsRenameDifficulty", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Alaphelyzetbe állítás.
         /// </summary>
@@ -722,7 +722,7 @@ namespace MinesweeperReborn.Localization {
                 return ResourceManager.GetString("StatisticsSave", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Nyerési arány: {0}%.
         /// </summary>

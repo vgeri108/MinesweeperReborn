@@ -3,7 +3,9 @@ using Avalonia.Interactivity;
 using MinesweeperCore;
 using MinesweeperReborn.Localization;
 using MsBox.Avalonia;
+using MsBox.Avalonia.Dto;
 using MsBox.Avalonia.Enums;
+using MsBox.Avalonia.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -126,12 +128,19 @@ namespace MinesweeperReborn.Views
 
         private async void Reset_Click(object? sender, RoutedEventArgs e)
         {
-            ButtonResult result = await MessageBoxManager.GetMessageBoxStandard(
-                Strings.StatisticsReset,
-                Strings.StatisticsResetPrompt,
-                ButtonEnum.YesNo).ShowWindowDialogAsync(this);
+            string? result = await MessageBoxManager.GetMessageBoxCustom(new MessageBoxCustomParams
+            {
+                ContentTitle = Strings.StatisticsReset,
+                ContentMessage = Strings.StatisticsResetPrompt,
+                ButtonDefinitions = new[]
+                {
+                    new ButtonDefinition { Name = Strings.Yes, IsDefault = true },
+                    new ButtonDefinition { Name = Strings.No, IsCancel = true }
+                },
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            }).ShowWindowDialogAsync(this);
 
-            if (result != ButtonResult.Yes)
+            if (result != Strings.Yes)
                 return;
 
             Statistics.Delete(selectedStatisticsId);
