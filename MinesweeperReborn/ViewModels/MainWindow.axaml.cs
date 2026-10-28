@@ -18,7 +18,7 @@ public partial class MainWindow : Window
     public Action LoadGameEvent => LoadGame;
     private bool ClosePromptOpen;
     private bool AllowClose;
-    private readonly DispatcherTimer uiTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+    private readonly DispatcherTimer uiTimer = new() { Interval = TimeSpan.FromMilliseconds(100) };
     public MainWindow()
     {
         InitializeComponent();
