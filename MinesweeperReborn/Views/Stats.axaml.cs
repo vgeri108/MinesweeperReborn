@@ -104,8 +104,22 @@ namespace MinesweeperReborn.Views
 
             Times.Children.Clear();
             Dates.Children.Clear();
-            Times.Children.Add(new TextBlock { Text = Strings.StatisticsNoBestTimes });
-            Dates.Children.Add(new TextBlock { Text = Strings.StatisticsNoBestTimes });
+            if (stats.BestWinTimes.Count == 0)
+            {
+                Times.Children.Add(new TextBlock { Text = Strings.StatisticsNoBestTimes });
+                Dates.Children.Add(new TextBlock { Text = Strings.StatisticsNoBestTimes });
+                return;
+            }
+
+            foreach (BestWinTime bestTime in stats.BestWinTimes)
+            {
+                TimeSpan elapsed = TimeSpan.FromSeconds(bestTime.TimeSeconds);
+                Times.Children.Add(new TextBlock
+                {
+                    Text = $"{(int)elapsed.TotalMinutes}:{elapsed.Seconds:00}"
+                });
+                Dates.Children.Add(new TextBlock { Text = bestTime.Date.ToString("d") });
+            }
         }
 
         private void Close_Click(object? sender, RoutedEventArgs e) => Close();
