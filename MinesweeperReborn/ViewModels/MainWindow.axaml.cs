@@ -19,6 +19,7 @@ public partial class MainWindow : Window
     public Action LoadGameEvent => LoadGame;
     private bool ClosePromptOpen;
     private bool AllowClose;
+    private bool RestartOnClose;
     private bool timerPaused;
     private double pausedTimerSeconds;
     private readonly DispatcherTimer uiTimer = new() { Interval = TimeSpan.FromMilliseconds(100) };
@@ -150,6 +151,11 @@ public partial class MainWindow : Window
     {
         AppSettingsMenu appSettingsMenu = new AppSettingsMenu();
         await ShowDialogWithPausedTimer(appSettingsMenu);
+        if (appSettingsMenu.RestartRequested)
+        {
+            RestartOnClose = true;
+            Close();
+        }
     }
 
     public async void AppearanceMenu_Click(object? sender, RoutedEventArgs e)
@@ -218,8 +224,7 @@ public partial class MainWindow : Window
 
         if (game.IsAllCellsAreHidden || game.IsGameOver)
         {
-            AllowClose = true;
-            Close();
+            FinishClosing();
             return;
         }
 
@@ -230,8 +235,11 @@ public partial class MainWindow : Window
             await ShowDialogWithPausedTimer(saveGame_CloseDialog);
             if (!saveGame_CloseDialog.IsCanceled)
             {
-                AllowClose = true;
-                Close();
+                FinishClosing();
+            }
+            else
+            {
+                RestartOnClose = false;
             }
         }
         finally
@@ -239,6 +247,16 @@ public partial class MainWindow : Window
             ClosePromptOpen = false;
         }
     }
+
+    private void FinishClosing()
+    {
+        if (RestartOnClose)
+            Process.Start(Environment.ProcessPath);
+
+        AllowClose = true;
+        Close();
+    }
+
     private async Task AskGameLoad()
     {
         if (!AppSettings.AlwaysContinueSavedGame)

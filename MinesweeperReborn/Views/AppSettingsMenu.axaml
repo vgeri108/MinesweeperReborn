@@ -25,6 +25,13 @@
                         <Button Classes="dialog-button" x:Name="CheckUpdates" Content="{x:Static loc:Strings.CheckForUpdates}" Margin="5" Click="CheckUpdates_Click"/>
                     </StackPanel>
                 </GroupBox>
+                <GroupBox Header="{x:Static loc:Strings.Language}">
+                    <ComboBox x:Name="LanguagePreferenceComboBox" Margin="5">
+                        <ComboBoxItem Content="{x:Static loc:Strings.SystemLanguage}" Tag="System"/>
+                        <ComboBoxItem Content="{x:Static loc:Strings.Hungarian}" Tag="Hungarian"/>
+                        <ComboBoxItem Content="{x:Static loc:Strings.English}" Tag="English"/>
+                    </ComboBox>
+                </GroupBox>
                 <GroupBox Header="{x:Static loc:Strings.SavedGames}">
                     <StackPanel>
                         <CheckBox x:Name="ContinueSaved" Content="{x:Static loc:Strings.AlwaysContinueSavedGame}" Margin="0,0,0,8"/>

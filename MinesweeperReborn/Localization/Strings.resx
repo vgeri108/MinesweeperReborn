@@ -102,6 +102,9 @@
   <data name="RestartToApply" xml:space="preserve">
     <value>Újraindítás után lép életbe</value>
   </data>
+  <data name="RestartNowPrompt" xml:space="preserve">
+    <value>A nyelv módosult. Újraindítja most az alkalmazást, hogy életbe lépjen?</value>
+  </data>
   <data name="CheckForUpdates" xml:space="preserve">
     <value>Frissítések keresése</value>
   </data>

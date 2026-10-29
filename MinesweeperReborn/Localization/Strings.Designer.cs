@@ -643,6 +643,15 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A nyelv módosult. Újraindítja most az alkalmazást, hogy életbe lépjen?.
+        /// </summary>
+        public static string RestartNowPrompt {
+            get {
+                return ResourceManager.GetString("RestartNowPrompt", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Újraindítás után lép életbe.
         /// </summary>
         public static string RestartToApply {
