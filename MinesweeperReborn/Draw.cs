@@ -33,10 +33,13 @@ namespace MinesweeperReborn
     {
         public Game game;
         public UniformGrid grid;
-        private readonly List<Button> buttonPool = new();
+        private readonly List<Image> cellImages = new();
+        private readonly List<Border> cellHighlights = new();
+        private readonly List<bool> hoveredCells = new();
         private readonly ButtonClicks buttonClicks;
         private readonly TextBlock mineCounter;
         private IBrush buttonBackground = Brushes.Transparent;
+        private IBrush cellHoverBrush = Brushes.Transparent;
         private double buttonCorner;
 
         private Dictionary<object, Bitmap> ImageCache = new Dictionary<object, Bitmap>();
@@ -75,10 +78,13 @@ namespace MinesweeperReborn
         private void InitBoard()
         {
             grid.Children.Clear();
-            buttonPool.Clear();
+            cellImages.Clear();
+            cellHighlights.Clear();
+            hoveredCells.Clear();
             grid.Rows = game.Height;
             grid.Columns = game.Width;
             buttonBackground = new SolidColorBrush(ThemeManager.GameBoardButtonColor);
+            cellHoverBrush = new SolidColorBrush(ThemeManager.GameBoardHoverColor);
             double boardScale = Math.Min(1d, 9d / Math.Max(game.Width, game.Height));
             double buttonMargin = ThemeManager.GameBoardMargin * boardScale;
             buttonCorner = ThemeManager.GameBoardCorner * boardScale;
@@ -98,13 +104,16 @@ namespace MinesweeperReborn
                         Background = Brushes.Transparent,
                     };
 
+                    int index = x * game.Width + y;
+                    hoveredCells.Add(false);
+                    btn.PointerEntered += (_, _) => SetCellHovered(index, true);
+                    btn.PointerExited += (_, _) => SetCellHovered(index, false);
                     btn.AddHandler(InputElement.PointerPressedEvent, buttonClicks.Button_LeftClick, RoutingStrategies.Bubble, handledEventsToo: true);
                     btn.AddHandler(InputElement.PointerPressedEvent, buttonClicks.Button_RightClick, RoutingStrategies.Bubble, handledEventsToo: true);
                     btn.AddHandler(InputElement.DoubleTappedEvent, buttonClicks.Button_DoubleClick, RoutingStrategies.Bubble, handledEventsToo: true);
 
                     btn.Content = CreateCellContent(CellStatus.Covered);
 
-                    buttonPool.Add(btn);
                     grid.Children.Add(btn);
                 }
             }
@@ -170,23 +179,51 @@ namespace MinesweeperReborn
                     if (gameOverImage != null && ThemeManager.GameOverImages.TryGetValue(gameOverImage, out string? imagePath))
                         sourceCell = imagePath;
 
-                    buttonPool[index].Content = CreateCellContent(sourceCell);
+                    cellImages[index].Source = ImageCache[sourceCell];
+                    UpdateCellHighlight(index);
                 }
             }
         }
 
+        private void SetCellHovered(int index, bool isHovered)
+        {
+            hoveredCells[index] = isHovered;
+            UpdateCellHighlight(index);
+        }
+
+        private void UpdateCellHighlight(int index)
+        {
+            int x = index / game.Width;
+            int y = index % game.Width;
+            cellHighlights[index].Background = hoveredCells[index] && game.Status[x, y] != CellStatus.Uncovered
+                ? cellHoverBrush
+                : Brushes.Transparent;
+        }
+
         private Border CreateCellContent(object sourceCell)
         {
+            Image image = new()
+            {
+                Source = ImageCache[sourceCell],
+                Stretch = Avalonia.Media.Stretch.UniformToFill,
+                Margin = new Thickness(0),
+            };
+            Border highlight = new();
+            cellImages.Add(image);
+            cellHighlights.Add(highlight);
+
             return new Border
             {
                 CornerRadius = new CornerRadius(buttonCorner),
                 ClipToBounds = true,
                 Background = buttonBackground,
-                Child = new Image
+                Child = new Grid
                 {
-                    Source = ImageCache[sourceCell],
-                    Stretch = Avalonia.Media.Stretch.UniformToFill,
-                    Margin = new Thickness(0),
+                    Children =
+                    {
+                        image,
+                        highlight
+                    }
                 }
             };
         }

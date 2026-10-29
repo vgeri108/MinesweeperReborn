@@ -34,6 +34,7 @@ namespace MinesweeperReborn
         public double GameBoardCorner { get; set; }
         public double GameBoardMargin { get; set; }
         public string GameBoardButtonColor { get; set; } = "#00FFFFFF";
+        public string GameBoardHoverColor { get; set; } = "#40FFFFFF";
         public Dictionary<Cell, string> Cells { get; set; } = new();
         public Dictionary<CellStatus, string> Statuses { get; set; } = new();
         public Dictionary<string, string> GameOverImages { get; set; } = new();

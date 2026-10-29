@@ -10,6 +10,7 @@
   "GameBoardCorner": 0,
   "GameBoardMargin": 0,
   "GameBoardButtonColor": "#00FFFFFF",
+  "GameBoardHoverColor": "#40FFFFFF",
   "Cells": {
     "Empty": "Empty.png",
     "Mine": "Mine.png",
