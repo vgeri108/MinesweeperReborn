@@ -135,7 +135,7 @@ public partial class MainWindow : Window
 
     public async void Help_Click(object? sender, RoutedEventArgs e)
     {
-
+        await ShowDialogWithPausedTimer(new Help());
     }
 
     private async Task ShowDialogWithPausedTimer(Window dialog)
