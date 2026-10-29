@@ -147,6 +147,15 @@
   <data name="About" xml:space="preserve">
     <value>About Minesweeper</value>
   </data>
+  <data name="AboutGameVersion" xml:space="preserve">
+    <value>Minesweeper: {0}</value>
+  </data>
+  <data name="AboutOperatingSystem" xml:space="preserve">
+    <value>Operating system: {0}</value>
+  </data>
+  <data name="AboutWindowsVersion" xml:space="preserve">
+    <value>Windows: {0}.{1} (build: {2})</value>
+  </data>
   <data name="MoreGames" xml:space="preserve">
     <value>More Games Online</value>
   </data>

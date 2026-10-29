@@ -147,6 +147,15 @@
   <data name="About" xml:space="preserve">
     <value>Az aknakereső névjegye</value>
   </data>
+  <data name="AboutGameVersion" xml:space="preserve">
+    <value>Aknakereső: {0}</value>
+  </data>
+  <data name="AboutOperatingSystem" xml:space="preserve">
+    <value>Operációs rendszer: {0}</value>
+  </data>
+  <data name="AboutWindowsVersion" xml:space="preserve">
+    <value>Windows: {0}.{1} (build: {2})</value>
+  </data>
   <data name="MoreGames" xml:space="preserve">
     <value>További játékok az interneten</value>
   </data>

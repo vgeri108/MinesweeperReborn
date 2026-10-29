@@ -67,6 +67,33 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aknakereső: {0}.
+        /// </summary>
+        public static string AboutGameVersion {
+            get {
+                return ResourceManager.GetString("AboutGameVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operációs rendszer: {0}.
+        /// </summary>
+        public static string AboutOperatingSystem {
+            get {
+                return ResourceManager.GetString("AboutOperatingSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows: {0}.{1} (build: {2}).
+        /// </summary>
+        public static string AboutWindowsVersion {
+            get {
+                return ResourceManager.GetString("AboutWindowsVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Haladó.
         /// </summary>
         public static string Advanced {

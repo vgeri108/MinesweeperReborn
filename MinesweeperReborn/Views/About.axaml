@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
+        mc:Ignorable="d"
+        x:Class="MinesweeperReborn.Views.About"
+        Width="500"
+        Height="450"
+        MinWidth="500"
+        MinHeight="450"
+        CanResize="False"
+        ShowInTaskbar="False"
+        Title="{x:Static loc:Strings.About}"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image x:Name="Logo"
+               Grid.Row="0"
+               Margin="20"
+               Stretch="Uniform"/>
+        <Separator Grid.Row="1"/>
+
+        <Grid Grid.Row="2" Margin="10,10,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="AppLogo"
+                   Width="40"
+                   Height="40"
+                   VerticalAlignment="Top"
+                   Margin="0,5,0,0"
+                   Stretch="Uniform"/>
+            <TextBlock x:Name="InfoText"
+                       Grid.Column="1"
+                       TextWrapping="Wrap"
+                       Margin="20,0,30,0"/>
+        </Grid>
+
+        <Button Grid.Row="3"
+                Classes="dialog-button"
+                Content="{x:Static loc:Strings.Ok}"
+                Height="25"
+                Width="90"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="15,15,35,15"
+                Click="OK_Click"/>
+    </Grid>
+</Window>

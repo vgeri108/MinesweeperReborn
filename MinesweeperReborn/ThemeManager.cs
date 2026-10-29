@@ -45,7 +45,8 @@ namespace MinesweeperReborn
             {
                 Background = BuildImagePath(themeName, config.GUI.Background),
                 Clock = BuildImagePath(themeName, config.GUI.Clock),
-                Flower = BuildImagePath(themeName, config.GUI.Flower)
+                Flower = BuildImagePath(themeName, config.GUI.Flower),
+                AboutLogo = BuildImagePath(themeName, config.GUI.AboutLogo)
             };
             ThemeSounds sounds = new()
             {

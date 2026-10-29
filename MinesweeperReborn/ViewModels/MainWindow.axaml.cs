@@ -155,9 +155,9 @@ public partial class MainWindow : Window
         }
     }
 
-    public void About_Click(object? sender, RoutedEventArgs e)
+    public async void About_Click(object? sender, RoutedEventArgs e)
     {
-
+        await ShowDialogWithPausedTimer(new About());
     }
     public void MoreGames_Click(object? sender, RoutedEventArgs e)
     {

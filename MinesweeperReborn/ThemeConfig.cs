@@ -25,6 +25,7 @@ namespace MinesweeperReborn
         public string Background { get; set; } = string.Empty;
         public string Clock { get; set; } = string.Empty;
         public string Flower { get; set; } = string.Empty;
+        public string AboutLogo { get; set; } = string.Empty;
     }
 
     internal sealed class ThemeSounds

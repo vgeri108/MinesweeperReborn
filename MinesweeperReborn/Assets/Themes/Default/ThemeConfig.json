@@ -28,7 +28,8 @@
   "GUI": {
     "Background": "GUI/hatter.png",
     "Clock": "GUI/clock.png",
-    "Flower": "GUI/flower.png"
+    "Flower": "GUI/flower.png",
+    "AboutLogo": "GUI/flower.png"
   },
   "Sounds": {
     "Start": "Sounds/start.wav",
