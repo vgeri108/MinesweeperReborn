@@ -74,6 +74,7 @@ public partial class MainWindow : Window
 
         if (!File.Exists(Path.Combine(AppContext.BaseDirectory, "AppSettings.json")))
         {
+            Directory.CreateDirectory("saves");
             FirstStartDifficulty firstStartDifficulty = new FirstStartDifficulty();
             await ShowDialogWithPausedTimer(firstStartDifficulty);
             JsonManager.Save();
