@@ -3,6 +3,8 @@
   "Creator": "vgeri108",
   "Description": "Alapértelmezett aknakereső kinézet a Windows 7-es játékra alapozva.",
   "ThemeImage": "Covered.png",
+  "LicenseName": "MIT",
+  "LicenseUrl": "https://opensource.org/license/mit/",
   "TextBoxBackgroundColor": "#31569C",
   "TextBoxTextColor": "#FFFFFF",
   "GameBoardCorner": 0,

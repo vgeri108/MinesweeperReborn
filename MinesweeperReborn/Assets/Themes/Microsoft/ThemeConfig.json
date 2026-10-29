@@ -3,6 +3,8 @@
   "Creator": "vgeri108",
   "Description": "A Microsoftos aknakeresőhöz hasonló kinézet.",
   "ThemeImage": "pack.png",
+  "LicenseName": "MIT",
+  "LicenseUrl": "https://opensource.org/license/mit/",
   "TextBoxBackgroundColor": "#323340",
   "TextBoxTextColor": "#FFFFFF",
   "GameBoardCorner": 8,

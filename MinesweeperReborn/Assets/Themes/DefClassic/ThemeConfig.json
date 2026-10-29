@@ -3,6 +3,8 @@
   "Creator": "vgeri108",
   "Description": "Klasszikus aknakereső kinézet a Windows XP alapján.",
   "ThemeImage": "Images/GUI/mineIcon.png",
+  "LicenseName": "MIT",
+  "LicenseUrl": "https://opensource.org/license/mit/",
   "TextBoxBackgroundColor": "#8C7D7D",
   "TextBoxTextColor": "#FF0000",
   "GameBoardCorner": 0,
