@@ -100,8 +100,9 @@ namespace MinesweeperReborn
                         Padding = new Thickness(0),
                         BorderThickness = new Thickness(0),
                         BorderBrush = Brushes.Transparent,
-                        CornerRadius = new CornerRadius(0),
+                        CornerRadius = new CornerRadius(buttonCorner),
                         Background = Brushes.Transparent,
+                        ClipToBounds = true,
                     };
 
                     int index = x * game.Width + y;
