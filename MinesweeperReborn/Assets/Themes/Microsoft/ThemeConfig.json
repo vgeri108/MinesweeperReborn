@@ -28,7 +28,8 @@
   "GUI": {
     "Background": "Images/GUI/hatter.png",
     "Clock": "Images/GUI/clock.png",
-    "Flower": "Images/GUI/MineIcon.png"
+    "Flower": "Images/GUI/MineIcon.png",
+    "AboutLogo": "Images/GUI/MineIcon.png"
   },
   "Sounds": {
     "Start": "Sounds/Silence.wav",
