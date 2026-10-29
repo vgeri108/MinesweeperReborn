@@ -29,6 +29,7 @@ namespace MinesweeperReborn
         public static string CurrentTheme { get; private set; } = "Default";
         public static Dictionary<Cell, string> CellImage { get; private set; } = new();
         public static Dictionary<CellStatus, string> CellStatusImage { get; private set; } = new();
+        public static Dictionary<string, string> GameOverImages { get; private set; } = new();
         public static ThemeGui Gui { get; private set; } = new();
         public static ThemeSounds Sounds { get; private set; } = new();
         public static Color TextBoxBackgroundColor { get; private set; } = Color.Parse("#31569C");
@@ -59,6 +60,13 @@ namespace MinesweeperReborn
                 statusImages.Add(image.Key, BuildImagePath(themeName, image.Value));
             }
 
+            Dictionary<string, string> gameOverImages = new();
+            foreach (var image in config.GameOverImages)
+            {
+                if (!string.IsNullOrWhiteSpace(image.Value))
+                    gameOverImages.Add(image.Key, BuildImagePath(themeName, image.Value));
+            }
+
             ThemeGui guiImages = new()
             {
                 Background = BuildImagePath(themeName, config.GUI.Background),
@@ -80,6 +88,7 @@ namespace MinesweeperReborn
             CurrentTheme = themeName;
             CellImage = cellImages;
             CellStatusImage = statusImages;
+            GameOverImages = gameOverImages;
             Gui = guiImages;
             Sounds = sounds;
             TextBoxBackgroundColor = textBoxBackgroundColor;

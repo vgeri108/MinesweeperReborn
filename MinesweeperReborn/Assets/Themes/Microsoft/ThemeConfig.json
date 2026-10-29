@@ -27,6 +27,9 @@
     "Flagged": "Images/Flagged.png",
     "Questioned": "Images/Question.png"
   },
+  "GameOverImages": {
+    "MineFlagged": "Images/MineCorrect.png"
+  },
   "GUI": {
     "Background": "Images/GUI/hatter.png",
     "Clock": "Images/GUI/clock.png",

@@ -66,6 +66,10 @@ namespace MinesweeperReborn
                     if (!ImageCache.ContainsKey(item)) ImageCache.Add(item, AssetPaths.LoadBitmap(ThemeManager.CellStatusImage[item]));
                 }
             }
+            foreach (var image in ThemeManager.GameOverImages.Values)
+            {
+                if (!ImageCache.ContainsKey(image)) ImageCache.Add(image, AssetPaths.LoadBitmap(image));
+            }
         }
 
         private void InitBoard()
@@ -133,6 +137,38 @@ namespace MinesweeperReborn
                             sourceCell = game.Status[x, y];
                             break;
                     }
+
+                    string? gameOverImage = null;
+                    if (game.Result == Game.GameStatus.Lose)
+                    {
+                        if (game.GetCell(x, y) == Cell.Mine)
+                        {
+                            gameOverImage = game.Status[x, y] switch
+                            {
+                                CellStatus.Uncovered => "MineClicked",
+                                CellStatus.Covered => "MineNotClicked",
+                                CellStatus.Flagged => "MineFlagged",
+                                CellStatus.Questioned => "MineQuestion",
+                                _ => null
+                            };
+                        }
+                        else if (game.Status[x, y] == CellStatus.Flagged)
+                        {
+                            gameOverImage = "NotMine";
+                        }
+                    }
+                    else if (game.Result == Game.GameStatus.Win && game.GetCell(x, y) == Cell.Mine)
+                    {
+                        gameOverImage = game.Status[x, y] switch
+                        {
+                            CellStatus.Questioned => "MineWinQuestion",
+                            CellStatus.Flagged => null,
+                            _ => "MineWinNotClicked"
+                        };
+                    }
+
+                    if (gameOverImage != null && ThemeManager.GameOverImages.TryGetValue(gameOverImage, out string? imagePath))
+                        sourceCell = imagePath;
 
                     buttonPool[index].Content = CreateCellContent(sourceCell);
                 }
