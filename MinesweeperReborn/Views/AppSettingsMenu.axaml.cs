@@ -39,6 +39,7 @@ namespace MinesweeperReborn.Views
             ContinueSaved.IsChecked = AppSettings.AlwaysContinueSavedGame;
             SaveExit.IsChecked = AppSettings.AlwaysSaveGameOnExit;
             LanguagePreferenceComboBox.SelectedIndex = (int)LanguageSettings.Preference;
+            ThemePreferenceComboBox.SelectedIndex = (int)AppSettings.ThemePreference;
         }
 
         private async void OK_Click(object sender, RoutedEventArgs e)
@@ -46,6 +47,8 @@ namespace MinesweeperReborn.Views
             AppSettings.AutomaticUpdateSearch = (bool)UpdateCheck.IsChecked;
             AppSettings.AlwaysContinueSavedGame = (bool)ContinueSaved.IsChecked;
             AppSettings.AlwaysSaveGameOnExit = (bool)SaveExit.IsChecked;
+            AppSettings.ThemePreference = (AppThemePreference)ThemePreferenceComboBox.SelectedIndex;
+            App.ApplyThemePreference();
 
             LanguagePreference preference = (LanguagePreference)LanguagePreferenceComboBox.SelectedIndex;
             bool languageChanged = preference != LanguageSettings.Preference;

@@ -48,7 +48,8 @@ namespace MinesweeperReborn
                 AlwaysContinueSavedGame = AppSettings.AlwaysContinueSavedGame,
                 AlwaysSaveGameOnExit = AppSettings.AlwaysSaveGameOnExit,
                 EnableQuestionMarks = AppSettings.EnableQuestionMarks,
-                AutomaticUpdateSearch = AppSettings.AutomaticUpdateSearch
+                AutomaticUpdateSearch = AppSettings.AutomaticUpdateSearch,
+                ThemePreference = AppSettings.ThemePreference
             };
 
             string json = JsonSerializer.Serialize(data, _jsonOptions);
@@ -69,7 +70,8 @@ namespace MinesweeperReborn
                     AlwaysContinueSavedGame = AppSettings.AlwaysContinueSavedGame,
                     AlwaysSaveGameOnExit = AppSettings.AlwaysSaveGameOnExit,
                     EnableQuestionMarks = AppSettings.EnableQuestionMarks,
-                    AutomaticUpdateSearch = AppSettings.AutomaticUpdateSearch
+                    AutomaticUpdateSearch = AppSettings.AutomaticUpdateSearch,
+                    ThemePreference = AppSettings.ThemePreference
                 };
             }
 
@@ -87,6 +89,7 @@ namespace MinesweeperReborn
             AppSettings.AlwaysSaveGameOnExit = data.AlwaysSaveGameOnExit;
             AppSettings.EnableQuestionMarks = data.EnableQuestionMarks;
             AppSettings.AutomaticUpdateSearch = data.AutomaticUpdateSearch;
+            AppSettings.ThemePreference = data.ThemePreference;
 
             return data;
         }

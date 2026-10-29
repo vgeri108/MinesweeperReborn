@@ -87,6 +87,18 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="ThemeAppearance" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="SystemTheme" xml:space="preserve">
+    <value>System setting</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Dark</value>
+  </data>
   <data name="SystemLanguage" xml:space="preserve">
     <value>Windows language</value>
   </data>

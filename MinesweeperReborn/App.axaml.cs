@@ -19,6 +19,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using MinesweeperReborn.Localization;
 
 namespace MinesweeperReborn;
@@ -28,9 +29,20 @@ public partial class App : Application
     public override void Initialize()
     {
         JsonManager.Load();
+        ApplyThemePreference();
         ThemeManager.LoadTheme(AppSettings.CurrentTheme);
         LanguageSettings.ApplyAtStartup();
         AvaloniaXamlLoader.Load(this);
+    }
+
+    internal static void ApplyThemePreference()
+    {
+        Current!.RequestedThemeVariant = AppSettings.ThemePreference switch
+        {
+            AppThemePreference.Light => ThemeVariant.Light,
+            AppThemePreference.Dark => ThemeVariant.Dark,
+            _ => ThemeVariant.Default
+        };
     }
 
     public override void OnFrameworkInitializationCompleted()

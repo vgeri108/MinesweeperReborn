@@ -25,6 +25,13 @@ using System.Text;
 
 namespace MinesweeperReborn
 {
+    internal enum AppThemePreference
+    {
+        System,
+        Light,
+        Dark
+    }
+
     internal class AppSettings
     {
         public static string SaveFolder = Path.Combine(AppContext.BaseDirectory, "saves");
@@ -39,5 +46,6 @@ namespace MinesweeperReborn
         public static bool EnableQuestionMarks = true;
 
         public static bool AutomaticUpdateSearch = true;
+        public static AppThemePreference ThemePreference = AppThemePreference.System;
     }
 }

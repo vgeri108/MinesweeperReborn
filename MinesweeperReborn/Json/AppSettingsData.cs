@@ -33,5 +33,6 @@ namespace MinesweeperReborn
         public bool AlwaysSaveGameOnExit { get; set; }
         public bool EnableQuestionMarks { get; set; }
         public bool AutomaticUpdateSearch { get; set; } = true;
+        public AppThemePreference ThemePreference { get; set; } = AppThemePreference.System;
     }
 }

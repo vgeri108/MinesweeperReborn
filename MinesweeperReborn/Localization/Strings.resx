@@ -87,6 +87,18 @@
   <data name="Language" xml:space="preserve">
     <value>Nyelv</value>
   </data>
+  <data name="ThemeAppearance" xml:space="preserve">
+    <value>Téma</value>
+  </data>
+  <data name="SystemTheme" xml:space="preserve">
+    <value>Rendszerbeállítás</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Világos</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Sötét</value>
+  </data>
   <data name="SystemLanguage" xml:space="preserve">
     <value>Windows nyelve</value>
   </data>

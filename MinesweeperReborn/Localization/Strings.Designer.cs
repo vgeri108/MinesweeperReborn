@@ -238,6 +238,15 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sötét.
+        /// </summary>
+        public static string DarkTheme {
+            get {
+                return ResourceManager.GetString("DarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nehézségi szint.
         /// </summary>
         public static string Difficulty {
@@ -499,6 +508,15 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Világos.
+        /// </summary>
+        public static string LightTheme {
+            get {
+                return ResourceManager.GetString("LightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Folytatja a mentett játékot?.
         /// </summary>
         public static string LoadGameDialogPrompt {
@@ -650,7 +668,7 @@ namespace MinesweeperReborn.Localization {
                 return ResourceManager.GetString("RestartNowPrompt", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Újraindítás után lép életbe.
         /// </summary>
@@ -913,6 +931,24 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rendszerbeállítás.
+        /// </summary>
+        public static string SystemTheme {
+            get {
+                return ResourceManager.GetString("SystemTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Téma.
+        /// </summary>
+        public static string ThemeAppearance {
+            get {
+                return ResourceManager.GetString("ThemeAppearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Háttér.
         /// </summary>
         public static string ThemeBackground {
@@ -958,7 +994,7 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to további információ.
+        ///   Looks up a localized string similar to További információ.
         /// </summary>
         public static string ThemeLicenseMoreInfo {
             get {

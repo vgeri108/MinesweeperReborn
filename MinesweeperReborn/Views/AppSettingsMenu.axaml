@@ -32,6 +32,13 @@
                         <ComboBoxItem Content="{x:Static loc:Strings.English}" Tag="English"/>
                     </ComboBox>
                 </GroupBox>
+                <GroupBox Header="{x:Static loc:Strings.ThemeAppearance}">
+                    <ComboBox x:Name="ThemePreferenceComboBox" Margin="5">
+                        <ComboBoxItem Content="{x:Static loc:Strings.SystemTheme}" Tag="System"/>
+                        <ComboBoxItem Content="{x:Static loc:Strings.LightTheme}" Tag="Light"/>
+                        <ComboBoxItem Content="{x:Static loc:Strings.DarkTheme}" Tag="Dark"/>
+                    </ComboBox>
+                </GroupBox>
                 <GroupBox Header="{x:Static loc:Strings.SavedGames}">
                     <StackPanel>
                         <CheckBox x:Name="ContinueSaved" Content="{x:Static loc:Strings.AlwaysContinueSavedGame}" Margin="0,0,0,8"/>
