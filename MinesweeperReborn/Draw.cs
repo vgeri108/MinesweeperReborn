@@ -17,16 +17,18 @@ namespace MinesweeperReborn
         public UniformGrid grid;
         private readonly List<Button> buttonPool = new();
         private readonly ButtonClicks buttonClicks;
+        private readonly TextBlock mineCounter;
         private IBrush buttonBackground = Brushes.Transparent;
         private double buttonCorner;
 
         private Dictionary<object, Bitmap> ImageCache = new Dictionary<object, Bitmap>();
 
-        public Draw(Game game, UniformGrid grid, Action gameOver)
+        public Draw(Game game, UniformGrid grid, TextBlock mineCounter, Action gameOver)
         {
             this.game = game;
             this.grid = grid;
             buttonClicks = new ButtonClicks(game, DrawBoard, gameOver);
+            this.mineCounter = mineCounter;
 
             CacheImages();
             InitBoard();
@@ -88,6 +90,8 @@ namespace MinesweeperReborn
 
         private void DrawBoard()
         {
+            mineCounter.Text = game.RemainingFlags.ToString();
+
             for (int x = 0; x < game.Height; x++)
             {
                 for (int y = 0; y < game.Width; y++)

@@ -33,7 +33,7 @@ public partial class MainWindow : Window
         };
         uiTimer.Start();
         Opened += OnOpened;
-        new Draw(game, GameBoard, OnGameOver);
+        new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     private void ApplyThemeImages()
@@ -89,14 +89,14 @@ public partial class MainWindow : Window
         Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard, OnGameOver);
+        new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     public void LoadGame()
     {
         game = Game.Load(AppSettings.SaveFileOnExit);
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard, OnGameOver);
+        new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     private async void OnGameOver()
@@ -132,7 +132,7 @@ public partial class MainWindow : Window
         }
 
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard, OnGameOver);
+        new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     public async void Stats_Click(object? sender, RoutedEventArgs e)
@@ -157,7 +157,7 @@ public partial class MainWindow : Window
         ThemeSelect themeSelect = new ThemeSelect();
         await ShowDialogWithPausedTimer(themeSelect);
         ApplyThemeImages();
-        new Draw(game, GameBoard, OnGameOver);
+        new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     public void Exit_Click(object? sender, RoutedEventArgs e)
