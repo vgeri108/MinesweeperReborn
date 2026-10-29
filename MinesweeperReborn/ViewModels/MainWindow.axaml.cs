@@ -187,7 +187,8 @@ public partial class MainWindow : Window
         finally
         {
             pauseDuration.Stop();
-            if (ReferenceEquals(currentGame, game)) pausedTimerSeconds += pauseDuration.Elapsed.TotalSeconds;
+            if (ReferenceEquals(currentGame, game) && !currentGame.IsGameOver)
+                pausedTimerSeconds += pauseDuration.Elapsed.TotalSeconds;
             timerPaused = false;
         }
     }
