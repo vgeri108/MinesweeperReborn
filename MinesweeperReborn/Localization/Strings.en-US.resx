@@ -303,6 +303,12 @@
   <data name="ThemeDescriptionLabel" xml:space="preserve">
     <value>Description: {0}</value>
   </data>
+  <data name="ThemeLicenseLabel" xml:space="preserve">
+    <value>License:</value>
+  </data>
+  <data name="ThemeLicenseMoreInfo" xml:space="preserve">
+    <value>More information</value>
+  </data>
   <data name="ThemeBoard" xml:space="preserve">
     <value>Board</value>
   </data>

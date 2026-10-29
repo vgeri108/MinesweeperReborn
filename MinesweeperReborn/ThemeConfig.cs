@@ -9,6 +9,8 @@ namespace MinesweeperReborn
         public string Creator { get; set; }
         public string Description { get; set; }
         public string ThemeImage { get; set; }
+        public string LicenseName { get; set; }
+        public string LicenseUrl { get; set; }
         public string TextBoxBackgroundColor { get; set; } = "#31569C";
         public string TextBoxTextColor { get; set; } = "#FFFFFF";
         public double GameBoardCorner { get; set; }

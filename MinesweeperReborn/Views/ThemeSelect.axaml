@@ -32,6 +32,26 @@
             <TextBlock x:Name="ThemeName"/>
             <TextBlock x:Name="ThemeCreator"/>
             <TextBlock x:Name="ThemeDescription" TextWrapping="Wrap"/>
+            <StackPanel x:Name="ThemeLicenseRow"
+                        Orientation="Horizontal"
+                        IsVisible="False">
+                <TextBlock Text="{x:Static loc:Strings.ThemeLicenseLabel}"
+                           Foreground="White"/>
+                <TextBlock x:Name="ThemeLicenseName"
+                           Margin="4,0,0,0"
+                           Foreground="#80BFFF"
+                           TextDecorations="Underline"
+                           Cursor="Hand"
+                           PointerPressed="ThemeLicenseName_Click"/>
+                <TextBlock x:Name="ThemeLicenseMoreInfo"
+                           Text="{x:Static loc:Strings.ThemeLicenseMoreInfo}"
+                           Margin="12,0,0,0"
+                           Foreground="#80BFFF"
+                           TextDecorations="Underline"
+                           Cursor="Hand"
+                           IsVisible="False"
+                           PointerPressed="ThemeLicenseMoreInfo_Click"/>
+            </StackPanel>
         </StackPanel>
 
         <Grid Grid.Row="3" Margin="10">

@@ -38,6 +38,18 @@ namespace MinesweeperReborn
             return config.Description ?? string.Empty;
         }
 
+        public static string GetThemeLicenseNameFromJson(string themeFolder)
+        {
+            ThemeConfig config = GetThemeConfig(themeFolder);
+            return config.LicenseName ?? string.Empty;
+        }
+
+        public static string GetThemeLicenseUrlFromJson(string themeFolder)
+        {
+            ThemeConfig config = GetThemeConfig(themeFolder);
+            return config.LicenseUrl ?? string.Empty;
+        }
+
         public static string GetThemeImageFromJson(string themeFolder)
         {
             ThemeConfig config = GetThemeConfig(themeFolder);

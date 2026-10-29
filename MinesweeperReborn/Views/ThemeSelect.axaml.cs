@@ -1,9 +1,11 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using MinesweeperCore;
 using MinesweeperReborn.Localization;
 using System;
+using System.Diagnostics;
 
 namespace MinesweeperReborn.Views
 {
@@ -35,6 +37,13 @@ namespace MinesweeperReborn.Views
             ThemeName.Text = string.Format(Strings.ThemeNameLabel, themeName);
             ThemeCreator.Text = string.Format(Strings.ThemeCreatorLabel, ThemeFinder.GetThemeCreatorFromJson(ThemeManager.CurrentTheme));
             ThemeDescription.Text = string.Format(Strings.ThemeDescriptionLabel, ThemeFinder.GetThemeDescriptionFromJson(ThemeManager.CurrentTheme));
+            string licenseName = ThemeFinder.GetThemeLicenseNameFromJson(ThemeManager.CurrentTheme);
+            ThemeLicenseName.Text = licenseName;
+            ThemeLicenseName.Tag = ThemeManager.CurrentTheme;
+            ThemeLicenseRow.IsVisible = !string.IsNullOrWhiteSpace(licenseName);
+            string licenseUrl = ThemeFinder.GetThemeLicenseUrlFromJson(ThemeManager.CurrentTheme);
+            ThemeLicenseMoreInfo.Tag = licenseUrl;
+            ThemeLicenseMoreInfo.IsVisible = !string.IsNullOrWhiteSpace(licenseUrl);
 
             ThemeList.Children.Clear();
             foreach (string themeFolder in ThemeFinder.GetThemeList())
@@ -74,6 +83,25 @@ namespace MinesweeperReborn.Views
                 button.Click += ThemeButton_Click;
 
                 ThemeList.Children.Add(button);
+            }
+        }
+
+        private void ThemeLicenseName_Click(object? sender, PointerPressedEventArgs e)
+        {
+            if (sender is TextBlock { Tag: string themeFolder })
+            {
+                string licensePath = AssetPaths.GetPath("Themes", themeFolder, "LICENSE.txt");
+                Process.Start(new ProcessStartInfo(licensePath) { UseShellExecute = true });
+            }
+        }
+
+        private void ThemeLicenseMoreInfo_Click(object? sender, PointerPressedEventArgs e)
+        {
+            if (sender is TextBlock { Tag: string licenseUrl } &&
+                Uri.TryCreate(licenseUrl, UriKind.Absolute, out Uri? uri) &&
+                (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps))
+            {
+                Process.Start(new ProcessStartInfo(uri.AbsoluteUri) { UseShellExecute = true });
             }
         }
 

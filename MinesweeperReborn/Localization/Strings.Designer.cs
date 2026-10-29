@@ -859,6 +859,24 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Licence:.
+        /// </summary>
+        public static string ThemeLicenseLabel {
+            get {
+                return ResourceManager.GetString("ThemeLicenseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to további információ.
+        /// </summary>
+        public static string ThemeLicenseMoreInfo {
+            get {
+                return ResourceManager.GetString("ThemeLicenseMoreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aknák.
         /// </summary>
         public static string ThemeMines {
