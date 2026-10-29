@@ -3,8 +3,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
         x:Class="MinesweeperReborn.MainWindow"
+        Height="505"
+        Width="460"
+        MinHeight="260"
+        MinWidth="260"
         Closing="MainWindow_Closing"
         Title="{x:Static loc:Strings.AppTitle}">
     <Grid x:Name="RootGrid">
