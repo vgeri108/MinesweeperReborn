@@ -72,11 +72,11 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="NewGame" Content="Új játék" Grid.Row="0" Margin="0,0,20,3" Click="NewGame_Click"/>
-                <Button x:Name="Exit" Content="Kilépés" Grid.Row="1" Margin="0,2,20,0" Height="25" VerticalAlignment="Top" Click="Exit_Click"/>
+                <Button Classes="dialog-button" x:Name="NewGame" Content="Új játék" Grid.Row="0" Margin="0,0,20,3" Click="NewGame_Click"/>
+                <Button Classes="dialog-button" x:Name="Exit" Content="Kilépés" Grid.Row="1" Margin="0,2,20,0" Height="25" VerticalAlignment="Top" Click="Exit_Click"/>
             </Grid>
 
-            <Button x:Name="MoreGames" Content="További játékok az interneten"
+            <Button Classes="dialog-button" x:Name="MoreGames" Content="További játékok az interneten"
                     Grid.Row="4" Grid.Column="1"
                     Margin="3,15,0,0" Click="MoreGames_Click"/>
 

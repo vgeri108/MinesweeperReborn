@@ -58,7 +58,8 @@
                        Grid.Row="3" Grid.Column="1"/>
         </Grid>
 
-        <Button Grid.Row="2" Content="További játékok az interneten"
+        <Button Classes="dialog-button" Grid.Row="2" Content="További játékok az interneten"
+                Height="25"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Margin="0,0,0,20" Click="MoreGames_Click"/>
 
@@ -69,13 +70,13 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Exit" Content="Kilépés"
+            <Button Classes="dialog-button" x:Name="Exit" Content="Kilépés"
                 Grid.Column="0" Margin="0,0,5,0" Click="Exit_Click"/>
 
-            <Button x:Name="Replay" Content="Játék újraindítása"
+            <Button Classes="dialog-button" x:Name="Replay" Content="Játék újraindítása"
                 Grid.Column="1" Margin="5,0,5,0" Click="Replay_Click"/>
 
-            <Button x:Name="NewGame" Content="Új játék"
+            <Button Classes="dialog-button" x:Name="NewGame" Content="Új játék"
                 Grid.Column="2" Margin="5,0,0,0" Click="NewGame_Click"/>
 
         </Grid>
