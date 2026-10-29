@@ -328,6 +328,87 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Legjobb idő: {0}.
+        /// </summary>
+        public static string GameResultBestTime {
+            get {
+                return ResourceManager.GetString("GameResultBestTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátum: {0}.
+        /// </summary>
+        public static string GameResultDate {
+            get {
+                return ResourceManager.GetString("GameResultDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sajnos vesztett. Sok szerencsét a következő játékhoz!.
+        /// </summary>
+        public static string GameResultLostMessage {
+            get {
+                return ResourceManager.GetString("GameResultLostMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vereség.
+        /// </summary>
+        public static string GameResultLostTitle {
+            get {
+                return ResourceManager.GetString("GameResultLostTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Játék újraindítása.
+        /// </summary>
+        public static string GameResultReplay {
+            get {
+                return ResourceManager.GetString("GameResultReplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} másodperc.
+        /// </summary>
+        public static string GameResultSeconds {
+            get {
+                return ResourceManager.GetString("GameResultSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Idő: {0} másodperc.
+        /// </summary>
+        public static string GameResultTime {
+            get {
+                return ResourceManager.GetString("GameResultTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gratulálunk, megnyerte a játékot!.
+        /// </summary>
+        public static string GameResultWonMessage {
+            get {
+                return ResourceManager.GetString("GameResultWonMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Győzelem.
+        /// </summary>
+        public static string GameResultWonTitle {
+            get {
+                return ResourceManager.GetString("GameResultWonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Játék beállításai.
         /// </summary>
         public static string GameSettings {

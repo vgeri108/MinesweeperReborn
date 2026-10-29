@@ -159,6 +159,33 @@
   <data name="MoreGames" xml:space="preserve">
     <value>More Games Online</value>
   </data>
+  <data name="GameResultWonTitle" xml:space="preserve">
+    <value>You Won</value>
+  </data>
+  <data name="GameResultLostTitle" xml:space="preserve">
+    <value>Game Over</value>
+  </data>
+  <data name="GameResultWonMessage" xml:space="preserve">
+    <value>Congratulations, you won the game!</value>
+  </data>
+  <data name="GameResultLostMessage" xml:space="preserve">
+    <value>Sorry, you lost. Better luck next time!</value>
+  </data>
+  <data name="GameResultTime" xml:space="preserve">
+    <value>Time: {0} seconds</value>
+  </data>
+  <data name="GameResultBestTime" xml:space="preserve">
+    <value>Best time: {0}</value>
+  </data>
+  <data name="GameResultDate" xml:space="preserve">
+    <value>Date: {0}</value>
+  </data>
+  <data name="GameResultSeconds" xml:space="preserve">
+    <value>{0} seconds</value>
+  </data>
+  <data name="GameResultReplay" xml:space="preserve">
+    <value>Replay</value>
+  </data>
   <data name="NewGameSettingsDialogTitle" xml:space="preserve">
     <value>Game settings changed</value>
   </data>

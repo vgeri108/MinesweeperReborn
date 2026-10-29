@@ -159,6 +159,33 @@
   <data name="MoreGames" xml:space="preserve">
     <value>További játékok az interneten</value>
   </data>
+  <data name="GameResultWonTitle" xml:space="preserve">
+    <value>Győzelem</value>
+  </data>
+  <data name="GameResultLostTitle" xml:space="preserve">
+    <value>Vereség</value>
+  </data>
+  <data name="GameResultWonMessage" xml:space="preserve">
+    <value>Gratulálunk, megnyerte a játékot!</value>
+  </data>
+  <data name="GameResultLostMessage" xml:space="preserve">
+    <value>Sajnos vesztett. Sok szerencsét a következő játékhoz!</value>
+  </data>
+  <data name="GameResultTime" xml:space="preserve">
+    <value>Idő: {0} másodperc</value>
+  </data>
+  <data name="GameResultBestTime" xml:space="preserve">
+    <value>Legjobb idő: {0}</value>
+  </data>
+  <data name="GameResultDate" xml:space="preserve">
+    <value>Dátum: {0}</value>
+  </data>
+  <data name="GameResultSeconds" xml:space="preserve">
+    <value>{0} másodperc</value>
+  </data>
+  <data name="GameResultReplay" xml:space="preserve">
+    <value>Játék újraindítása</value>
+  </data>
   <data name="NewGameSettingsDialogTitle" xml:space="preserve">
     <value>Játékbeállítások módosítása</value>
   </data>

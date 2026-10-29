@@ -2,9 +2,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loc="clr-namespace:MinesweeperReborn.Localization;assembly=MinesweeperReborn"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MinesweeperReborn.Views.GameLose"
-        Title="Vereség"
+        Title="{x:Static loc:Strings.GameResultLostTitle}"
         Width="500" Height="250"
         CanResize="False"
         WindowStartupLocation="CenterOwner">
@@ -16,7 +17,7 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Sajnos vesztett. Sok szerencsét a következő játékhoz!"
+        <TextBlock Text="{x:Static loc:Strings.GameResultLostMessage}"
                    HorizontalAlignment="Center" Grid.Row="0"
                    Margin="0,0,0,15"/>
 
@@ -34,31 +35,31 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock x:Name="TimeText"
-                       Text="Idő: 000 másodperc"
+                       Text=""
                        Grid.Row="0" Grid.Column="0"/>
 
             <TextBlock x:Name="BestTime"
-                       Text="Legjobb idő: 000 másodperc"
+                       Text=""
                        Grid.Row="1" Grid.Column="0"/>
 
             <TextBlock x:Name="Date"
-                       Text="Dátum: 2026.01.01."
+                       Text=""
                        Grid.Row="1" Grid.Column="1"/>
 
             <TextBlock x:Name="PlayedGames"
-                       Text="Lejátszott játékok: 000"
+                       Text=""
                        Grid.Row="2" Grid.Column="0"/>
 
             <TextBlock x:Name="WinnedGames"
-                       Text="Megnyert játékok: 000"
+                       Text=""
                        Grid.Row="3" Grid.Column="0"/>
 
             <TextBlock x:Name="PercentageRating"
-                       Text="Százalékos értékelés: 000%"
+                       Text=""
                        Grid.Row="3" Grid.Column="1"/>
         </Grid>
 
-        <Button Classes="dialog-button" Grid.Row="2" Content="További játékok az interneten"
+        <Button Classes="dialog-button" Grid.Row="2" Content="{x:Static loc:Strings.MoreGames}"
                 Height="25"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Margin="0,0,0,20" Click="MoreGames_Click"/>
@@ -70,13 +71,13 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Classes="dialog-button" x:Name="Exit" Content="Kilépés"
+            <Button Classes="dialog-button" x:Name="Exit" Content="{x:Static loc:Strings.Exit}"
                 Grid.Column="0" Margin="0,0,5,0" Click="Exit_Click"/>
 
-            <Button Classes="dialog-button" x:Name="Replay" Content="Játék újraindítása"
+            <Button Classes="dialog-button" x:Name="Replay" Content="{x:Static loc:Strings.GameResultReplay}"
                 Grid.Column="1" Margin="5,0,5,0" Click="Replay_Click"/>
 
-            <Button Classes="dialog-button" x:Name="NewGame" Content="Új játék"
+            <Button Classes="dialog-button" x:Name="NewGame" Content="{x:Static loc:Strings.NewGame}"
                 Grid.Column="2" Margin="5,0,0,0" Click="NewGame_Click"/>
 
         </Grid>
