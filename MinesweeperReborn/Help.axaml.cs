@@ -77,7 +77,8 @@ namespace MinesweeperReborn
                     closeButton
                 }
             };
-            await dialog.ShowDialog(this);
+            Window owner = Owner is Window ownerWindow ? ownerWindow : this;
+            await dialog.ShowDialog(owner);
         }
     }
 }

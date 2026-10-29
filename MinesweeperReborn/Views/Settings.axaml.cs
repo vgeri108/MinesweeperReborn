@@ -158,7 +158,8 @@ namespace MinesweeperReborn.Views
                 }
                 catch (Exception error)
                 {
-                    await MessageBoxManager.GetMessageBoxStandard("Hiba", error.Message, ButtonEnum.Ok).ShowAsync();
+                    await MessageBoxManager.GetMessageBoxStandard("Hiba", error.Message, ButtonEnum.Ok)
+                        .ShowWindowDialogAsync(Owner is Window ownerWindow ? ownerWindow : this);
                 }
             }
 
@@ -177,7 +178,8 @@ namespace MinesweeperReborn.Views
             if (NeedNewGame && !game.IsAllCellsAreHidden)
             {
                 NewGame_SettingsDialog newGame_SettingsDialog = new NewGame_SettingsDialog();
-                await newGame_SettingsDialog.ShowDialog(this);
+                Window owner = Owner is Window ownerWindow ? ownerWindow : this;
+                await newGame_SettingsDialog.ShowDialog(owner);
 
                 if (newGame_SettingsDialog.Selected == "Cancel")
                 {

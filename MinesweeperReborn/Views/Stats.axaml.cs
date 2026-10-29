@@ -138,7 +138,7 @@ namespace MinesweeperReborn.Views
                     new ButtonDefinition { Name = Strings.No, IsCancel = true }
                 },
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
-            }).ShowWindowDialogAsync(this);
+            }).ShowWindowDialogAsync(Owner is Window ownerWindow ? ownerWindow : this);
 
             if (result != Strings.Yes)
                 return;
@@ -191,7 +191,8 @@ namespace MinesweeperReborn.Views
                 }
             };
 
-            return await dialog.ShowDialog<string?>(this);
+            Window owner = Owner is Window ownerWindow ? ownerWindow : this;
+            return await dialog.ShowDialog<string?>(owner);
         }
     }
 }

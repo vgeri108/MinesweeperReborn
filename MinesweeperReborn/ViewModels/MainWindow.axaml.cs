@@ -182,6 +182,7 @@ public partial class MainWindow : Window
         timerPaused = true;
         try
         {
+            dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             await dialog.ShowDialog(this);
         }
         finally
