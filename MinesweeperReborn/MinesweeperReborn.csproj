@@ -5,6 +5,7 @@
     <Version>1.0.0</Version>
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <CommitHash>dev</CommitHash>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,5 +37,9 @@
 		  <StronglyTypedClassName>Strings</StronglyTypedClassName>
 		  <PublicClass>true</PublicClass>
 	  </EmbeddedResource>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>CommitHash</_Parameter1>
+      <_Parameter2>$(CommitHash)</_Parameter2>
+    </AssemblyAttribute>
   </ItemGroup>
 </Project>

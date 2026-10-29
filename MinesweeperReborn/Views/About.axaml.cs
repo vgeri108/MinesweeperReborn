@@ -19,7 +19,8 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
-using System.IO;
+using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using MinesweeperReborn.Localization;
@@ -39,10 +40,23 @@ public partial class About : Window
         Close();
     }
 
+    private void MoreInfo_Click(object? sender, RoutedEventArgs e)
+    {
+        Process.Start(new ProcessStartInfo("https://github.com/vgeri108/MinesweeperReborn")
+        {
+            UseShellExecute = true
+        });
+    }
+
     private void FillInfo()
     {
-        var version = Assembly.GetEntryAssembly()?.GetName().Version
+        Assembly assembly = Assembly.GetEntryAssembly()
             ?? throw new InvalidOperationException(Strings.AppVersionUnavailable);
+        var version = assembly.GetName().Version
+            ?? throw new InvalidOperationException(Strings.AppVersionUnavailable);
+        string commitHash = assembly.GetCustomAttributes<AssemblyMetadataAttribute>()
+            .Single(attribute => attribute.Key == "CommitHash")
+            .Value;
         AppLogo.Source = AssetPaths.LoadBitmap(ThemeManager.Gui.AboutLogo);
 
         string operatingSystem;
@@ -60,13 +74,7 @@ public partial class About : Window
             operatingSystem = string.Format(Strings.AboutOperatingSystem, RuntimeInformation.OSDescription);
         }
 
-        string logoPath = Path.Combine(AppContext.BaseDirectory, "logo.png");
-        Logo.Source = File.Exists(logoPath) ? AssetPaths.LoadBitmap(logoPath) : null;
-
         InfoText.Text =
-$@"
-{operatingSystem}
-{string.Format(Strings.AboutGameVersion, version)}
-";
+            $"{string.Format(Strings.AboutGameVersion, version)}\n{operatingSystem}\n\n{Strings.AboutCredits}\n{string.Format(Strings.AboutCommitHash, commitHash)}";
     }
 }

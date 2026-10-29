@@ -58,11 +58,38 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Az aknakereső névjegye.
+        ///   Looks up a localized string similar to Minesweeper Reborn.
         /// </summary>
         public static string About {
             get {
                 return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commit: {0}.
+        /// </summary>
+        public static string AboutCommitHash {
+            get {
+                return ResourceManager.GetString("AboutCommitHash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fejlesztette: vgeri108 · © 2026.
+        /// </summary>
+        public static string AboutCredits {
+            get {
+                return ResourceManager.GetString("AboutCredits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Windows 7-es Aknakereső modern változata..
+        /// </summary>
+        public static string AboutDescription {
+            get {
+                return ResourceManager.GetString("AboutDescription", resourceCulture);
             }
         }
         
@@ -72,6 +99,33 @@ namespace MinesweeperReborn.Localization {
         public static string AboutGameVersion {
             get {
                 return ResourceManager.GetString("AboutGameVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Licenc: GNU GPL v3.0-only.
+        /// </summary>
+        public static string AboutLicense {
+            get {
+                return ResourceManager.GetString("AboutLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aknakereső névjegye.
+        /// </summary>
+        public static string AboutMenu {
+            get {
+                return ResourceManager.GetString("AboutMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to További információ.
+        /// </summary>
+        public static string AboutMoreInfo {
+            get {
+                return ResourceManager.GetString("AboutMoreInfo", resourceCulture);
             }
         }
         

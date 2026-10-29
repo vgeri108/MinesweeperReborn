@@ -160,7 +160,25 @@
     <value>Súgó megjelenítése</value>
   </data>
   <data name="About" xml:space="preserve">
-    <value>Az aknakereső névjegye</value>
+    <value>Minesweeper Reborn</value>
+  </data>
+  <data name="AboutMenu" xml:space="preserve">
+    <value>Aknakereső névjegye</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>A Windows 7-es Aknakereső modern változata.</value>
+  </data>
+  <data name="AboutCredits" xml:space="preserve">
+    <value>Fejlesztette: vgeri108 · © 2026</value>
+  </data>
+  <data name="AboutCommitHash" xml:space="preserve">
+    <value>Commit: {0}</value>
+  </data>
+  <data name="AboutLicense" xml:space="preserve">
+    <value>Licenc: GNU GPL v3.0-only</value>
+  </data>
+  <data name="AboutMoreInfo" xml:space="preserve">
+    <value>További információ</value>
   </data>
   <data name="AboutGameVersion" xml:space="preserve">
     <value>Aknakereső: {0}</value>
