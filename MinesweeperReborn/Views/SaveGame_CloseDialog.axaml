@@ -15,7 +15,8 @@
 
         <TextBlock Text="{x:Static loc:Strings.SaveGameCloseDialogPrompt}"
                    Foreground="#FF025DD0" FontSize="17"
-                   Margin="15,15,0,0"/>
+                   Margin="15,15,15,0"
+                   TextWrapping="Wrap"/>
 
         <Grid Grid.Row="1" Width="400" HorizontalAlignment="Right" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
