@@ -22,11 +22,11 @@ namespace MinesweeperReborn
 
         private Dictionary<object, Bitmap> ImageCache = new Dictionary<object, Bitmap>();
 
-        public Draw(Game game, UniformGrid grid)
+        public Draw(Game game, UniformGrid grid, Action gameOver)
         {
             this.game = game;
             this.grid = grid;
-            buttonClicks = new ButtonClicks(game, DrawBoard);
+            buttonClicks = new ButtonClicks(game, DrawBoard, gameOver);
 
             CacheImages();
             InitBoard();

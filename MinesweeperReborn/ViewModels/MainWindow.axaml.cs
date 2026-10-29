@@ -7,6 +7,7 @@ using MinesweeperReborn.Views;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace MinesweeperReborn;
@@ -32,7 +33,7 @@ public partial class MainWindow : Window
         };
         uiTimer.Start();
         Opened += OnOpened;
-        new Draw(game, GameBoard);
+        new Draw(game, GameBoard, OnGameOver);
     }
 
     private void ApplyThemeImages()
@@ -88,14 +89,50 @@ public partial class MainWindow : Window
         Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard);
+        new Draw(game, GameBoard, OnGameOver);
     }
 
     public void LoadGame()
     {
         game = Game.Load(AppSettings.SaveFileOnExit);
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard);
+        new Draw(game, GameBoard, OnGameOver);
+    }
+
+    private async void OnGameOver()
+    {
+        Window dialog = game.Result == Game.GameStatus.Win
+            ? new GameWin(game, StartNewGameEvent, CloseApplication)
+            : new GameLose(game, StartNewGameEvent, ReplayGame, CloseApplication);
+        await ShowDialogWithPausedTimer(dialog);
+    }
+
+    private void ReplayGame()
+    {
+        string replayPath = Path.Combine(Path.GetTempPath(), $"MinesweeperReplay-{Guid.NewGuid():N}.mine");
+        try
+        {
+            game.Save(replayPath);
+            JsonObject replayData = JsonNode.Parse(File.ReadAllText(replayPath))!.AsObject();
+            replayData["TimerSeconds"] = 0;
+
+            foreach (JsonArray row in replayData["Status"]!.AsArray())
+            {
+                for (int column = 0; column < row.Count; column++)
+                    row[column] = 0;
+            }
+
+            File.WriteAllText(replayPath, replayData.ToJsonString());
+            game = Game.Load(replayPath);
+        }
+        finally
+        {
+            if (File.Exists(replayPath))
+                File.Delete(replayPath);
+        }
+
+        pausedTimerSeconds = 0;
+        new Draw(game, GameBoard, OnGameOver);
     }
 
     public async void Stats_Click(object? sender, RoutedEventArgs e)
@@ -120,7 +157,7 @@ public partial class MainWindow : Window
         ThemeSelect themeSelect = new ThemeSelect();
         await ShowDialogWithPausedTimer(themeSelect);
         ApplyThemeImages();
-        new Draw(game, GameBoard);
+        new Draw(game, GameBoard, OnGameOver);
     }
 
     public void Exit_Click(object? sender, RoutedEventArgs e)
@@ -154,6 +191,8 @@ public partial class MainWindow : Window
             timerPaused = false;
         }
     }
+
+    private void CloseApplication() => Close();
 
     public async void About_Click(object? sender, RoutedEventArgs e)
     {

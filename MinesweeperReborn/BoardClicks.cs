@@ -10,12 +10,15 @@ namespace MinesweeperReborn
     {
         private readonly Game game;
         private readonly Action drawBoard;
+        private readonly Action gameOver;
         private bool gameStarted;
+        private bool gameOverHandled;
 
-        public ButtonClicks(Game game, Action drawBoard)
+        public ButtonClicks(Game game, Action drawBoard, Action gameOver)
         {
             this.game = game;
             this.drawBoard = drawBoard;
+            this.gameOver = gameOver;
         }
 
         public void Button_LeftClick(object? sender, PointerPressedEventArgs e)
@@ -38,8 +41,7 @@ namespace MinesweeperReborn
             
             game.Dig((int)point.X, (int)point.Y);
             drawBoard();
-            if (game.IsGameOver)
-                game.SaveStatistics(AppSettings.StatisticsPath);
+            HandleGameOver();
 
             e.Handled = true;
         }
@@ -61,6 +63,7 @@ namespace MinesweeperReborn
                 game.Cycle(row, column);
 
             drawBoard();
+            HandleGameOver();
 
             e.Handled = true;
         }
@@ -72,10 +75,19 @@ namespace MinesweeperReborn
 
             game.EasyMine((int)point.X, (int)point.Y);
             drawBoard();
-            if (game.IsGameOver)
-                game.SaveStatistics(AppSettings.StatisticsPath);
+            HandleGameOver();
 
             e.Handled = true;
+        }
+
+        private void HandleGameOver()
+        {
+            if (!game.IsGameOver || gameOverHandled)
+                return;
+
+            game.SaveStatistics(AppSettings.StatisticsPath);
+            gameOverHandled = true;
+            gameOver();
         }
     }
 }

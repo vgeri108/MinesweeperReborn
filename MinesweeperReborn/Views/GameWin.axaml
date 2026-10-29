@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MinesweeperReborn.Views.GameWin"
+        Title="Győzelem"
+        Width="450" Height="250"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="13,5,13,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Gratulálunk, megnyerte a játékot!"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Margin="0,0,0,15"/>
+
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="TimeText"
+                       Text="Idő: 000 másodperc"
+                       Grid.Row="0"
+                       VerticalAlignment="Top"/>
+
+            <TextBlock x:Name="BestTime"
+                       Text="Legjobb idő: 000 másodperc"
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalAlignment="Center"/>
+
+            <TextBlock x:Name="Date"
+                       Text="Dátum: 2026.01.01"
+                       Grid.Row="1" Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"/>
+
+            <TextBlock Name="PlayedGames"
+                       Text="Lejátszott játékok: 000"
+                       Grid.Row="2" Grid.Column="0"
+                       VerticalAlignment="Center"/>
+
+            <TextBlock x:Name="WinnedGames"
+                       Text="Megnyert játékok: 000"
+                       Grid.Row="3" Grid.Column="0"
+                       VerticalAlignment="Center"/>
+
+            <TextBlock x:Name="PercentageRating"
+                       Text="Százalékos értékelés: 000%"
+                       Grid.Row="3" Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"/>
+
+            <Grid Grid.Row="4" Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="NewGame" Content="Új játék" Grid.Row="0" Margin="0,0,20,3" Click="NewGame_Click"/>
+                <Button x:Name="Exit" Content="Kilépés" Grid.Row="1" Margin="0,2,20,0" Height="25" VerticalAlignment="Top" Click="Exit_Click"/>
+            </Grid>
+
+            <Button x:Name="MoreGames" Content="További játékok az interneten"
+                    Grid.Row="4" Grid.Column="1"
+                    Margin="3,15,0,0" Click="MoreGames_Click"/>
+
+        </Grid>
+
+    </Grid>
+</Window>
