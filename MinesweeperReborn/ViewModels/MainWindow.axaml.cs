@@ -23,11 +23,10 @@ using Avalonia.Threading;
 using MinesweeperCore;
 using MinesweeperReborn.Views;
 using System;
-using System.Diagnostics;
 using System.IO;
+using System.Diagnostics;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using MinesweeperModLoader;
 
 namespace MinesweeperReborn;
 
@@ -42,7 +41,7 @@ public partial class MainWindow : Window
     private bool timerPaused;
     private double pausedTimerSeconds;
     private readonly DispatcherTimer uiTimer = new() { Interval = TimeSpan.FromMilliseconds(100) };
-    private ModLoader? modLoader;
+    private dynamic? modLoader;
     private Draw? boardDraw;
     public MainWindow()
     {
@@ -92,13 +91,7 @@ public partial class MainWindow : Window
             "MinesweeperReborn",
             "Mods");
 
-        modLoader = new ModLoader();
-        modLoader.LoadMods(
-            modsDirectory,
-            game,
-            RequestDraw,
-            RequestHandleGameOver,
-            RequestLoadGame);
+        modLoader = ModCompatible.LoadModLoader(modsDirectory, game, RequestDraw, RequestHandleGameOver, RequestLoadGame);
 
         if (AppSettings.AutomaticUpdateSearch)
         {
@@ -124,7 +117,7 @@ public partial class MainWindow : Window
     {
         Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
-        modLoader?.UpdateGame(game);
+        ((dynamic?)modLoader)?.UpdateGame(game);
         pausedTimerSeconds = 0;
         boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
@@ -137,7 +130,7 @@ public partial class MainWindow : Window
     private void LoadGame(string path)
     {
         game = Game.Load(path);
-        modLoader?.UpdateGame(game);
+        ((dynamic?)modLoader)?.UpdateGame(game);
         pausedTimerSeconds = 0;
         boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
@@ -179,7 +172,7 @@ public partial class MainWindow : Window
                 File.Delete(replayPath);
         }
 
-        modLoader?.UpdateGame(game);
+        ((dynamic?)modLoader)?.UpdateGame(game);
         pausedTimerSeconds = 0;
         boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
@@ -308,7 +301,7 @@ public partial class MainWindow : Window
 
     private void FinishClosing()
     {
-        modLoader?.UnloadAll();
+        ((dynamic?)modLoader)?.UnloadAll();
         modLoader = null;
         if (RestartOnClose)
             Process.Start(Environment.ProcessPath);
@@ -328,6 +321,6 @@ public partial class MainWindow : Window
         {
             LoadGame();
         }
-        
+
     }
 }

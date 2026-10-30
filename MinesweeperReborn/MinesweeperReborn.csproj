@@ -8,6 +8,12 @@
     <CommitHash>dev</CommitHash>
   </PropertyGroup>
 
+	<ItemGroup>
+		<Compile Remove="MinesweeperModLoader\**\*.cs" />
+		<EmbeddedResource Remove="MinesweeperModLoader\**\*" />
+		<None Remove="MinesweeperModLoader\**\*" />
+	</ItemGroup>
+	
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     <PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
