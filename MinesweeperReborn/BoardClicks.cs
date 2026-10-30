@@ -98,7 +98,7 @@ namespace MinesweeperReborn
             e.Handled = true;
         }
 
-        private void HandleGameOver()
+        public void HandleGameOver()
         {
             if (!game.IsGameOver || gameOverHandled)
                 return;

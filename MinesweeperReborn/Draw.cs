@@ -120,7 +120,7 @@ namespace MinesweeperReborn
             }
         }
 
-        private void DrawBoard()
+        public void DrawBoard()
         {
             mineCounter.Text = game.RemainingFlags.ToString();
 
@@ -184,6 +184,11 @@ namespace MinesweeperReborn
                     UpdateCellHighlight(index);
                 }
             }
+        }
+
+        public void HandleGameOver()
+        {
+            buttonClicks.HandleGameOver();
         }
 
         private void SetCellHovered(int index, bool isHovered)

@@ -27,6 +27,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using MinesweeperModLoader;
 
 namespace MinesweeperReborn;
 
@@ -41,6 +42,8 @@ public partial class MainWindow : Window
     private bool timerPaused;
     private double pausedTimerSeconds;
     private readonly DispatcherTimer uiTimer = new() { Interval = TimeSpan.FromMilliseconds(100) };
+    private ModLoader? modLoader;
+    private Draw? boardDraw;
     public MainWindow()
     {
         InitializeComponent();
@@ -52,7 +55,7 @@ public partial class MainWindow : Window
         };
         uiTimer.Start();
         Opened += OnOpened;
-        new Draw(game, GameBoard, MineCounter, OnGameOver);
+        boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     private void ApplyThemeImages()
@@ -84,6 +87,19 @@ public partial class MainWindow : Window
 
         if (SaveGameHelper.IsThereAnySavedGame()) await AskGameLoad();
 
+        string modsDirectory = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "MinesweeperReborn",
+            "Mods");
+
+        modLoader = new ModLoader();
+        modLoader.LoadMods(
+            modsDirectory,
+            game,
+            RequestDraw,
+            RequestHandleGameOver,
+            RequestLoadGame);
+
         if (AppSettings.AutomaticUpdateSearch)
         {
             _ = Update.CheckAndPrompt(this, automatic: true);
@@ -108,15 +124,27 @@ public partial class MainWindow : Window
     {
         Sounds.PlayStart();
         game = new Game(GameDetails.Height, GameDetails.Width, GameDetails.MineCount, GameDetails.Seed);
+        modLoader?.UpdateGame(game);
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard, MineCounter, OnGameOver);
+        boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     public void LoadGame()
     {
-        game = Game.Load(AppSettings.SaveFileOnExit);
+        LoadGame(AppSettings.SaveFileOnExit);
+    }
+
+    private void LoadGame(string path)
+    {
+        game = Game.Load(path);
+        modLoader?.UpdateGame(game);
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard, MineCounter, OnGameOver);
+        boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
+    }
+
+    private void RequestLoadGame(string path)
+    {
+        Dispatcher.UIThread.Post(() => LoadGame(path));
     }
 
     private async void OnGameOver()
@@ -151,8 +179,19 @@ public partial class MainWindow : Window
                 File.Delete(replayPath);
         }
 
+        modLoader?.UpdateGame(game);
         pausedTimerSeconds = 0;
-        new Draw(game, GameBoard, MineCounter, OnGameOver);
+        boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
+    }
+
+    private void RequestDraw()
+    {
+        Dispatcher.UIThread.Post(() => boardDraw?.DrawBoard());
+    }
+
+    private void RequestHandleGameOver()
+    {
+        Dispatcher.UIThread.Post(() => boardDraw?.HandleGameOver());
     }
 
     public async void Stats_Click(object? sender, RoutedEventArgs e)
@@ -182,7 +221,7 @@ public partial class MainWindow : Window
         ThemeSelect themeSelect = new ThemeSelect();
         await ShowDialogWithPausedTimer(themeSelect);
         ApplyThemeImages();
-        new Draw(game, GameBoard, MineCounter, OnGameOver);
+        boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
     }
 
     public void Exit_Click(object? sender, RoutedEventArgs e)
@@ -269,6 +308,8 @@ public partial class MainWindow : Window
 
     private void FinishClosing()
     {
+        modLoader?.UnloadAll();
+        modLoader = null;
         if (RestartOnClose)
             Process.Start(Environment.ProcessPath);
 
