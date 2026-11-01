@@ -48,4 +48,8 @@
       <_Parameter2>$(CommitHash)</_Parameter2>
     </AssemblyAttribute>
   </ItemGroup>
+	
+  <ItemGroup>
+    <Content Include="AppIcon.ico" />
+  </ItemGroup>
 </Project>
