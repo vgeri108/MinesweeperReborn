@@ -1,4 +1,5 @@
 ﻿using DiscordRPC;
+using MinesweeperReborn.Localization;
 
 namespace MinesweeperReborn.Discord;
 
@@ -36,13 +37,13 @@ internal static class DiscordPresence
         {
             client.SetPresence(new RichPresence
             {
-                Details = "Playing Minesweeper",
-                //State = "Ingame",
+                Details = Strings.DiscordDetails,
+                State = string.Format(Strings.DiscordState, GameDetails.Height, GameDetails.Width, GameDetails.MineCount),
 
                 Assets = new Assets
                 {
                     LargeImageKey = "minesweeper",
-                    LargeImageText = "Minesweeper Reborn"
+                    LargeImageText = Strings.DiscordLargeText
                 }
             });
         }
