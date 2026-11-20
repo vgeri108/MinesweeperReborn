@@ -29,6 +29,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MinesweeperReborn
@@ -37,6 +38,9 @@ namespace MinesweeperReborn
     {
         private const string LatestReleaseUrl = "https://api.github.com/repos/vgeri108/MinesweeperReborn/releases/latest";
         private const string ReleasesPageUrl = "https://github.com/vgeri108/MinesweeperReborn/releases/latest";
+        private static readonly Regex BareUrlRegex = new(
+            @"(?<!\]\()(?<!<)https?://[^\s<>()\]]+",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
 
         public static async Task CheckAndPrompt(Window owner, bool automatic = false)
         {
@@ -74,10 +78,16 @@ namespace MinesweeperReborn
                 string description = root.TryGetProperty("body", out JsonElement body)
                     ? body.GetString() ?? string.Empty
                     : string.Empty;
+                description = BareUrlRegex.Replace(description, match =>
+                {
+                    string url = match.Value.TrimEnd('.', ',', ';', ':', '!', '?');
+                    return $"[{url}]({url}){match.Value.Substring(url.Length)}";
+                });
                 string? result = await MessageBoxManager.GetMessageBoxCustom(new MessageBoxCustomParams
                 {
                     ContentTitle = Strings.UpdateAvailable,
                     ContentMessage = string.Format(Strings.UpdatePrompt, tag, description),
+                    Markdown = true,
                     ButtonDefinitions = new[]
                     {
                         new ButtonDefinition { Name = Strings.Yes, IsDefault = true },
