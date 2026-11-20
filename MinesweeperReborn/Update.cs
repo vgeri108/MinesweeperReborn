@@ -19,7 +19,9 @@
 using Avalonia.Controls;
 using MinesweeperReborn.Localization;
 using MsBox.Avalonia;
+using MsBox.Avalonia.Dto;
 using MsBox.Avalonia.Enums;
+using MsBox.Avalonia.Models;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -72,12 +74,19 @@ namespace MinesweeperReborn
                 string description = root.TryGetProperty("body", out JsonElement body)
                     ? body.GetString() ?? string.Empty
                     : string.Empty;
-                var result = await MessageBoxManager.GetMessageBoxStandard(
-                    Strings.UpdateAvailable,
-                    string.Format(Strings.UpdatePrompt, tag, description),
-                    ButtonEnum.YesNo).ShowWindowDialogAsync(owner);
+                string? result = await MessageBoxManager.GetMessageBoxCustom(new MessageBoxCustomParams
+                {
+                    ContentTitle = Strings.UpdateAvailable,
+                    ContentMessage = string.Format(Strings.UpdatePrompt, tag, description),
+                    ButtonDefinitions = new[]
+                    {
+                        new ButtonDefinition { Name = Strings.Yes, IsDefault = true },
+                        new ButtonDefinition { Name = Strings.No, IsCancel = true }
+                    },
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                }).ShowWindowDialogAsync(owner);
 
-                if (result == ButtonResult.Yes)
+                if (result == Strings.Yes)
                 {
                     Process.Start(new ProcessStartInfo(ReleasesPageUrl) { UseShellExecute = true });
                 }
