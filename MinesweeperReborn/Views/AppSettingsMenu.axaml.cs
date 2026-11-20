@@ -24,6 +24,8 @@ using MinesweeperReborn.Localization;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Dto;
 using MsBox.Avalonia.Models;
+using System;
+using System.IO;
 
 namespace MinesweeperReborn.Views
 {
@@ -85,6 +87,54 @@ namespace MinesweeperReborn.Views
         private async void CheckUpdates_Click(object sender, RoutedEventArgs e)
         {
             await Update.CheckAndPrompt(this);
+        }
+
+        private async void InstallModPlatform_Click(object? sender, RoutedEventArgs e)
+        {
+            const string manifestUrl = "https://raw.githubusercontent.com/vgeri108/MinesweeperRebornPackages/refs/heads/main/ModLoader/ModLoaderFiles.txt";
+            string linksPath = Path.Combine(Path.GetTempPath(), "MODlinks.txt");
+            ModDownloadProgress.IsVisible = true;
+            try
+            {
+                await Wget.DownloadAsync(manifestUrl, linksPath);
+                foreach (string url in File.ReadAllLines(linksPath))
+                {
+                    if (!string.IsNullOrWhiteSpace(url))
+                    {
+                        await Wget.DownloadAsync(url);
+                    }
+                }
+            }
+            finally
+            {
+                ModDownloadProgress.IsVisible = false;
+            }
+
+            string? result = await MessageBoxManager.GetMessageBoxCustom(new MessageBoxCustomParams
+            {
+                ContentTitle = Strings.ApplicationSettings,
+                ContentMessage = Strings.ModRestartNowPrompt,
+                ButtonDefinitions = new[]
+                {
+                    new ButtonDefinition { Name = Strings.Yes, IsDefault = true },
+                    new ButtonDefinition { Name = Strings.No, IsCancel = true }
+                }
+            }).ShowWindowDialogAsync(this);
+            if (result == Strings.Yes)
+            {
+                RestartRequested = true;
+                Close();
+            }
+        }
+
+        private void InstallModBrowser_Click(object? sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InstallThemeBrowser_Click(object? sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

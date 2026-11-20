@@ -222,6 +222,9 @@
   <data name="RestartNowPrompt" xml:space="preserve">
     <value>A nyelv módosult. Újraindítja most az alkalmazást, hogy életbe lépjen?</value>
   </data>
+  <data name="ModRestartNowPrompt" xml:space="preserve">
+    <value>A modfájlok letöltése befejeződött. Újraindítja most a játékot?</value>
+  </data>
   <data name="CheckForUpdates" xml:space="preserve">
     <value>Frissítések keresése</value>
   </data>

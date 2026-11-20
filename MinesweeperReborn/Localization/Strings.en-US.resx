@@ -222,6 +222,9 @@
   <data name="RestartNowPrompt" xml:space="preserve">
     <value>The language has changed. Restart the app now to apply it?</value>
   </data>
+  <data name="ModRestartNowPrompt" xml:space="preserve">
+    <value>The mod files have finished downloading. Restart the game now?</value>
+  </data>
   <data name="CheckForUpdates" xml:space="preserve">
     <value>Check for Updates</value>
   </data>

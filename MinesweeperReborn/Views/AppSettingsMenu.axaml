@@ -51,5 +51,13 @@
             <Button Classes="dialog-button" Content="{x:Static loc:Strings.Ok}" Width="105" Click="OK_Click" Margin="0,0,10,0"/>
             <Button Classes="dialog-button" Content="{x:Static loc:Strings.Cancel}" Width="105" Click="Cancel_Click"/>
         </StackPanel>
+        <GroupBox Header="Bővítmények" Grid.Row="1">
+            <StackPanel>
+                <Button Content="Mod Platform telepítése" Click="InstallModPlatform_Click"/>
+                <Button Content="Mod Böngésző telepítése (Mod Platform szükséges)" Click="InstallModBrowser_Click"/>
+                <Button Content="Téma böngésző telepítése (Mod Platform szükséges)" Click="InstallThemeBrowser_Click"/>
+                <ProgressBar x:Name="ModDownloadProgress" Margin="5" Height="8" IsIndeterminate="True" IsVisible="False"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>
