@@ -1004,7 +1004,7 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows nyelve.
+        ///   Looks up a localized string similar to Rendszer nyelve.
         /// </summary>
         public static string SystemLanguage {
             get {

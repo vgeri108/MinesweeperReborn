@@ -205,7 +205,7 @@
     <value>Dark</value>
   </data>
   <data name="SystemLanguage" xml:space="preserve">
-    <value>Windows language</value>
+    <value>System language</value>
   </data>
   <data name="Hungarian" xml:space="preserve">
     <value>Hungarian</value>
