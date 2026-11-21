@@ -15,6 +15,7 @@ This file lists third-party packages and theme assets included in MinesweeperReb
 | Avalonia.Fonts.Inter | 12.1.4 | MIT |
 | Avalonia.Themes.Simple | 12.1.4 | MIT |
 | AvaloniaUI.DiagnosticsSupport | 2.2.3 | MIT |
+| MessageBox.Avalonia.Markdown | 4.1.0 | MIT |
 | DiscordRichPresence | 1.6.1.70 | MIT |
 
 ## Theme Assets
