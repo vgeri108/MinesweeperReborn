@@ -37,6 +37,10 @@ namespace MinesweeperReborn
         public static string SaveFolder = Path.Combine(AppContext.BaseDirectory, "saves");
         public static string SaveFileOnExit = Path.Combine(SaveFolder, "exit.mine");
         public static readonly string StatisticsPath = Path.Combine(AppContext.BaseDirectory, "Statistics.json");
+        public static string ModsDirectory = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "MinesweeperReborn",
+            "Mods");
         public static string CurrentTheme = "Default";
 
         public static bool Sounds = true;

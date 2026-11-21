@@ -87,12 +87,7 @@ public partial class MainWindow : Window
 
         if (SaveGameHelper.IsThereAnySavedGame()) await AskGameLoad();
 
-        string modsDirectory = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "MinesweeperReborn",
-            "Mods");
-
-        modLoader = ModCompatible.LoadModLoader(modsDirectory, game, RequestDraw, RequestHandleGameOver, RequestLoadGame);
+        modLoader = ModCompatible.LoadModLoader(AppSettings.ModsDirectory, game, RequestDraw, RequestHandleGameOver, RequestLoadGame);
 
         if (AppSettings.AutomaticUpdateSearch)
         {
