@@ -25,6 +25,7 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Dto;
 using MsBox.Avalonia.Models;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace MinesweeperReborn.Views
@@ -135,6 +136,23 @@ namespace MinesweeperReborn.Views
         private void InstallThemeBrowser_Click(object? sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void OpenModFolder_Click(object? sender, RoutedEventArgs e)
+        {
+            string modsFolderPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "MinesweeperReborn",
+                "Mods"
+            );
+
+            Directory.CreateDirectory(modsFolderPath);
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = modsFolderPath,
+                UseShellExecute = true
+            });
         }
     }
 }
