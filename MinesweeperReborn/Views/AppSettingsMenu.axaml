@@ -59,12 +59,12 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Mod Platform telepítése" Click="InstallModPlatform_Click"/>
-                    <Button Content="Mod mappa megnyitása" Click="OpenModFolder_Click" Grid.Column="1"/>
+                    <Button Classes="mod-button" Content="Mod Platform telepítése" Click="InstallModPlatform_Click"/>
+                    <Button Classes="mod-button" Content="Mod mappa megnyitása" Click="OpenModFolder_Click" Grid.Column="1"/>
                 </Grid>
 
-                <Button Content="Mod Böngésző telepítése (Mod Platform szükséges)" Click="InstallModBrowser_Click"/>
-                <Button Content="Téma böngésző telepítése (Mod Platform szükséges)" Click="InstallThemeBrowser_Click"/>
+                <Button Classes="mod-button" Content="Mod Böngésző telepítése (Mod Platform szükséges)" Click="InstallModBrowser_Click"/>
+                <Button Classes="mod-button" x:Name="InstallThemeBrowser" Content="Téma böngésző telepítése (Mod Platform szükséges)" IsEnabled="False" Click="InstallThemeBrowser_Click"/>
                 <ProgressBar x:Name="ModDownloadProgress" Margin="5" Height="8" IsIndeterminate="True" IsVisible="False"/>
             </StackPanel>
         </GroupBox>

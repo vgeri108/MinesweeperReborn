@@ -11,5 +11,11 @@
             <Setter Property="CornerRadius" Value="3"/>
             <Setter Property="Padding" Value="2,0,2,0"/>
         </Style>
+        <Style Selector="Button.mod-button">
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
     </Application.Styles>
 </Application>
