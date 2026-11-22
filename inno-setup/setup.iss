@@ -1,7 +1,7 @@
 
 #define MyAppName "MinesweeperReborn"
 #ifndef MyAppVersion
-  #define MyAppVersion "1.0.1.1"
+  #define MyAppVersion "1.0.2"
 #endif
 #define MyAppPublisher "vgeri108"
 #define MyAppURL "https://github.com/vgeri108/MinesweeperReborn"

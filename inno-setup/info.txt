@@ -1,6 +1,6 @@
  === Minesweeper Reborn ===
 
-Version: 1.0.1
+Version: 1.0.2
 
 The modernized version of the Windows 7 Minesweeper.
 
