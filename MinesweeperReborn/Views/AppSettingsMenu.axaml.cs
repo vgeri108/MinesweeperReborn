@@ -92,7 +92,7 @@ namespace MinesweeperReborn.Views
 
         private async void InstallModPlatform_Click(object? sender, RoutedEventArgs e)
         {
-            const string manifestUrl = "https://raw.githubusercontent.com/vgeri108/MinesweeperRebornPackages/refs/heads/main/ModLoader/ModLoaderFiles.txt";
+            const string manifestUrl = "https://raw.githubusercontent.com/vgeri108/Packages/refs/heads/main/ModLoader/ModLoaderFiles.txt";
             string linksPath = Path.Combine(Path.GetTempPath(), "MODlinks.txt");
             ModDownloadProgress.IsVisible = true;
             try
