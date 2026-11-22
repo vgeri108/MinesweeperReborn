@@ -104,6 +104,7 @@ namespace MinesweeperReborn
                 return;
 
             game.SaveStatistics(AppSettings.StatisticsPath);
+            Statistics.Save(AppSettings.StatisticsPath);
             gameOverHandled = true;
             gameOver();
         }

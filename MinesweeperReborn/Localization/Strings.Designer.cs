@@ -310,6 +310,33 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ezzel játszik: Minesweeper Reborn.
+        /// </summary>
+        public static string DiscordDetails {
+            get {
+                return ResourceManager.GetString("DiscordDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minesweeper Reborn.
+        /// </summary>
+        public static string DiscordLargeText {
+            get {
+                return ResourceManager.GetString("DiscordLargeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}x{1} pálya {2} aknával.
+        /// </summary>
+        public static string DiscordState {
+            get {
+                return ResourceManager.GetString("DiscordState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ne mentse.
         /// </summary>
         public static string DontSaveGame {
@@ -606,6 +633,15 @@ namespace MinesweeperReborn.Localization {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to A modfájlok letöltése befejeződött. Újraindítja most a játékot?.
+        /// </summary>
+        public static string ModRestartNowPrompt {
+            get {
+                return ResourceManager.GetString("ModRestartNowPrompt", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to További játékok az interneten.
         /// </summary>
@@ -976,7 +1012,7 @@ namespace MinesweeperReborn.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows nyelve.
+        ///   Looks up a localized string similar to Rendszer nyelve.
         /// </summary>
         public static string SystemLanguage {
             get {

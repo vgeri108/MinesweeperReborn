@@ -43,6 +43,9 @@ namespace MinesweeperReborn
                 SaveFolder = AppSettings.SaveFolder,
                 SaveFileOnExit = AppSettings.SaveFileOnExit,
                 CurrentTheme = AppSettings.CurrentTheme,
+                LastGameHeight = GameDetails.Height,
+                LastGameWidth = GameDetails.Width,
+                LastGameMineCount = GameDetails.MineCount,
                 Sounds = AppSettings.Sounds,
                 Tips = AppSettings.Tips,
                 AlwaysContinueSavedGame = AppSettings.AlwaysContinueSavedGame,
@@ -65,6 +68,9 @@ namespace MinesweeperReborn
                     SaveFolder = AppSettings.SaveFolder,
                     SaveFileOnExit = AppSettings.SaveFileOnExit,
                     CurrentTheme = AppSettings.CurrentTheme,
+                    LastGameHeight = GameDetails.Height,
+                    LastGameWidth = GameDetails.Width,
+                    LastGameMineCount = GameDetails.MineCount,
                     Sounds = AppSettings.Sounds,
                     Tips = AppSettings.Tips,
                     AlwaysContinueSavedGame = AppSettings.AlwaysContinueSavedGame,
@@ -83,6 +89,9 @@ namespace MinesweeperReborn
             AppSettings.SaveFolder = data.SaveFolder;
             AppSettings.SaveFileOnExit = data.SaveFileOnExit;
             AppSettings.CurrentTheme = data.CurrentTheme;
+            GameDetails.Height = data.LastGameHeight;
+            GameDetails.Width = data.LastGameWidth;
+            GameDetails.MineCount = data.LastGameMineCount;
             AppSettings.Sounds = data.Sounds;
             AppSettings.Tips = data.Tips;
             AppSettings.AlwaysContinueSavedGame = data.AlwaysContinueSavedGame;

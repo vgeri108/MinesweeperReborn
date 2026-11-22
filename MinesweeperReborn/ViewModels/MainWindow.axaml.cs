@@ -27,6 +27,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using MinesweeperReborn.Discord;
 
 namespace MinesweeperReborn;
 
@@ -86,17 +87,14 @@ public partial class MainWindow : Window
 
         if (SaveGameHelper.IsThereAnySavedGame()) await AskGameLoad();
 
-        string modsDirectory = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "MinesweeperReborn",
-            "Mods");
-
-        modLoader = ModCompatible.LoadModLoader(modsDirectory, game, RequestDraw, RequestHandleGameOver, RequestLoadGame);
+        modLoader = ModCompatible.LoadModLoader(AppSettings.ModsDirectory, game, RequestDraw, RequestHandleGameOver, RequestLoadGame);
 
         if (AppSettings.AutomaticUpdateSearch)
         {
             _ = Update.CheckAndPrompt(this, automatic: true);
         }
+
+        DiscordPresence.Initialize();
     }
 
     public async void NewGame_Click(object? sender, RoutedEventArgs e)
@@ -120,6 +118,7 @@ public partial class MainWindow : Window
         ((dynamic?)modLoader)?.UpdateGame(game);
         pausedTimerSeconds = 0;
         boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
+        DiscordPresence.SetPlaying();
     }
 
     public void LoadGame()
@@ -133,6 +132,7 @@ public partial class MainWindow : Window
         ((dynamic?)modLoader)?.UpdateGame(game);
         pausedTimerSeconds = 0;
         boardDraw = new Draw(game, GameBoard, MineCounter, OnGameOver);
+        DiscordPresence.SetPlaying();
     }
 
     private void RequestLoadGame(string path)
@@ -305,7 +305,7 @@ public partial class MainWindow : Window
         modLoader = null;
         if (RestartOnClose)
             Process.Start(Environment.ProcessPath);
-
+        DiscordPresence.Shutdown();
         AllowClose = true;
         Close();
     }

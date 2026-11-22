@@ -27,6 +27,9 @@ namespace MinesweeperReborn
         public string SaveFolder {  get; set; }
         public string SaveFileOnExit { get; set; }
         public string CurrentTheme { get; set; } = "Default";
+        public int LastGameHeight { get; set; } = GameDetails.Height;
+        public int LastGameWidth { get; set; } = GameDetails.Width;
+        public int LastGameMineCount { get; set; } = GameDetails.MineCount;
         public bool Sounds { get; set; }
         public bool Tips { get; set; }
         public bool AlwaysContinueSavedGame { get; set; }
