@@ -128,9 +128,42 @@ namespace MinesweeperReborn.Views
             }
         }
 
-        private void InstallModBrowser_Click(object? sender, RoutedEventArgs e)
+        private async void InstallModBrowser_Click(object? sender, RoutedEventArgs e)
         {
+            const string manifestUrl = "https://raw.githubusercontent.com/vgeri108/Packages/refs/heads/main/ModBrowser/ModBrowserFIles.txt";
+            string linksPath = Path.Combine(Path.GetTempPath(), "ModBrowserLinks.txt");
+            ModDownloadProgress.IsVisible = true;
+            try
+            {
+                await Wget.DownloadAsync(manifestUrl, linksPath);
+                foreach (string url in File.ReadAllLines(linksPath))
+                {
+                    if (!string.IsNullOrWhiteSpace(url))
+                    {
+                        await Wget.DownloadAsync(url, AppSettings.ModsDirectory);
+                    }
+                }
+            }
+            finally
+            {
+                ModDownloadProgress.IsVisible = false;
+            }
 
+            string? result = await MessageBoxManager.GetMessageBoxCustom(new MessageBoxCustomParams
+            {
+                ContentTitle = Strings.ApplicationSettings,
+                ContentMessage = Strings.ModRestartNowPrompt,
+                ButtonDefinitions = new[]
+                {
+                    new ButtonDefinition { Name = Strings.Yes, IsDefault = true },
+                    new ButtonDefinition { Name = Strings.No, IsCancel = true }
+                }
+            }).ShowWindowDialogAsync(this);
+            if (result == Strings.Yes)
+            {
+                RestartRequested = true;
+                Close();
+            }
         }
 
         private void InstallThemeBrowser_Click(object? sender, RoutedEventArgs e)
