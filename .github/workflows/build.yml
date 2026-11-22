@@ -1,0 +1,97 @@
+
+name: MinesweeperReborn Release
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Get Project Version
+        id: version
+        shell: pwsh
+        run: |
+          [xml]$project = Get-Content "MinesweeperReborn/MinesweeperReborn.csproj" -Raw
+
+          $version = $project.Project.PropertyGroup |
+            ForEach-Object { $_.Version } |
+            Where-Object { $_ } |
+            Select-Object -First 1
+
+          if (-not $version) {
+            throw "Version not found in csproj!"
+          }
+
+          Write-Host "Project version: v$version"
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Restore
+        run: dotnet restore "MinesweeperReborn/MinesweeperReborn.csproj" -r win-x64
+
+      - name: Publish
+        run: >
+          dotnet publish "MinesweeperReborn/MinesweeperReborn.csproj"
+          -c Release
+          -r win-x64
+          --self-contained true
+          --no-restore
+          -o publish
+
+      - name: Install Inno Setup
+        run: choco install innosetup --yes --no-progress
+
+      - name: Build Installer
+        shell: pwsh
+        working-directory: inno-setup
+        env:
+          APP_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+
+          if (-not (Test-Path $iscc)) {
+            throw "Inno Setup compiler not found!"
+          }
+
+          & $iscc "/DMyAppVersion=v$env:APP_VERSION" "setup.iss"
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "Inno Setup compilation failed!"
+          }
+
+      - name: Upload Installer Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MinesweeperReborn-Setup-v${{ steps.version.outputs.version }}
+          path: inno-setup/Output/MinesweeperReborn_setup.exe
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Create Draft Release
+        if: github.event_name != 'pull_request'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: MinesweeperReborn v${{ steps.version.outputs.version }}
+          draft: true
+          prerelease: false
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            inno-setup/Output/MinesweeperReborn_setup.exe
