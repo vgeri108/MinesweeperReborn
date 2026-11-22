@@ -140,7 +140,8 @@ namespace MinesweeperReborn.Views
                 {
                     if (!string.IsNullOrWhiteSpace(url))
                     {
-                        await Wget.DownloadAsync(url, AppSettings.ModsDirectory);
+                        string fileName = Path.GetFileName(new Uri(url).LocalPath);
+                        await Wget.DownloadAsync(url, Path.Combine(AppSettings.ModsDirectory, fileName));
                     }
                 }
             }
