@@ -230,5 +230,5 @@ src/Browser/Avalonia.Browser/staticwebassets
 BenchmarkDotNet.Artifacts.*
 .tokensave
 /CLAUDE.md
-/inno-setup
+/inno-setup/Output
 /Mods
