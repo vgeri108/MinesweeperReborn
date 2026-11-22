@@ -1,4 +1,11 @@
-﻿using System;
+﻿using MinesweeperReborn.Localization;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Dto;
+using MsBox.Avalonia.Models;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -41,14 +48,29 @@ namespace MinesweeperReborn
 
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                if (File.Exists(output))
+                if (GetOwnerWindow() is Window owner)
                 {
-                    try { File.Delete(output); } catch { }
+                    await MessageBoxManager.GetMessageBoxCustom(new MessageBoxCustomParams
+                    {
+                        ContentTitle = Strings.ApplicationSettings,
+                        ContentMessage = $"Download failed!\nURL: {link}\nOutput: {output}\n{ex}",
+                        ButtonDefinitions = new[]
+                        {
+                            new ButtonDefinition { Name = Strings.Ok, IsDefault = true },
+                        }
+                    }).ShowWindowDialogAsync(owner);
                 }
                 return false;
             }
+        }
+
+        private static Window? GetOwnerWindow()
+        {
+            return Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
+                ? desktop.MainWindow
+                : null;
         }
     }
 }
