@@ -26,6 +26,7 @@ using System;
 using System.IO;
 using System.Diagnostics;
 using System.Text.Json.Nodes;
+using System.Threading;
 using System.Threading.Tasks;
 using MinesweeperReborn.Discord;
 
@@ -87,7 +88,13 @@ public partial class MainWindow : Window
 
         if (SaveGameHelper.IsThereAnySavedGame()) await AskGameLoad();
 
-        modLoader = ModCompatible.LoadModLoader(AppSettings.ModsDirectory, game, RequestDraw, RequestHandleGameOver, RequestLoadGame);
+        modLoader = ModCompatible.LoadModLoader(
+            AppSettings.ModsDirectory,
+            game,
+            RequestDraw,
+            RequestHandleGameOver,
+            RequestLoadGame,
+            AddModMenuItem);
 
         if (AppSettings.AutomaticUpdateSearch)
         {
@@ -138,6 +145,36 @@ public partial class MainWindow : Window
     private void RequestLoadGame(string path)
     {
         Dispatcher.UIThread.Post(() => LoadGame(path));
+    }
+
+    private IDisposable AddModMenuItem(string menuId, string title, Action onClick)
+    {
+        if (!Dispatcher.UIThread.CheckAccess())
+        {
+            return Dispatcher.UIThread
+                .InvokeAsync(() => AddModMenuItem(menuId, title, onClick))
+                .GetAwaiter()
+                .GetResult();
+        }
+
+        MenuItem parent = menuId switch
+        {
+            "game" => GameMenuRoot,
+            "settings" => SettingsMenuRoot,
+            "help" => HelpMenuRoot,
+            _ => throw new ArgumentException($"Unknown menu ID '{menuId}'.", nameof(menuId))
+        };
+        var item = new MenuItem { Header = title };
+        item.Click += (_, _) => onClick();
+        parent.Items.Add(item);
+
+        return new MenuItemRegistration(() =>
+        {
+            if (Dispatcher.UIThread.CheckAccess())
+                parent.Items.Remove(item);
+            else
+                Dispatcher.UIThread.Post(() => parent.Items.Remove(item));
+        });
     }
 
     private async void OnGameOver()
@@ -252,6 +289,15 @@ public partial class MainWindow : Window
     }
 
     private void CloseApplication() => Close();
+
+    private sealed class MenuItemRegistration : IDisposable
+    {
+        private Action? dispose;
+
+        public MenuItemRegistration(Action dispose) => this.dispose = dispose;
+
+        public void Dispose() => Interlocked.Exchange(ref dispose, null)?.Invoke();
+    }
 
     public async void About_Click(object? sender, RoutedEventArgs e)
     {

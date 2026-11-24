@@ -8,7 +8,13 @@ namespace MinesweeperReborn
 {
     public static class ModCompatible
     {
-        public static dynamic? LoadModLoader(string modsDir, Game game, Action draw, Action gameOver, Action<string> loadGame)
+        public static dynamic? LoadModLoader(
+            string modsDir,
+            Game game,
+            Action draw,
+            Action gameOver,
+            Action<string> loadGame,
+            Func<string, string, Action, IDisposable> addMenuItem)
         {
             string dllPath = Path.Combine(AppContext.BaseDirectory, "MinesweeperModLoader.dll");
             if (!File.Exists(dllPath))
@@ -25,7 +31,7 @@ namespace MinesweeperReborn
 
                 var instance = Activator.CreateInstance(type);
                 var loadMethod = type.GetMethod("LoadMods", BindingFlags.Public | BindingFlags.Instance);
-                loadMethod?.Invoke(instance, new object[] { modsDir, game, draw, gameOver, loadGame });
+                loadMethod?.Invoke(instance, new object[] { modsDir, game, draw, gameOver, loadGame, addMenuItem });
 
                 return instance;
             }

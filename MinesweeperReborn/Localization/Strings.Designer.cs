@@ -641,7 +641,7 @@ namespace MinesweeperReborn.Localization {
                 return ResourceManager.GetString("ModRestartNowPrompt", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to További játékok az interneten.
         /// </summary>
